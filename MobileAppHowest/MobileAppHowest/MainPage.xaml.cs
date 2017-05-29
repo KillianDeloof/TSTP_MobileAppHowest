@@ -13,5 +13,10 @@ namespace MobileAppHowest
 		{
 			InitializeComponent();
 		}
-	}
+
+        private void NextQuote_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

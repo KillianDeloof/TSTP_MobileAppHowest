@@ -4,8 +4,15 @@
              xmlns:local="clr-namespace:MobileAppHowest"
              x:Class="MobileAppHowest.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <StackLayout>
+        <Label Text="Next"
+           HorizontalOptions="Center" >
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="NextQuote_Clicked" NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label x:Name="editorName" Text="No one has ever been here" />
+    </StackLayout>
 
 </ContentPage>
