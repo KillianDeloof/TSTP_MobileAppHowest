@@ -28,16 +28,18 @@ namespace MobileAppHowest.Views
             // indien login ok is -> naar CapusPage()
             if (ui != null)
             {
-                ShowCampusPage();
-                return;
+                await ShowCampusPage();
+            } else
+            {
+                // TO DO: opvangen wat er gebeurt als er login mislukte
+                // -> is dit nodig?
             }
-
-            // TO DO: opvangen wat er gebeurt als er login mislukte
         }
 
-        private void ShowCampusPage()
+        private async Task ShowCampusPage()
         {
-            // TO DO: doorsturen naar CampusPage()
+            Page newPage = new CampusPage();
+            await Navigation.PushAsync(newPage);
         }
     }
 }

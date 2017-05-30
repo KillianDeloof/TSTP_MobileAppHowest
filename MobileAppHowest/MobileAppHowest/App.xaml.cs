@@ -1,4 +1,5 @@
 ﻿using MobileAppHowest.Models.MobileSDK;
+using MobileAppHowest.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace MobileAppHowest
 		{
 			InitializeComponent();
 
-			MainPage = new MobileAppHowest.Views.LoginPage();
+			MainPage = new NavigationPage(new LoginPage());
 		}
 
         public static IAuthenticate Authenticator { get; private set; }
@@ -33,6 +34,11 @@ namespace MobileAppHowest
 		{
 			// Handle when your app resumes
 		}
+
+        //public static Page ShowCampusPage()
+        //{
+        //    new NavigationPage(new CampusPage());
+        //}
 
         #region microsoftazuremobileclientsdk
 

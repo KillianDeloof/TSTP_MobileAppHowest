@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Repositories
 {
-    public class LoginRepository : ILoginRepository
+    public class LoginRepository
     {
         private static UserInfo ui;
 
+        /// <summary>
+        /// Opens a new screen and authenticates the user.
+        /// </summary>
+        /// <returns>Task<UserInfo></returns>
         public async Task<UserInfo> Login()
         {
             try
