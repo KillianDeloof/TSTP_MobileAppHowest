@@ -1,0 +1,23 @@
+bij 1e maal opstarten :
+	loginscherm : 
+		het loginscherm wordt weergegeven, het loginscharm is gegeven vanuit azure, naa inloggen wordt het volgende scherm getoont.
+
+	selectie campus : 
+		een android-like scrollview met de verschillende campussen wordt getoont, eventueel gesorteert op dichste eerst.
+		om een campus te selecteren drukt de gebruiker op het "scrollitem", dan wordt het volgende scherm getoont.
+
+	selectie locatie in campus:
+		op dit scherm wordt via comboboxen respectievelijk de volgende zaken gevraagt aan de gebruiker :
+			-gebouw
+			-verdiep
+			-lokaal  (bevat ook hard-codes waarden als "hang", "trap" enz)
+		nadat de comboboxen zijn ingevult kan de gebruiker op next drukken om naar het laatste scherm te gaan
+		er is ook een terug knop (tipiche OS-style terugknop) bovenaan
+
+	opmerking en foto scherm
+		onder de titelbalk is een textveld waar de gebruiker een opmerking kan ingeven
+		onder het textvak bevinden zich 2 knoppen om een foto in te voegen (camera en galerij knoppen)		
+		waneer een foto is toegevoegt staat de foto in plaats van de 2 knoppen (dynamic ui)
+		in de rechtsbovenhoek van de foto bevind zich een delete knop (rond kruisje)
+		waneer ofwel een foto, ofwel een text is opgegeven kan de gebruiker op submit drukken om het ticket te verzenden.
+		er is ook opniew een terugknop aanwezig op did scherm op terug te keren naar het "selectie lokatie" scherm
