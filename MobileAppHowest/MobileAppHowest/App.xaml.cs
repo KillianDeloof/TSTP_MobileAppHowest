@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileAppHowest.Models.MobileSDK;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,12 @@ namespace MobileAppHowest
 		{
 			InitializeComponent();
 
-			MainPage = new MobileAppHowest.MainPage();
+			MainPage = new MobileAppHowest.Views.LoginPage();
 		}
 
-		protected override void OnStart ()
+        public static IAuthenticate Authenticator { get; private set; }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
@@ -30,5 +33,14 @@ namespace MobileAppHowest
 		{
 			// Handle when your app resumes
 		}
-	}
+
+        #region microsoftazuremobileclientsdk
+
+        public static void Init(IAuthenticate authenticator)
+        {
+            Authenticator = authenticator;
+        }
+
+        #endregion
+    }
 }
