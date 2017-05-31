@@ -17,14 +17,44 @@ namespace MobileAppHowest.Views
 		public CampusPage()
 		{
 			InitializeComponent();
+
+            //ShowRoomPage(new Campus() {  });
+
             GetCampusList();
 		}
 
-        private CampusRepository _campusRepo;
+        private LocationRepository _campusRepo = new LocationRepository();
+        private GPSRepository _gpsRepo = new GPSRepository();
         
         private async void GetCampusList()
         {
-            List<Campus> CampusList = await _campusRepo.GetCampusList();
+            List<Campus> campusList = await _campusRepo.GetCampusList();
+            //List<Campus> sortedCampusList = await SortListByLocation(campusList);
+
+            // weergeven van campussen in lijst(?)
+
         }
+
+        //private async Task<List<Campus>> SortListByLocation(List<Campus> campusList)
+        //{
+        //    double[] latLng = await _gpsRepo.GetLocation();
+        //    double latCurrent = latLng[0];
+        //    double lngCurrent = latLng[1];
+
+        //    // berekenen afstand tot verschillende campussen
+        //    //foreach (Campus c in campusList)
+        //    //{
+        //    //    c.
+        //    //    CalcDistance(latCurrent, lngCurrent, latCampus, lngCampus);
+        //    //}
+        //}
+
+        //private async void ShowRoomPage(myCampus)
+        //{
+        //    Page newPage = new RoomPage(myCampus);
+        //    await Navigation.PushAsync(newPage);
+        //}
+
+
     }
 }
