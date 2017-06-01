@@ -15,5 +15,9 @@ namespace MobileAppHowest.Models
         public string CCODE { get; set; }
         public string CDESC { get; set; }
         public String IMKey { get; set; }
+        public double[] LatLong { get; set; }
+        public double Distance { get; set; }
+
+
     }
 }
