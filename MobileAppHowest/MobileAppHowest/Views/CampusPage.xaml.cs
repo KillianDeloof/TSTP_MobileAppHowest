@@ -29,31 +29,24 @@ namespace MobileAppHowest.Views
         private async void GetCampusList()
         {
             List<Campus> campusList = await _campusRepo.GetCampusList();
-            //List<Campus> sortedCampusList = await SortListByLocation(campusList);
 
+            // sorteren van lijst adhv GPS-signaal
             // weergeven van campussen in lijst(?)
 
         }
 
-        //private async Task<List<Campus>> SortListByLocation(List<Campus> campusList)
-        //{
-        //    double[] latLng = await _gpsRepo.GetLocation();
-        //    double latCurrent = latLng[0];
-        //    double lngCurrent = latLng[1];
+        // hier terechtkomen wanneer een campus geselecteerd is
+        private async Task Campus_Selected(object sender, EventArgs e)
+        {
 
-        //    // berekenen afstand tot verschillende campussen
-        //    //foreach (Campus c in campusList)
-        //    //{
-        //    //    c.
-        //    //    CalcDistance(latCurrent, lngCurrent, latCampus, lngCampus);
-        //    //}
-        //}
+        }
 
-        //private async void ShowRoomPage(myCampus)
-        //{
-        //    Page newPage = new RoomPage(myCampus);
-        //    await Navigation.PushAsync(newPage);
-        //}
+        // doorverwijzen naar RoomPage wanneer campus werd geselecteerd
+        private async void ShowRoomPage(Campus myCampus)
+        {
+            Page newPage = new RoomPage(myCampus);
+            await Navigation.PushAsync(newPage);
+        }
 
 
     }

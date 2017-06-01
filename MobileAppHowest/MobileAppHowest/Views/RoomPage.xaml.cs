@@ -21,6 +21,11 @@ namespace MobileAppHowest.Views
             //GetBuildingList();
 		}
 
+        public RoomPage(Campus myCampus)
+        {
+
+        }
+
         //private LocationRepository _locationRepo = new LocationRepository();
 
         //private async void GetBuildingList()

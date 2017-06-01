@@ -32,7 +32,7 @@ namespace MobileAppHowest.Views
             } else
             {
                 // TO DO: opvangen wat er gebeurt als er login mislukte
-                // -> is dit nodig?
+                
             }
         }
 
