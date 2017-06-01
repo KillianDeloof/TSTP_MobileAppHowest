@@ -20,7 +20,7 @@ namespace MobileAppHowest.Models
 
         public override string ToString()
         {
-            return CDESC;
+            return UCODE + " " + UDESC.Substring(7);
         }
     }
 }
