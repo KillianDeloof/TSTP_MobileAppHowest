@@ -36,5 +36,10 @@ namespace MobileAppHowest.Models
         public String Facilities { get; set; }
         public String FloorMaterial { get; set; }
 
+        public override string ToString()
+        {
+            return UDESC + " / " + Number;
+        }
+
     }
 }

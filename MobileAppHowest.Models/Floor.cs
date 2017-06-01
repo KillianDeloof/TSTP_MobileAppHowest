@@ -15,5 +15,10 @@ namespace MobileAppHowest.Models
         public string CDESC { get; set; }
         public virtual Wing Wing { get; set; }
         public String IMKey { get; set; }
+
+        public override string ToString()
+        {
+            return UDESC;
+        }
     }
 }

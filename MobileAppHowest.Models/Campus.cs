@@ -18,6 +18,9 @@ namespace MobileAppHowest.Models
         public double[] LatLong { get; set; }
         public double Distance { get; set; }
 
-
+        public override string ToString()
+        {
+            return CDESC;
+        }
     }
 }

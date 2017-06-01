@@ -16,5 +16,10 @@ namespace MobileAppHowest.Models
         public string CDESC { get; set; }
         public virtual Campus Campus { get; set; }
         public String IMKey { get; set; }
+
+        public override string ToString()
+        {
+            return UDESC;
+        }
     }
 }

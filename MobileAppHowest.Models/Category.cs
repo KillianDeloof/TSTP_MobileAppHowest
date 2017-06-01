@@ -11,5 +11,10 @@ namespace MobileAppHowest.Models
         public int CategoryId { get; set; }
         public string CategoryUCode { get; set; }
         public string CategoryUDesc { get; set; }
+
+        public override string ToString()
+        {
+            return CategoryUDesc;
+        }
     }
 }

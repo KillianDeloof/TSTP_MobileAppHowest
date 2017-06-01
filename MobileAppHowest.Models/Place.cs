@@ -12,5 +12,10 @@ namespace MobileAppHowest.Models
         // kan zowel een lokaal, verdiep, als een forum zijn
         public string UCode { get; set; }
         public string UDesc { get; set; }
+
+        public override string ToString()
+        {
+            return UDesc;
+        }
     }
 }

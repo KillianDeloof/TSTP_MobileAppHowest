@@ -17,5 +17,9 @@ namespace MobileAppHowest.Models
         //public string Name { get; set; }
         //public string ImageUri { get; set; }
         //public string Email { get; set; }
+        public override string ToString()
+        {
+            return FirstName;
+        }
     }
 }
