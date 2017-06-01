@@ -30,8 +30,14 @@ namespace MobileAppHowest.Views
 
             // TO DO:
             // sorteren van lijst adhv GPS-signaal
+            SortCampusByGPS(campusList);
 
             lvCampus.ItemsSource = campusList.ToList<Campus>();
+        }
+
+        private void SortCampusByGPS(List<Campus> campusList)
+        {
+            //campusList.Sort(c => c.Distance);
         }
 
         // hier terechtkomen wanneer een campus geselecteerd is

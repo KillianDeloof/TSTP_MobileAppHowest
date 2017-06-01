@@ -4,6 +4,7 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.LoginPage" >
 
-    <Button x:Name="btnLogin" Text="Login" Clicked="BtnLogin_Clicked" />
+    <Button x:Name="btnLogin" Text="Login"
+            Clicked="BtnLogin_Clicked" />
 
 </ContentPage>

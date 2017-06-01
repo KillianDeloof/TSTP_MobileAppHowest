@@ -25,6 +25,7 @@ namespace MobileAppHowest.Views
             // we krijgen de geselecteerde campus mee
             // aan de hand hiervan kunnen we een lijst met gebouwen ophalen
             _myCampus = myCampus;
+            GetBuildingList();
         }
 
         private Campus _myCampus = null;
@@ -50,10 +51,13 @@ namespace MobileAppHowest.Views
             List<Building> buildingList = await _locationRepo.GetBuildingList();
             Console.WriteLine(buildingList);
 
-            // 2. sorteren van building list adhv gps-signaal
+            // 2. enkel nodige buildings in lijst steken
+            //buildingList.ForEach(b => b. == _myCampus.);
+
+            // 3. sorteren van building list adhv gps-signaal
             //    -> TO DO
 
-            // 3. weergeven van building list in combobox
+            // 4. weergeven van building list in combobox
             //    -> TO DO
         }
 

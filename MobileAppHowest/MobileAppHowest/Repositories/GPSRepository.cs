@@ -45,6 +45,7 @@ namespace MobileAppHowest.Repositories
             double x2 = latLong2[1];
             double y2 = latLong2[0];
             double distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+
             return distance;
         }
     }
