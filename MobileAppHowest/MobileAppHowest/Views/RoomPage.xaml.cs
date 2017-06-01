@@ -24,10 +24,12 @@ namespace MobileAppHowest.Views
         {
             // we krijgen de geselecteerde campus mee
             // aan de hand hiervan kunnen we een lijst met gebouwen ophalen
-            
+            _myCampus = myCampus;
         }
 
-        private LocationRepository _locationRepo = new LocationRepository();
+        private Campus _myCampus = null;
+
+        private APIDataGetRepository _locationRepo = new APIDataGetRepository();
 
         //private async void CboBuilding_SelectItem(object sender, EventArgs e)
         //{
@@ -41,8 +43,12 @@ namespace MobileAppHowest.Views
 
         private async void GetBuildingList()
         {
+            if (_myCampus == null)
+                return;
+
             // 1. ophalen van building list
             List<Building> buildingList = await _locationRepo.GetBuildingList();
+            Console.WriteLine(buildingList);
 
             // 2. sorteren van building list adhv gps-signaal
             //    -> TO DO

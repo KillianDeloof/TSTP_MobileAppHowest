@@ -21,22 +21,24 @@ namespace MobileAppHowest.Views
             GetCampusList();
 		}
 
-        private LocationRepository _campusRepo = new LocationRepository();
+        private APIDataGetRepository _campusRepo = new APIDataGetRepository();
         private GPSRepository _gpsRepo = new GPSRepository();
         
         private async void GetCampusList()
         {
             List<Campus> campusList = await _campusRepo.GetCampusList();
 
+            // TO DO:
             // sorteren van lijst adhv GPS-signaal
-            // weergeven van campussen in lijst(?)
+
+            lvCampus.ItemsSource = campusList.ToList<Campus>();
         }
 
         // hier terechtkomen wanneer een campus geselecteerd is
-        private async Task Campus_Selected(object sender, EventArgs e)
+        private async Task Campus_Selected(object sender, SelectedItemChangedEventArgs e)
         {
-            // 1. ophalen geselecteerde campus
-            // 2. campus doorgeven aan ShowRoomPage(selectedCampus);
+            Campus selectedCampus = (Campus)lvCampus.SelectedItem;
+            ShowRoomPage(selectedCampus);
         }
 
         // doorverwijzen naar RoomPage wanneer campus werd geselecteerd

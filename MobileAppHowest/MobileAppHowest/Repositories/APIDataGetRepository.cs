@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Repositories
 {
-    public class LocationRepository
+    public class APIDataGetRepository
     {
         public async Task<List<Building>> GetBuildingList()
         {
