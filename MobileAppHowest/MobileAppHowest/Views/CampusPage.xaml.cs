@@ -18,8 +18,6 @@ namespace MobileAppHowest.Views
 		{
 			InitializeComponent();
 
-            //ShowRoomPage(new Campus() {  });
-
             GetCampusList();
 		}
 
@@ -32,13 +30,13 @@ namespace MobileAppHowest.Views
 
             // sorteren van lijst adhv GPS-signaal
             // weergeven van campussen in lijst(?)
-
         }
 
         // hier terechtkomen wanneer een campus geselecteerd is
         private async Task Campus_Selected(object sender, EventArgs e)
         {
-
+            // 1. ophalen geselecteerde campus
+            // 2. campus doorgeven aan ShowRoomPage(selectedCampus);
         }
 
         // doorverwijzen naar RoomPage wanneer campus werd geselecteerd
