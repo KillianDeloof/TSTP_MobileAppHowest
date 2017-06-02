@@ -14,13 +14,17 @@ namespace MobileAppHowest.Models
         public string UDESC { get; set; }
         public string CCODE { get; set; }
         public string CDESC { get; set; }
+        // -- uit te zoeken --//
         public String IMKey { get; set; }
+        // lat en long van de campus
         public double[] LatLong { get; set; }
+        // afstand van huidig punt tot afstand
+        // wordt opgevuld in gps-repository
         public double Distance { get; set; }
 
         public override string ToString()
         {
-            return UCODE + " " + UDESC.Substring(7);
+            return UCODE + " - " + UDESC.Substring(7);
         }
     }
 }

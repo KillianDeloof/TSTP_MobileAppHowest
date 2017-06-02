@@ -21,12 +21,13 @@ namespace MobileAppHowest.Views
             GetCampusList();
 		}
 
-        private APIDataGetRepository _campusRepo = new APIDataGetRepository();
+        private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();
         private GPSRepository _gpsRepo = new GPSRepository();
         
         private async void GetCampusList()
         {
-            List<Campus> campusList = await _campusRepo.GetCampusList();
+            List<Category> categoryList = await _APIDataGetRepository.GetCategories();
+            List<Campus> campusList = await _APIDataGetRepository.GetCampusList();
 
             // TO DO:
             // sorteren van lijst adhv GPS-signaal

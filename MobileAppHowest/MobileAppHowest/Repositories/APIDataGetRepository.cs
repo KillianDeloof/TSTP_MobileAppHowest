@@ -11,6 +11,10 @@ namespace MobileAppHowest.Repositories
 {
     public class APIDataGetRepository
     {
+        /// <summary>
+        /// Ophalen van de lijst van gebouwen, aangeleverd door de API.
+        /// </summary>
+        /// <returns>Task<List<Building>></returns>
         public async Task<List<Building>> GetBuildingList()
         {
             List<Building> result = new List<Building>();
@@ -21,6 +25,10 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        /// <summary>
+        /// Ophalen van de lijst van campussen, aangeleverd door de API.
+        /// </summary>
+        /// <returns>Task<List<Campus>></returns>
         public async Task<List<Campus>> GetCampusList()
         {
             List<Campus> result = new List<Campus>();
@@ -31,6 +39,11 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        /// <summary>
+        /// Ophalen van de lijst van verdiepen, aangeleverd door de API.
+        /// Hierbij wordt gebruik gemaakt van een FloorFilter.
+        /// </summary>
+        /// <returns>Task<List<Floor>></returns>
         public async Task<List<Floor>> GetFloorList()
         {
             List<Floor> result = new List<Floor>();
@@ -50,6 +63,10 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        /// <summary>
+        /// Opvragen van de lijst van rooms, aangeleverd door de API.
+        /// </summary>
+        /// <returns>Task<List<Room>></returns>
         public async Task<List<Room>> GetRoomList(RoomFilter rf)
         {
             List<Room> result = new List<Room>();
@@ -68,12 +85,33 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        /// <summary>
+        /// Opvragen van de lijst van verschillende forums, aangeleverd door de API.
+        /// </summary>
+        /// <returns>Task<List<Forum>></returns>
         public async Task<List<Forum>> GetForumList()
         {
             List<Forum> result = new List<Forum>();
             String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/forum", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
             List<Forum> page = JsonConvert.DeserializeObject<List<Forum>>(pagejson);
             result.AddRange(page);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Opvragen van de lijst van verschillende categorieën problemen, aangeleverd door de API.
+        /// </summary>
+        /// <returns>Task<List<Category>></returns>
+        public async Task<List<Category>> GetCategories()
+        {
+            List<Category> result = new List<Category>();
+            String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
+            List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
+            result.AddRange(page);
+
+            //List<String> categoryList = new List<string>();
+            //result.ForEach(c => Console.WriteLine(c.CategoryUCode));
 
             return result;
         }
