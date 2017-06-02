@@ -10,14 +10,33 @@ namespace MobileAppHowest.Models
     {
         public int? CampusClusterID { get; set; }
         public string Address { get; set; }
+
+        /// <summary>
+        /// ex : BUD
+        /// </summary>
         public string UCODE { get; set; }
+
+        /// <summary>
+        /// ex : campus budda
+        /// </summary>
         public string UDESC { get; set; }
+
+        /// <summary>
+        /// ex : BUD
+        /// </summary>
         public string CCODE { get; set; }
+
+        /// <summary>
+        /// ex : campus budda
+        /// </summary>
         public string CDESC { get; set; }
         // -- uit te zoeken --//
         public String IMKey { get; set; }
+
+
         // lat en long van de campus
         public double[] LatLong { get; set; }
+
         // afstand van huidig punt tot afstand
         // wordt opgevuld in gps-repository
         public double Distance { get; set; }

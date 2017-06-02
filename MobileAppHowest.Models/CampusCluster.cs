@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CampusCluster 
     {
         public string UCODE { get; set; }

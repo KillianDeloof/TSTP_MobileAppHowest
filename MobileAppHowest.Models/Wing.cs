@@ -8,11 +8,34 @@ namespace MobileAppHowest.Models
 {
     public partial class Wing
     {
+        /// <summary>
+        /// id of building
+        /// </summary>
         public int BuildingID { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string UCODE { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string UDESC { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string CCODE { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public string CDESC { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public String IMKey { get; set; }
     }
 }
