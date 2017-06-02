@@ -59,32 +59,65 @@ namespace MobileAppHowest.Repositories
             return distance;
         }
 
+
+
         /// <summary>
-        /// returns the latLong coords from an address
+        /// get the closest campus from a list of campusses or returns null if no campus is closer then minDistance
         /// </summary>
-        /// <param name="campusList">list of campusses </param>
-        /// <returns>LatLong coordinates</returns>
+        /// <param name="campuslist">list of campusses to look</param>
+        /// <param name="minDistance">minnimum distance te user needs to be to a campus </param>
+        /// <returns>returns closest campusObject or returns null if no campus is closer then minDistance</returns>
+        public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
+        {
+            double closest = -1;
+            Campus closeCamp = null;
+            foreach (Campus camp in campuslist)
+            {
+                if (camp.LatLong != null)
+                {
+                    double d = CalculateDistance(myLatLong, camp.LatLong);
+                    if (closest == -1 || closest > d)
+                    {
+                        closest = d;
+                        closeCamp = camp;
+                    }
+                }
+            }
+            if (closeCamp != null && closest < minDistance)
+            {
+                return closeCamp;
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+
+
+
         //public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)
         //{
-            //foreach (Campus campus in campusList)
-            //{
-            //    if (campus.LatLong == null)
-            //    {
-            //        string address = campus.Address;
-            //        //do api shit and get coord
-            //        IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyC7EOq3zAJYXSmycgDp11WA5jV7fF_5R_Y" };
-            //        double lat = 0;
-            //        double lon = 0;
-            //        campus.LatLong = new double[2];
-            //        campus.LatLong[0] = lat;
-            //        campus.LatLong[1] = lon;
-            //    }
+        //foreach (Campus campus in campusList)
+        //{
+        //    if (campus.LatLong == null)
+        //    {
+        //        string address = campus.Address;
+        //        //do api shit and get coord
+        //        IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "" };
+        //        double lat = 0;
+        //        double lon = 0;
+        //        campus.LatLong = new double[2];
+        //        campus.LatLong[0] = lat;
+        //        campus.LatLong[1] = lon;
+        //    }
 
-            //}
+        //}
 
 
 
-            //return campusList;
+        //return campusList;
         //}
     }
 }
