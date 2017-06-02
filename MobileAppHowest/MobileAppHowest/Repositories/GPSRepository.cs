@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using MobileAppHowest.Models;
+using System.Net;
+using System.Xml.Linq;
 
 namespace MobileAppHowest.Repositories
 {
@@ -59,32 +61,38 @@ namespace MobileAppHowest.Repositories
             return distance;
         }
 
-        /// <summary>
-        /// returns the latLong coords from an address
-        /// </summary>
-        /// <param name="campusList">list of campusses </param>
-        /// <returns>LatLong coordinates</returns>
-        public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)
-        {
-            foreach (Campus campus in campusList)
-            {
-                if (campus.LatLong == null)
-                {
-                    string address = campus.Address;
-                    //do api shit and get coord
-                    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyC7EOq3zAJYXSmycgDp11WA5jV7fF_5R_Y" };
-                    double lat = 0;
-                    double lon = 0;
-                    campus.LatLong = new double[2];
-                    campus.LatLong[0] = lat;
-                    campus.LatLong[1] = lon;
-                }
-
-            }
 
 
+        //public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)    ------illigaal !!  https://developers.google.com/maps/documentation/geocoding/policies
+        //{
+        //    foreach (Campus campus in campusList)
+        //    {
+        //        if (campus.LatLong == null)
+        //        {
+        //            var address = campus.Address;
+        //            string apiKey = "";
+        //            double lat = 0;
+        //            double lon = 0;
 
-            return campusList;
-        }
+        //            var requestUri = string.Format("http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=false", Uri.EscapeDataString(address));
+
+        //            var request = WebRequest.Create(requestUri);
+        //            var response = request.GetResponse();
+        //            var xdoc = XDocument.Load(response.GetResponseStream());
+
+        //            var result = xdoc.Element("GeocodeResponse").Element("result");
+        //            var locationElement = result.Element("geometry").Element("location");
+        //            var lat = locationElement.Element("lat");
+        //            var lng = locationElement.Element("lng");
+
+
+        //            campus.LatLong = new double[2];
+        //            campus.LatLong[0] = lat;
+        //            campus.LatLong[1] = lon;
+        //        }
+
+        //    }
+        //    return campusList;
+        //}
     }
 }
