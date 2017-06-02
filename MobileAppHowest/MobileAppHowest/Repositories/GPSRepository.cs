@@ -29,7 +29,11 @@ namespace MobileAppHowest.Repositories
             return coords;
         }
 
-
+        /// <summary>
+        /// fills in the distance propperty of campus items in the givven List
+        /// </summary>
+        /// <param name="campusList"></param>
+        /// <param name="currentLatLong"></param>
         public static void GetCampusDistances(List<Campus> campusList, double[] currentLatLong)
         {
             foreach (Campus campus in campusList)
@@ -38,6 +42,12 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+        /// <summary>
+        /// calculate the distance between 2 coordinates
+        /// </summary>
+        /// <param name="latLong1"></param>
+        /// <param name="latLong2"></param>
+        /// <returns></returns>
         public static double CalculateDistance(double[] latLong1, double[] latLong2)
         {
             double x1 = latLong1[1];
