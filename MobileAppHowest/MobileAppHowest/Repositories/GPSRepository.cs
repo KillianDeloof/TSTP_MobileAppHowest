@@ -38,7 +38,7 @@ namespace MobileAppHowest.Repositories
         {
             foreach (Campus campus in campusList)
             {
-                campus.Distance = CalculateDistance(campus.LatLong, currentLatLong);
+                campus.Distance = CalculateDistance(campus.latLong, currentLatLong);
             }
         }
 
@@ -73,9 +73,9 @@ namespace MobileAppHowest.Repositories
             Campus closeCamp = null;
             foreach (Campus camp in campuslist)
             {
-                if (camp.LatLong != null)
+                if (camp.latLong != null)
                 {
-                    double d = CalculateDistance(myLatLong, camp.LatLong);
+                    double d = CalculateDistance(myLatLong, camp.latLong);
                     if (closest == -1 || closest > d)
                     {
                         closest = d;
