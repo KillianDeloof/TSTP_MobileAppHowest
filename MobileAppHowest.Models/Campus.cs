@@ -45,5 +45,23 @@ namespace MobileAppHowest.Models
         {
             return UCODE + " - " + UDESC.Substring(7);
         }
+
+        /// <summary>
+        /// get the closest campus from a list of campusses or returns null if no campus is closer then minDistance
+        /// </summary>
+        /// <param name="campuslist">list of campusses to look</param>
+        /// <param name="minDistance">minnimum distance te user needs to be to a campus </param>
+        /// <returns>returns closest campusObject or returns null if no campus is closer then minDistance</returns>
+        public static Campus GetClosestCampus(List<Campus> campuslist, double minDistance)
+        {
+            foreach (Campus camp in campuslist)
+            {
+
+            }
+            return null;
+        }
+
+
+
     }
 }
