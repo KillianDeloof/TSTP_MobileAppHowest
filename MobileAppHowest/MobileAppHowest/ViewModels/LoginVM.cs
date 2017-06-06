@@ -1,6 +1,7 @@
 ﻿using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using MobileAppHowest.Views;
+using Prism.Navigation;
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
@@ -10,18 +11,22 @@ namespace MobileAppHowest.ViewModels
 {
     public partial class LoginVM : INotifyPropertyChanged
     {
-        public LoginVM()
+        private INavigationService _navigationService { get; }
+
+        public LoginVM(INavigation navigation)
         {
+            this.Navigation = navigation;
             LoginCommand = new Command(LoginClicked);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public Command LoginCommand { get; }
         private LoginRepository _loginRepo = new LoginRepository();
+        public INavigation Navigation { get; set; }
 
 
 
-        private async void LoginClicked()
+        public async void LoginClicked()
         {
             UserInfo ui = await _loginRepo.Login();
 
@@ -39,11 +44,7 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowCategoryPage()
         {
-            //LoginPage lp = new LoginPage();
-            //Page newPage = new CampusPage();
-            //await .PushAsync(newPage);
-
-            await (new LoginPage()).Navigation.PushAsync(new CategoryPage()); // to show OtherPage and be able to go back
+            await Navigation.PushAsync(new CategoryPage());
         }
     }
 }
