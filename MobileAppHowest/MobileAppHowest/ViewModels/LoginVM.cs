@@ -11,7 +11,7 @@ namespace MobileAppHowest.ViewModels
 {
     public partial class LoginVM : INotifyPropertyChanged
     {
-        private INavigationService _navigationService { get; }
+        //private INavigationService _navigationService { get; }
 
         public LoginVM(INavigation navigation)
         {

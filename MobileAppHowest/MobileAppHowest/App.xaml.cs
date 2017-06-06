@@ -14,16 +14,17 @@ namespace MobileAppHowest
 		public App ()
 		{
 			InitializeComponent();
-            
-            MainPage = new NavigationPage(new CategoryPage());
+
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         public static IAuthenticate Authenticator { get; private set; }
 
         protected override void OnStart ()
 		{
-			// Handle when your app starts
-		}
+            // Handle when your app starts
+            MainPage = new NavigationPage(new LoginPage());
+        }
 
 		protected override void OnSleep ()
 		{
@@ -32,8 +33,9 @@ namespace MobileAppHowest
 
 		protected override void OnResume ()
 		{
-			// Handle when your app resumes
-		}
+            // Handle when your app resumes
+            MainPage = new NavigationPage(new LoginPage());
+        }
 
         //public static Page ShowCampusPage()
         //{

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -47,26 +48,30 @@ namespace MobileAppHowest.ViewModels
                 "Lesmateriaal",
                 "Netwerk",
                 "Software & hardware",
+                "organisatie",
                 "Overige"
             };
 
+            // wordt voorlopig niet gebruikt
             List<String> categoryPictureList = new List<String>()
             {
-                @"Assets/BG_howest.png",
-                @"Assets/BG_howest.png",
-                @"Assets/BG_howest.png",
-                @"Assets/BG_howest.png",
-                @"Assets/BG_howest.png",
-                @"Assets/BG_howest.png"
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png",
+                "../Assets/HOWEST_Logo.png"
             };
 
             for (int i = 0; i < catStringList.Count; i++)
             {
-                Category newCat = new Category();
-                newCat.CategoryUDesc = catStringList[i];
-                newCat.Picture = categoryPictureList[i];
-                newCat.Picture = "Subtitle test " + i;
-                categoryList.Add(newCat);
+                categoryList.Add(new Category()
+                {
+                    CategoryUDesc = catStringList[i],
+                    Picture = categoryPictureList[i],
+                    Subtitle = "Subtitle test " + i
+                });
             }
 
             return categoryList;
