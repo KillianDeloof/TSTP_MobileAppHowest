@@ -6,6 +6,10 @@ using Plugin.Media;
 using System.IO;
 using System.Linq;
 
+//this could also work
+//https://blog.xamarin.com/getting-started-with-the-media-plugin-for-xamarin/
+
+
 namespace MobileAppHowest.Repositories
 {
     class MediaPicker : ICameraService
