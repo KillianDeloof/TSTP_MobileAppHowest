@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Plugin.Media;
 using System.IO;
 using System.Linq;
+using Plugin.Media.Abstractions;
 
 //this could also work
 //https://blog.xamarin.com/getting-started-with-the-media-plugin-for-xamarin/
@@ -12,31 +13,77 @@ using System.Linq;
 
 namespace MobileAppHowest.Repositories
 {
-    class MediaPicker : ICameraService
+    class MediaPicker// : ICameraService
     {
-
-        public async Task<byte[]> TakePhotosAsync()
+        public async Task<MediaFile> TakePhoto()
         {
-            await CrossMedia.Current.Initialize();
 
-            var picture = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions());
+            if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
+            {
+                // Supply media options for saving our photo after it's taken.
+                var mediaOptions = new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    Directory = "Receipts",
+                    Name = $"{DateTime.UtcNow}.jpg"
+                };
 
-            if (picture == null)
+                // Take a photo of the business receipt.
+                MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
+                return file;
+            }
+            else
             {
                 return null;
             }
 
-            var ms = new MemoryStream();
-
-            using (var s = picture.GetStream())
-            {
-                await s.CopyToAsync(destination: ms);
-            }
-
-            //ms.Seek(offset: 0, loc: SeekOrigin.Begin);
-
-            return ms.ToArray();
         }
+
+        public async Task<MediaFile> PickPhoto()
+        {
+            // Select a photo. 
+            if (CrossMedia.Current.IsPickPhotoSupported)
+            {
+                MediaFile photo = await CrossMedia.Current.PickPhotoAsync();
+                return photo;
+            }
+            else
+            {
+                return null;
+            }
+                
+
+            // Select a video. 
+            //if (CrossMedia.Current.IsPickVideoSupported)
+            //    MediaFile video = await CrossMedia.Current.PickVideoAsync();
+        }
+
+
+
+
+
+        //chomado style
+        //public async Task<byte[]> TakePhotosAsync()
+        //{
+        //    await CrossMedia.Current.Initialize();
+
+        //    var picture = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions());
+
+        //    if (picture == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var ms = new MemoryStream();
+
+        //    using (var s = picture.GetStream())
+        //    {
+        //        await s.CopyToAsync(destination: ms);
+        //    }
+
+        //    //ms.Seek(offset: 0, loc: SeekOrigin.Begin);
+
+        //    return ms.ToArray();
+        //}
 
         //use this methot to call camera from viewmodel
         //private async Task StartGameAsync()

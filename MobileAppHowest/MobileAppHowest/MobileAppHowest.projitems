@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CampusVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategoryVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MessageVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CampusPage.xaml.cs">
       <DependentUpon>CampusPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -32,6 +33,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\MessagePage.xaml.cs">
+      <DependentUpon>MessagePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\RoomPage.xaml.cs">
@@ -76,5 +81,11 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\BG_howest.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\HOWEST_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MessagePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
