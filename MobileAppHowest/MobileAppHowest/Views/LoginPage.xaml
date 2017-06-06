@@ -2,9 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
-             x:Class="MobileAppHowest.Views.LoginPage" >
+             x:Class="MobileAppHowest.Views.LoginPage" 
+             BackgroundImage="Assets/BG_howest.png">
 
-    <Button x:Name="btnLogin" Text="Login"
-            Command="{ Binding LoginCommand }" />
+
+
+    <!--<ContentPage.ContentPage>
+        <StackLayout Orientation="Vertical" Padding="20" Spacing="30">
+
+            <Boxview HeightRequest="10"/>
+            <Image HorizontalOptions="Center"
+                   WidthRequest="300"
+                   Source="Assets/HOWEST_Logo.png"/>
+
+            <Frame BackgroundColor="#BFC4C4C4"
+                   HasShadow="False">
+
+            </Frame>
+
+            <Button   x:Name="btnLogin" Text="Login" 
+                      Command="{ Binding LoginCommand }" 
+                      TextColor="White"
+                      FontAttributes="Bold"
+                      FontSize="20"
+                      HorizontalOptions="FillAndExpand"
+                      BackgroundColor="f44CAF50"/>
+        </StackLayout>
+
+    </ContentPage.ContentPage>-->
+
+
+    <StackLayout>
+
+        <Image HorizontalOptions="Center"
+                   WidthRequest="300"
+                   Source="Assets/HOWEST_Logo.png"/>
+
+
+
+        <Button Text="Login"
+            Command="{ Binding LoginCommand }"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="CenterAndExpand" 
+/>
+    </StackLayout>
+
+
+
 
 </ContentPage>
