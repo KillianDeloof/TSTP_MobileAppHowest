@@ -35,7 +35,60 @@ namespace MobileAppHowest.Models
 
 
         // lat en long van de campus
-        public double[] LatLong { get; set; }
+        //public double[] LatLong { get; set; }
+
+        private double[] LatLong;
+
+        public double[] latLong
+        {
+            get
+            {
+
+                switch (UCODE)
+                {
+                    case "BUD":
+                        latLong[0] = 50.83165709999999;
+                        latLong[1] = 3.2639669999999796;
+                        break;
+                    case "EXT":
+                        return null;
+                    case "GKG":
+                        latLong[0] = 50.815474;
+                        latLong[1] = 3.2718398;
+                        break;
+                    case "LPS":
+                        latLong[0] = 50.82469800000001;
+                        latLong[1] = 3.30499599999996;
+                        break;
+                    case "NHS":
+                        latLong[0] = 51.2067775;
+                        latLong[1] = 3.2405138999999963;
+                        break;
+                    case "RDR":
+                        latLong[0] = 50.8223525;
+                        latLong[1] = 3.283895799999982;
+                        break;
+                    case "RSS":
+                        latLong[0] = 51.1923775;
+                        latLong[1] = 3.2134982000000036;
+                        break;
+                    case "SJS":
+                        latLong[0] = 51.2152172;
+                        latLong[1] = 3.2210704000000305;
+                        break;
+                    case "VES":
+                        latLong[0] = 51.22140020000001;
+                        latLong[1] = 2.9150922999999693;
+                        break;
+                    default:
+                        return null;
+                }
+
+                return LatLong;
+            }
+            set { LatLong = value; }
+        }
+
 
         // afstand van huidig punt tot afstand
         // wordt opgevuld in gps-repository
@@ -46,20 +99,7 @@ namespace MobileAppHowest.Models
             return UCODE + " - " + UDESC.Substring(7);
         }
 
-        /// <summary>
-        /// get the closest campus from a list of campusses or returns null if no campus is closer then minDistance
-        /// </summary>
-        /// <param name="campuslist">list of campusses to look</param>
-        /// <param name="minDistance">minnimum distance te user needs to be to a campus </param>
-        /// <returns>returns closest campusObject or returns null if no campus is closer then minDistance</returns>
-        public static Campus GetClosestCampus(List<Campus> campuslist, double minDistance)
-        {
-            foreach (Campus camp in campuslist)
-            {
 
-            }
-            return null;
-        }
 
 
 
