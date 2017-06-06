@@ -17,6 +17,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIDataGetRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GPSRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\ICameraService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\IFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\MediaPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TicketRepository.cs" />
