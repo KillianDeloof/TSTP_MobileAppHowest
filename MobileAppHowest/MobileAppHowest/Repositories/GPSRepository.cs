@@ -97,7 +97,7 @@ namespace MobileAppHowest.Repositories
 
 
 
-        //public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)
+        //public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)  google en bing api mag enkel worden gebruikt om de resultaten op een google of bing map te tonen
         //{
         //foreach (Campus campus in campusList)
         //{
