@@ -196,6 +196,9 @@
       <Name>MobileAppHowest.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\BG_howest.png" />
+  </ItemGroup>
   <Import Project="..\MobileAppHowest\MobileAppHowest.projitems" Label="Shared" Condition="Exists('..\MobileAppHowest\MobileAppHowest.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
