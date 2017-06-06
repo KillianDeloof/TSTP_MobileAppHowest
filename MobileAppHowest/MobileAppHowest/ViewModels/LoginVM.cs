@@ -30,7 +30,7 @@ namespace MobileAppHowest.ViewModels
         {
             UserInfo ui = await _loginRepo.Login();
 
-            // indien login ok is -> naar CapusPage()
+            // indien login ok is -> naar CategoryPage()
             if (ui != null)
             {
                 await ShowCategoryPage();

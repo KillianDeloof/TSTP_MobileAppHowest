@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -18,23 +19,34 @@ namespace MobileAppHowest.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private APIDataGetRepository _dataRepo = new APIDataGetRepository();        
 
-        private List<Category> _categoryList = null;
-        public ObservableCollection<Category> CategoryList
+        private List<String> _categoryList = null;
+        public ObservableCollection<String> CategoryList
         {
             get
             {
                 if (_categoryList == null)
                     GetCategoryList();
 
-                return new ObservableCollection<Category>(_categoryList);
+                return new ObservableCollection<String>(_categoryList);
             }
         }
 
         private void GetCategoryList()
         {
-            _categoryList = new List<Category>();
-            // ophalen lijst van categorieën
-            // _categoryList = ...
+            _categoryList = GetCategoryStringList();
+        }
+
+        private List<String> GetCategoryStringList()
+        {
+            return new List<String>
+            {
+                "Campus",
+                "Faciliteiten & diensten",
+                "Lesmateriaal",
+                "Netwerk",
+                "Software & hardware",
+                "Overige"
+            };
         }
     }
 }
