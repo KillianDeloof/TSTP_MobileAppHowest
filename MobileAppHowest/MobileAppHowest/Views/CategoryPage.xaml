@@ -4,6 +4,29 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CategoryPage" >
 
-    <ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />
+    <!--<ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />-->
+    <ContentPage.Content>
+        <ListView x:Name="listView" ItemsSource="{ Binding CategoryList }">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="#eeeeee"
+                                     Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{ Binding Picture }" />
+                                <Label Text="{ Binding CategoryUDesc }"
+                                       TextColor="#f35e20" />
+                                <Label Text="{ Binding Subtitle }"
+                                       HorizontalOptions="EndAndExpand"
+                                       TextColor="#503026" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+
+
 
 </ContentPage>
