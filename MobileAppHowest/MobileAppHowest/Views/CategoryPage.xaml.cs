@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 
 namespace MobileAppHowest.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoryPage : ContentPage
     {
-		public CategoryPage ()
+		public CategoryPage()
 		{
-			InitializeComponent ();
+			InitializeComponent();
             BindingContext = new CategoryVM();
         }
 	}
