@@ -1,5 +1,6 @@
 ﻿using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
+using MobileAppHowest.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,44 +18,42 @@ namespace MobileAppHowest.Views
 		public CampusPage()
 		{
 			InitializeComponent();
+            BindingContext = new CampusVM();
 
-            GetCampusList();
+            //GetCampusList();
 		}
 
-        private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();
-        private GPSRepository _gpsRepo = new GPSRepository();
+        //private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();
+        //private GPSRepository _gpsRepo = new GPSRepository();
         
-        private async void GetCampusList()
-        {
-            List<Category> categoryList = await _APIDataGetRepository.GetCategories();
-            List<Campus> campusList = await _APIDataGetRepository.GetCampusList();
+        //private async void GetCampusList()
+        //{
+        //    List<Campus> campusList = await _APIDataGetRepository.GetCampusList();
 
-            // TO DO:
-            // sorteren van lijst adhv GPS-signaal
-            SortCampusByGPS(campusList);
+        //    // TO DO:
+        //    // sorteren van lijst adhv GPS-signaal
+        //    SortCampusByGPS(campusList);
 
-            lvCampus.ItemsSource = campusList.ToList<Campus>();
-        }
+        //    lvCampus.ItemsSource = campusList.ToList<Campus>();
+        //}
 
-        private void SortCampusByGPS(List<Campus> campusList)
-        {
-            //campusList.Sort(c => c.Distance);
-        }
+        //private void SortCampusByGPS(List<Campus> campusList)
+        //{
+        //    //campusList.Sort(c => c.Distance);
+        //}
 
-        // hier terechtkomen wanneer een campus geselecteerd is
-        private async Task Campus_Selected(object sender, SelectedItemChangedEventArgs e)
-        {
-            Campus selectedCampus = (Campus)lvCampus.SelectedItem;
-            ShowRoomPage(selectedCampus);
-        }
+        //// hier terechtkomen wanneer een campus geselecteerd is
+        //private async Task Campus_Selected(object sender, SelectedItemChangedEventArgs e)
+        //{
+        //    Campus selectedCampus = (Campus)lvCampus.SelectedItem;
+        //    ShowRoomPage(selectedCampus);
+        //}
 
-        // doorverwijzen naar RoomPage wanneer campus werd geselecteerd
-        private async void ShowRoomPage(Campus myCampus)
-        {
-            Page newPage = new RoomPage(myCampus);
-            await Navigation.PushAsync(newPage);
-        }
-
-
+        //// doorverwijzen naar RoomPage wanneer campus werd geselecteerd
+        //private async void ShowRoomPage(Campus myCampus)
+        //{
+        //    Page newPage = new RoomPage(myCampus);
+        //    await Navigation.PushAsync(newPage);
+        //}
     }
 }

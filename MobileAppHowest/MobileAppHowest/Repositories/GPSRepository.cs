@@ -68,21 +68,21 @@ namespace MobileAppHowest.Repositories
         /// <returns>LatLong coordinates</returns>
         public async static Task<List<Campus>> FillCoordsFromAddress(List<Campus> campusList)
         {
-            foreach (Campus campus in campusList)
-            {
-                if (campus.LatLong == null)
-                {
-                    string address = campus.Address;
-                    //do api shit and get coord
-                    IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyC7EOq3zAJYXSmycgDp11WA5jV7fF_5R_Y" };
-                    double lat = 0;
-                    double lon = 0;
-                    campus.LatLong = new double[2];
-                    campus.LatLong[0] = lat;
-                    campus.LatLong[1] = lon;
-                }
+            //foreach (Campus campus in campusList)
+            //{
+            //    if (campus.LatLong == null)
+            //    {
+            //        string address = campus.Address;
+            //        //do api shit and get coord
+            //        IGeocoder geocoder = new GoogleGeocoder() { ApiKey = "AIzaSyC7EOq3zAJYXSmycgDp11WA5jV7fF_5R_Y" };
+            //        double lat = 0;
+            //        double lon = 0;
+            //        campus.LatLong = new double[2];
+            //        campus.LatLong[0] = lat;
+            //        campus.LatLong[1] = lon;
+            //    }
 
-            }
+            //}
 
 
         //            campus.LatLong = new double[2];

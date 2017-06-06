@@ -29,12 +29,17 @@ namespace MobileAppHowest.Repositories
         /// Ophalen van de lijst van campussen, aangeleverd door de API.
         /// </summary>
         /// <returns>Task<List<Campus>></returns>
-        public async Task<List<Campus>> GetCampusList()
+        public static async Task<List<Campus>> GetCampusList()
         {
             List<Campus> result = new List<Campus>();
             String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/Campus", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
             List<Campus> page = JsonConvert.DeserializeObject<List<Campus>>(pagejson);
             result.AddRange(page);
+
+            foreach (Campus c in result)
+            {
+                Console.WriteLine("UCODE: " + c.UCODE + " - " + "Address: " + c.Address);
+            }
 
             return result;
         }
@@ -103,17 +108,25 @@ namespace MobileAppHowest.Repositories
         /// Opvragen van de lijst van verschillende categorieën problemen, aangeleverd door de API.
         /// </summary>
         /// <returns>Task<List<Category>></returns>
-        public async Task<List<Category>> GetCategories()
+        public async Task<List<Category>> GetCategoryList()
         {
-            List<Category> result = new List<Category>();
-            String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
-            List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
-            result.AddRange(page);
+            try
+            {
+                List<Category> result = new List<Category>();
+                String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
+                List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
+                result.AddRange(page);
 
-            //List<String> categoryList = new List<string>();
-            //result.ForEach(c => Console.WriteLine(c.CategoryUCode));
+                //List<String> categoryList = new List<string>();
+                //result.ForEach(c => Console.WriteLine(c.CategoryUCode));
 
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }
