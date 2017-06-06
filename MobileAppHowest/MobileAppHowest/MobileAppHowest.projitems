@@ -12,11 +12,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BinaryToImageConvertor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIDataGetRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GPSRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\ICameraService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\IFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\MediaPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TicketRepository.cs" />
