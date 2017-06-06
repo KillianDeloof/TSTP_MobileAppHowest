@@ -19,15 +19,15 @@ namespace MobileAppHowest.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private APIDataGetRepository _dataRepo = new APIDataGetRepository();        
 
-        private List<String> _categoryList = null;
-        public ObservableCollection<String> CategoryList
+        private List<Category> _categoryList = null;
+        public ObservableCollection<Category> CategoryList
         {
             get
             {
                 if (_categoryList == null)
                     GetCategoryList();
 
-                return new ObservableCollection<String>(_categoryList);
+                return new ObservableCollection<Category>(_categoryList);
             }
         }
 
@@ -36,9 +36,11 @@ namespace MobileAppHowest.ViewModels
             _categoryList = GetCategoryStringList();
         }
 
-        private List<String> GetCategoryStringList()
+        private List<Category> GetCategoryStringList()
         {
-            return new List<String>
+            List<Category> categoryList = new List<Category>();
+
+            List<String> catStringList = new List<String>
             {
                 "Campus",
                 "Faciliteiten & diensten",
@@ -47,6 +49,27 @@ namespace MobileAppHowest.ViewModels
                 "Software & hardware",
                 "Overige"
             };
+
+            List<String> categoryPictureList = new List<String>()
+            {
+                @"Assets/BG_howest.png",
+                @"Assets/BG_howest.png",
+                @"Assets/BG_howest.png",
+                @"Assets/BG_howest.png",
+                @"Assets/BG_howest.png",
+                @"Assets/BG_howest.png"
+            };
+
+            for (int i = 0; i < catStringList.Count; i++)
+            {
+                Category newCat = new Category();
+                newCat.CategoryUDesc = catStringList[i];
+                newCat.Picture = categoryPictureList[i];
+                newCat.Picture = "Subtitle test " + i;
+                categoryList.Add(newCat);
+            }
+
+            return categoryList;
         }
     }
 }

@@ -4,9 +4,9 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CampusPage">
 
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <vm:CampusVM />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
 
     <ListView x:Name="lvCampus" ItemsSource="{ Binding CampusList }" />
 

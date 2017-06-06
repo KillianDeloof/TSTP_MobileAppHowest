@@ -33,18 +33,14 @@
 
 
     <StackLayout>
-
         <Image HorizontalOptions="Center"
-                   WidthRequest="300"
-                   Source="Assets/HOWEST_Logo.png"/>
-
-
+               WidthRequest="300"
+               Source="Assets/HOWEST_Logo.png" />
 
         <Button Text="Login"
-            Command="{ Binding LoginCommand }"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="CenterAndExpand" 
-/>
+                Command="{ Binding LoginCommand }"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand" />
     </StackLayout>
 
 

@@ -6,19 +6,19 @@
 
     <!--<ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />-->
     <ContentPage.Content>
-        <ListView  x:Name="listView">
+        <ListView x:Name="listView" ItemsSource="{ Binding CategoryList }">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="#eee"
-                        Orientation="Vertical">
+                        <StackLayout BackgroundColor="#eeeeee"
+                                     Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding image}" />
-                                <Label Text="{Binding title}"
-                                TextColor="#f35e20" />
-                                <Label Text="{Binding subtitle}"
-                                HorizontalOptions="EndAndExpand"
-                                TextColor="#503026" />
+                                <Image Source="{ Binding Picture }" />
+                                <Label Text="{ Binding CategoryUDesc }"
+                                       TextColor="#f35e20" />
+                                <Label Text="{ Binding Subtitle }"
+                                       HorizontalOptions="EndAndExpand"
+                                       TextColor="#503026" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
