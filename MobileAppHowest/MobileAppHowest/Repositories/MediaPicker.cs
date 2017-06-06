@@ -34,7 +34,33 @@ namespace MobileAppHowest.Repositories
             return ms.ToArray();
         }
 
+        //use this methot to call camera from viewmodel
+        //private async Task StartGameAsync()
+        //{
+        //    this.IsBusy = true;   (isbussy is a prop declared in the viewmodel)
+        //    try
+        //    {
+        //        this.Picture = await this.CameraService.TakePhotosAsync();
+        //        if (this.Picture == null)
+        //        {
+        //            await this.NavigationService.GoBackAsync();
+        //            return;
+        //        }
 
+        //        var detectResults = await this.DetectPictureAsync();
+
+        //        if (detectResults.Any())
+        //        {
+        //            this.DetectWinner(detectResults);
+        //        }
+
+        //        this.FaceDetectionResults = detectResults;
+        //    }
+        //    finally
+        //    {
+        //        this.IsBusy = false;
+        //    }
+        //}
 
 
     }
