@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using MobileAppHowest.Models;
+using System.Net;
+using System.Xml.Linq;
 
 namespace MobileAppHowest.Repositories
 {
@@ -116,6 +118,10 @@ namespace MobileAppHowest.Repositories
         //}
 
 
+        //            campus.LatLong = new double[2];
+        //            campus.LatLong[0] = lat;
+        //            campus.LatLong[1] = lon;
+        //        }
 
         //return campusList;
         //}
