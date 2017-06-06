@@ -35,7 +35,7 @@ namespace MobileAppHowest.Repositories
 
             //byte[] bytes = null;
             //MediaFile photo;
-            
+
 
 
             //FileStream fs = File.OpenRead(photo);
@@ -48,10 +48,10 @@ namespace MobileAppHowest.Repositories
             //at.Content = bytes;
             //at.Type = "jpg";
 
-            //t.Attachments.Add(at);
+            // t.Attachments.Add(photo);
 
 
-            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None)
+            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
 
 
         }
