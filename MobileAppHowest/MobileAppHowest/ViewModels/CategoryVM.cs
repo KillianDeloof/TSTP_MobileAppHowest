@@ -78,6 +78,11 @@ namespace MobileAppHowest.ViewModels
                 "Assets/HOWEST_Logo.png"
             };
 
+            List<SubCategory> subCategoryList = new List<SubCategory>()
+            {
+
+            };
+
             for (int i = 0; i < catStringList.Count; i++)
             {
                 categoryList.Add(new Category()
@@ -85,6 +90,7 @@ namespace MobileAppHowest.ViewModels
                     CategoryUDesc = catStringList[i],
                     Picture = categoryPictureList[i],
                     Subtitle = "Subtitle test " + i
+                    //SubCategoryList
                 });
             }
 
