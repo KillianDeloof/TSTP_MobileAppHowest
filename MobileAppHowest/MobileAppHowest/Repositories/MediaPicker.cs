@@ -13,7 +13,7 @@ using Plugin.Media.Abstractions;
 
 namespace MobileAppHowest.Repositories
 {
-    class MediaPicker// : ICameraService
+    public class MediaPicker// : ICameraService
     {
         public static async Task<MediaFile> TakePhoto()
         {
