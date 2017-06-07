@@ -14,6 +14,7 @@ namespace MobileAppHowest.Models
         public string CategoryUDesc { get; set; }
         public string Picture { get; set; }
         public string Subtitle { get; set; }
+        public List<SubCategory> SubCategoryList { get; set; }
 
         public override string ToString()
         {

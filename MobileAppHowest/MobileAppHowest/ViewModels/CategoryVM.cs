@@ -51,17 +51,16 @@ namespace MobileAppHowest.ViewModels
                 "organisatie",
                 "Overige"
             };
-
-            // wordt voorlopig niet gebruikt
+            
             List<String> categoryPictureList = new List<String>()
             {
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png",
-                "../Assets/HOWEST_Logo.png"
+                "Assets/BG_howest.png",
+                "Assets/HOWEST_Logo.png",
+                "Assets/HOWEST_Logo.png",
+                "Assets/HOWEST_Logo.png",
+                "Assets/HOWEST_Logo.png",
+                "Assets/HOWEST_Logo.png",
+                "Assets/HOWEST_Logo.png"
             };
 
             for (int i = 0; i < catStringList.Count; i++)
