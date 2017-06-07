@@ -36,7 +36,7 @@ namespace MobileAppHowest.ViewModels
         // lijst van categorieën die worden opgevraagd wanneer de lijst wordt geladen
         // inladen gebeurt in GetCategoryList()
         private List<Category> _categoryList = null;
-        public ObservableCollection<Category> CategoryList
+        public ObservableCollection<Category> SubCategoryList
         {
             get
             {
