@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileAppHowest.Views.SubCategoryPage">
+    <ContentPage.Content>
+        <ListView x:Name="listView" ItemsSource="{ Binding CategoryList }">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout BackgroundColor="#eeeeee"
+                                     Orientation="Vertical">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{ Binding Picture }"
+                                       WidthRequest="20"
+                                       HeightRequest="20" />
+                                <Label Text="{ Binding CategoryUDesc }"
+                                       TextColor="#f35e20" />
+                                <Label Text="{ Binding Subtitle }"
+                                       HorizontalOptions="EndAndExpand"
+                                       TextColor="#503026" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

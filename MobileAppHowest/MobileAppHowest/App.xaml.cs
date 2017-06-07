@@ -23,7 +23,7 @@ namespace MobileAppHowest
         protected override void OnStart ()
 		{
             // Handle when your app starts
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new SubCategoryPage());
         }
 
 		protected override void OnSleep ()
