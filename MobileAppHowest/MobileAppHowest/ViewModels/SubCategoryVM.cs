@@ -2,13 +2,14 @@
 using MobileAppHowest.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MobileAppHowest.ViewModels
 {
-    public class SubCategoryVM
+    public class SubCategoryVM : INotifyPropertyChanged
     {
         public SubCategoryVM(INavigation navigation)
         {
@@ -31,6 +32,8 @@ namespace MobileAppHowest.ViewModels
 
         // lijst met SubCategorieën
         private List<SubCategory> _subCategoryList = null;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public List<SubCategory> SubCategoryList
         {
             get
