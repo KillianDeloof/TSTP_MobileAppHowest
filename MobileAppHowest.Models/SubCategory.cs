@@ -12,6 +12,7 @@ namespace MobileAppHowest.Models
         public string SubCategoryUCode { get; set; }
         public string SubCategoryUDesc { get; set; }
         public string Subtitle { get; set; }
+        public bool IsLocationRequired { get; set; }
 
         public override string ToString()
         {

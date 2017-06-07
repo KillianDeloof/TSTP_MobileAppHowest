@@ -108,25 +108,31 @@ namespace MobileAppHowest.Repositories
         /// Opvragen van de lijst van verschillende categorieën problemen, aangeleverd door de API.
         /// </summary>
         /// <returns>Task<List<Category>></returns>
-        public async Task<List<Category>> GetCategoryList()
-        {
-            try
-            {
-                List<Category> result = new List<Category>();
-                String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
-                List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
-                result.AddRange(page);
+        //public async Task<List<Category>> GetCategoryList()
+        //{
+        //    try
+        //    {
+        //        List<Category> result = new List<Category>();
+        //        String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
+        //        List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
+        //        result.AddRange(page);
 
-                //List<String> categoryList = new List<string>();
-                //result.ForEach(c => Console.WriteLine(c.CategoryUCode));
+        //        //List<String> categoryList = new List<string>();
+        //        //result.ForEach(c => Console.WriteLine(c.CategoryUCode));
 
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return null;
-            }
-        }
+        //        return result;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //        return null;
+        //    }
+        //}
+
+        //public async Task<List<Category>> GetCategoryList()
+        //{
+        //    List<Category> categoryList = new List<Category>();
+
+        //}
     }
 }

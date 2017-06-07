@@ -76,7 +76,14 @@ namespace MobileAppHowest.ViewModels
         private async Task ShowCampusPage()
         {
             if (_selectedSubCategory != null)
-                await Navigation.PushAsync(new CampusPage());
+            {
+                // indien een locatie meegegeven moet worden, moet men op de CampusPage terechtkomen
+                // anders naar de MessagePage
+                if (_selectedSubCategory.IsLocationRequired)
+                    await Navigation.PushAsync(new CampusPage());
+                else
+                    await Navigation.PushAsync(new MessagePage());
+            }
         }
     }
 }
