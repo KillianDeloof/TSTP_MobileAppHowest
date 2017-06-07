@@ -13,11 +13,10 @@ namespace MobileAppHowest.ViewModels
 {
     public class MessageVM : INotifyPropertyChanged
     {
-        Ticket t = new Ticket();
-        Room r = new Room();
-
-        public MessageVM()
+        public MessageVM(INavigation navigation)
         {
+            this.Navigation = navigation;
+
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
             PictureCommand = new Command(PictureClicked);
@@ -26,12 +25,15 @@ namespace MobileAppHowest.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private INavigation Navigation = null;
+        private Ticket _t = new Ticket();
+        private Room _r = new Room();
+
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
         public Command PictureCommand { get; }
         public Command CategoryCommand { get; }
         public Command LocationCommand { get; }
-
 
         private void SendClicked(object obj)
         {
@@ -40,17 +42,17 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            t.Name = "name: killian.deloof";
-            t.Subject = "need koffie";
-            t.PriorityId = new int?();
-            t.TopicId = new int?();
-            t.Email = "killian.deloof@student.howest.be";
-            t.Message = "de koffie automaat werkt niet!, i need my koffie" + r;
+            _t.Name = "name: killian.deloof";
+            _t.Subject = "need koffie";
+            _t.PriorityId = new int?();
+            _t.TopicId = new int?();
+            _t.Email = "killian.deloof@student.howest.be";
+            _t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
 
             //t.forum = "what is this field?";
-            t.Category = "automaten";
+            _t.Category = "automaten";
 
-            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
 
         private void AttachClicked(object obj)
@@ -65,7 +67,7 @@ namespace MobileAppHowest.ViewModels
             at.Name = "photo";
             //at.Content = photo;
             at.Type = "jpg";
-            t.Attachments.Add(at);
+            _t.Attachments.Add(at);
         }
 
         private async Task TakePhoto()
@@ -75,7 +77,7 @@ namespace MobileAppHowest.ViewModels
             at.Name = "photo";
             //at.Content = photo;
             at.Type = "jpg";
-            t.Attachments.Add(at);
+            _t.Attachments.Add(at);
         }
 
         private void PictureClicked(object obj)

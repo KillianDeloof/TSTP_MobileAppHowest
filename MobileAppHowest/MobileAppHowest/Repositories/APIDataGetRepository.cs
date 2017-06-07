@@ -36,11 +36,6 @@ namespace MobileAppHowest.Repositories
             List<Campus> page = JsonConvert.DeserializeObject<List<Campus>>(pagejson);
             result.AddRange(page);
 
-            foreach (Campus c in result)
-            {
-                Console.WriteLine("UCODE: " + c.UCODE + " - " + "Address: " + c.Address);
-            }
-
             return result;
         }
 

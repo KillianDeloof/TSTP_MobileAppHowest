@@ -24,7 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LocationSelectorVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MessageVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SubCatagoryVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SubCategoryVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CampusPage.xaml.cs">
       <DependentUpon>CampusPage.xaml</DependentUpon>
       <SubType>Code</SubType>
