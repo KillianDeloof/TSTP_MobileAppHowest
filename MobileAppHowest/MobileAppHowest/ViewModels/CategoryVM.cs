@@ -63,19 +63,17 @@ namespace MobileAppHowest.ViewModels
                 "Lesmateriaal",
                 "Netwerk",
                 "Software & hardware",
-                "organisatie",
                 "Overige"
             };
             
             List<String> categoryPictureList = new List<String>()
             {
-                "Assets/BG_howest.png",
-                "Assets/HOWEST_Logo.png",
-                "Assets/HOWEST_Logo.png",
-                "Assets/HOWEST_Logo.png",
-                "Assets/HOWEST_Logo.png",
-                "Assets/HOWEST_Logo.png",
-                "Assets/HOWEST_Logo.png"
+                "ic_location_city_black_24dp.png",
+                "ic_directions_bus_black_24dp.png",
+                "ic_book_black_24dp.png",
+                "ic_settings_input_hdmi_black_24dp.png",
+                "ic_laptop_black_24dp.png",
+                "ic_priority_high_black_24dp.png"
             };
 
             List<SubCategory> subCategoryList = new List<SubCategory>()

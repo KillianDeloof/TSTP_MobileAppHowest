@@ -1,4 +1,7 @@
-﻿using MobileAppHowest.Models;
+﻿using Android;
+using Android.App;
+using Android.Widget;
+using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using MobileAppHowest.ViewModels;
 using System;
@@ -13,7 +16,7 @@ using Xamarin.Forms.Xaml;
 
 namespace MobileAppHowest.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
+    [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class LoginPage : ContentPage
 	{
         public LoginPage()
