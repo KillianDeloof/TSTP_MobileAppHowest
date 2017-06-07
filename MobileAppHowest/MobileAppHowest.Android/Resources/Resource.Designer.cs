@@ -2195,14 +2195,14 @@ namespace MobileAppHowest.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020113
-			public const int avd_show_password_1 = 2130837779;
+			// aapt resource value: 0x7f02011a
+			public const int avd_show_password_1 = 2130837786;
 			
-			// aapt resource value: 0x7f020114
-			public const int avd_show_password_2 = 2130837780;
+			// aapt resource value: 0x7f02011b
+			public const int avd_show_password_2 = 2130837787;
 			
-			// aapt resource value: 0x7f020115
-			public const int avd_show_password_3 = 2130837781;
+			// aapt resource value: 0x7f02011c
+			public const int avd_show_password_3 = 2130837788;
 			
 			// aapt resource value: 0x7f020055
 			public const int BG_howest = 2130837589;
