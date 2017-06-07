@@ -14,9 +14,7 @@
                             <accordion:AccordionItemView.ItemContent>
                                 <StackLayout Padding="0.5,0,0.5,0.5" BackgroundColor="Black">
                                     <StackLayout Padding="5,15" BackgroundColor="Silver" Orientation="Horizontal">
-                                        <Image Source="star1.png" HeightRequest="40" />
-                                        <Label Text="Content #1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
-                                        <Image Source="star1.png" HeightRequest="40" />
+                                        <Label Text="A.0.0.9" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
                                     </StackLayout>
                                 </StackLayout>
                             </accordion:AccordionItemView.ItemContent>
