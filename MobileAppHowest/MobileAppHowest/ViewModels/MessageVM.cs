@@ -45,7 +45,7 @@ namespace MobileAppHowest.ViewModels
             t.Category = "automaten";
 
 
-            //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
 
         private void AttachClicked(object obj)
