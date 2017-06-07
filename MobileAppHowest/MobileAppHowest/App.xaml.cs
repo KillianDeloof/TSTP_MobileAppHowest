@@ -15,7 +15,7 @@ namespace MobileAppHowest
 		{
 			InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new SubCategoryPage());
         }
 
         public static IAuthenticate Authenticator { get; private set; }
@@ -23,7 +23,6 @@ namespace MobileAppHowest
         protected override void OnStart ()
 		{
             // Handle when your app starts
-            MainPage = new NavigationPage(new SubCategoryPage());
         }
 
 		protected override void OnSleep ()
@@ -34,13 +33,7 @@ namespace MobileAppHowest
 		protected override void OnResume ()
 		{
             // Handle when your app resumes
-            MainPage = new NavigationPage(new LoginPage());
         }
-
-        //public static Page ShowCampusPage()
-        //{
-        //    new NavigationPage(new CampusPage());
-        //}
 
         #region microsoftazuremobileclientsdk
 

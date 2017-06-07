@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobileAppHowest.Models;
+using MobileAppHowest.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ namespace MobileAppHowest.Views
 		public SubCategoryPage ()
 		{
 			InitializeComponent ();
+            BindingContext = new SubCategoryVM(Navigation);
 		}
-	}
+    }
 }
