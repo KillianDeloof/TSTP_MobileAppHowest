@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TicketRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CampusVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategoryVM.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LocationSelectorVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MessageVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SubCatagoryVM.cs" />
@@ -30,6 +31,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\LocationSelectorPage.xaml.cs">
+      <DependentUpon>LocationSelectorPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
@@ -86,6 +91,8 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\BG_howest.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\HOWEST_Logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
+    <Content Include="$(MSBuildThisFileDirectory)HOWEST_Logo.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MessagePage.xaml">
@@ -95,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SubCategoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LocationSelectorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

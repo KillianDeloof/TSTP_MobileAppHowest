@@ -17,7 +17,7 @@ namespace MobileAppHowest.Views
 		public SubCategoryPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new SubCategoryVM(Navigation);
+            BindingContext = new SubCatagoryVM(Navigation);
 		}
     }
 }

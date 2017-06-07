@@ -89,6 +89,12 @@
     <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.CustomControls.AccordionView, Version=1.0.6296.32011, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.CustomControls.AccordionView.1.0.1\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarin.CustomControls.AccordionView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.CustomControls.StateButton, Version=1.0.6291.30272, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.CustomControls.StateButton.1.0.3\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\Xamarin.CustomControls.StateButton.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.2.3.4.247\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Core.dll</HintPath>
     </Reference>

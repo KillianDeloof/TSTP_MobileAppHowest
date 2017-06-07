@@ -4,18 +4,19 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace MobileAppHowest.ViewModels
 {
    public class SubCatagoryVM : INotifyPropertyChanged
     {
-        public SubCatagoryVM()
+        public SubCatagoryVM(INavigation navigation)
         {
-
+            this.Navigation = navigation;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
+        INavigation Navigation = null;
 
         private List<Category> _categoryList = null;
         public ObservableCollection<Category> CategoryList
