@@ -329,10 +329,5 @@ namespace MobileAppHowest.Repositories
         //    }
         //}
 
-        //public async Task<List<Category>> GetCategoryList()
-        //{
-        //    List<Category> categoryList = new List<Category>();
-
-        //}
     }
 }

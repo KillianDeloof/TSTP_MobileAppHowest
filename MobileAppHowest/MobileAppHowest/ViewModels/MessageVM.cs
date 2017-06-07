@@ -8,6 +8,7 @@ using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
+using System.IO;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -63,7 +64,14 @@ namespace MobileAppHowest.ViewModels
             MediaFile photo = await MediaPicker.PickPhoto();
             Attachment at = new Attachment();
             at.Name = "photo";
-            //at.Content = photo;
+            byte[] bytearr;
+            using (var memoryStream = new MemoryStream())
+            {
+                photo.GetStream().CopyTo(memoryStream);
+                photo.Dispose();
+                bytearr = memoryStream.ToArray();
+            }
+            at.Content = bytearr;
             at.Type = "jpg";
             t.Attachments.Add(at);
         }
@@ -73,7 +81,14 @@ namespace MobileAppHowest.ViewModels
             MediaFile photo = await MediaPicker.TakePhoto();
             Attachment at = new Attachment();
             at.Name = "photo";
-            //at.Content = photo;
+            byte[] bytearr;
+            using (var memoryStream = new MemoryStream())
+            {
+                photo.GetStream().CopyTo(memoryStream);
+                photo.Dispose();
+                bytearr = memoryStream.ToArray();
+            }
+            at.Content = bytearr;
             at.Type = "jpg";
             t.Attachments.Add(at);
         }

@@ -9,8 +9,8 @@ namespace MobileAppHowest.Models
 {
     public class Category
     {
-        //public int CategoryId { get; set; }
-        //public string CategoryUCode { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryUCode { get; set; }
         public string CategoryUDesc { get; set; }
         public string Picture { get; set; }
         public string Subtitle { get; set; }
