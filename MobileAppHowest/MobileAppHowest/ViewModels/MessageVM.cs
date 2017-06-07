@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
-using Plugin.Media.Abstractions;
+
 
 
 namespace MobileAppHowest.ViewModels
@@ -12,7 +12,7 @@ namespace MobileAppHowest.ViewModels
     {
         //Ticket t = new Ticket();
         //Room r = new Room();
-
+        
         public MessageVM()
         {
             SendCommand = new Command(SendClicked);
@@ -39,7 +39,7 @@ namespace MobileAppHowest.ViewModels
             //t.Email = "killian.deloof@student.howest.be";
             //t.Message = "De koffie automaat werkt niet!, i need my koffie" + r;
 
-            ////t.Forum = "what is this field?";
+            //t.Forum = "what is this field?";
             //t.Category = "automaten";
 
 
