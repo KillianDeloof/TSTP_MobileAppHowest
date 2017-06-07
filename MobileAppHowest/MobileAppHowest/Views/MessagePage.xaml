@@ -20,9 +20,9 @@
                 <!--<TextBox x:Name="txtMessage"   Text="Message..." />-->
                 <!--<Editor Text="Type your message..."-->
                 <Editor Grid.Column="0"  Text="Typ Your Message..." />
-                <Button x:Name="btnPic"  Text="Camera" Grid.Column="1"/>
-                <Button x:Name="btnAttach"  Text="Attachment" Grid.Column="2"/>
-                <Button x:Name="btnSend" Image="Assets/Howest_Logo.png"   Grid.Column="3" BackgroundColor="#45c8f5"/>
+                <Button x:Name="btnPic" Command="{ Binding PictureCommand }" Text="Camera" Grid.Column="1"/>
+                <Button x:Name="btnAttach" Command="{ Binding AttachCommand }" Text="Attachment" Grid.Column="2"/>
+                <Button x:Name="btnSend" Image="Assets/Howest_Logo.png" Command="{ Binding SendCommand }" Grid.Column="3" BackgroundColor="#45c8f5" />
             </Grid>
             </Frame>
             
@@ -43,9 +43,11 @@
                 <Label FontSize = "20" Text="Overview" />
                 <Editor Text="Subject" />
                 <Label Text="Category:"/>
-                <Button Text="Category"/>
+                <Button Text="Category"
+                        Command="{ Binding CategoryCommand }" />
                 <Label Text="Location:"/>
-                <Button Text="No location selected"/>
+                <Button Text="No location selected"
+                        Command="{ Binding LocationCommand }" />
             </StackLayout>
 
             <!--<Grid Grid.Row="0">
