@@ -11,7 +11,7 @@ namespace MobileAppHowest.ViewModels
     public class MessageVM : INotifyPropertyChanged
     {
         //Ticket t = new Ticket();
-
+        //Room r = new Room();
 
         public MessageVM()
         {
@@ -37,9 +37,9 @@ namespace MobileAppHowest.ViewModels
             //t.PriorityId = new int?();
             //t.TopicId = new int?();
             //t.Email = "killian.deloof@student.howest.be";
-            //t.Message = "De koffie automaat werkt niet!, i need my koffie";
+            //t.Message = "De koffie automaat werkt niet!, i need my koffie" + r;
 
-            ////t.Forum = "campus participatie OHK";
+            ////t.Forum = "what is this field?";
             //t.Category = "automaten";
 
 
