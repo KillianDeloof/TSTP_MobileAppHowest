@@ -13,9 +13,10 @@ namespace MobileAppHowest.ViewModels
     {
         //private INavigationService _navigationService { get; }
 
-        public LoginVM(INavigation navigation)
+        public LoginVM(INavigation navigation, Button btn)
         {
             this.Navigation = navigation;
+            this._btnLogin = btn;
             LoginCommand = new Command(LoginClicked);
         }
 
@@ -23,11 +24,11 @@ namespace MobileAppHowest.ViewModels
         public Command LoginCommand { get; }
         private LoginRepository _loginRepo = new LoginRepository();
         public INavigation Navigation { get; set; }
-
-
+        private Button _btnLogin = null;
 
         public async void LoginClicked()
         {
+            _btnLogin.IsEnabled = false;
             UserInfo ui = await _loginRepo.Login();
 
             // indien login ok is -> naar CategoryPage()
@@ -42,6 +43,9 @@ namespace MobileAppHowest.ViewModels
             }
         }
 
+        /// <summary>
+        /// Tonen van de CategoryPage.
+        /// </summary>
         private async Task ShowCategoryPage()
         {
             await Navigation.PushAsync(new CategoryPage());
