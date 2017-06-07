@@ -63,7 +63,7 @@ namespace MobileAppHowest.ViewModels
             t.Attachments.Add(at);
         }
 
-        private async Task PictureClicked(object obj)
+        private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
             Attachment at = new Attachment();
@@ -71,6 +71,11 @@ namespace MobileAppHowest.ViewModels
             //at.Content = photo;
             at.Type = "jpg";
             t.Attachments.Add(at);
+        }
+
+        private void PictureClicked(object obj)
+        {
+            TakePhoto();
         }
 
         private void LocationClicked(object obj)
