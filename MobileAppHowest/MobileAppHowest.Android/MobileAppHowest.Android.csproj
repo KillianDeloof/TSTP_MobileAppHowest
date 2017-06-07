@@ -209,10 +209,10 @@
     <AndroidAsset Include="Assets\HOWEST_Logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Resources\Drawable\BG_howest.png" />
+    <AndroidResource Include="Resources\Drawable\BG_howest.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Resources\Drawable\HOWEST_Logo.png" />
+    <AndroidResource Include="Resources\Drawable\HOWEST_Logo.png" />
   </ItemGroup>
   <Import Project="..\MobileAppHowest\MobileAppHowest.projitems" Label="Shared" Condition="Exists('..\MobileAppHowest\MobileAppHowest.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

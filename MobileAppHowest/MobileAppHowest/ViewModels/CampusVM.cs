@@ -30,7 +30,7 @@ namespace MobileAppHowest.ViewModels
             }
         }
 
-        private async void GetCampusList()
+        public async void GetCampusList()
         {
             List<Campus> campusList = await APIDataGetRepository.GetCampusList();
             _campusList = new ObservableCollection<Campus>(campusList);

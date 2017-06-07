@@ -45,10 +45,6 @@
       <DependentUpon>MessagePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\RoomPage.xaml.cs">
-      <DependentUpon>RoomPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SubCategoryPage.xaml.cs">
       <DependentUpon>SubCategoryPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -61,6 +57,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Assets\" />
     <Folder Include="$(MSBuildThisFileDirectory)AzureMobileClient\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
   </ItemGroup>
@@ -77,20 +74,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RoomPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CategoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Assets\BG_howest.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\HOWEST_Logo.png" />
     <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
     <Content Include="$(MSBuildThisFileDirectory)HOWEST_Logo.png" />
   </ItemGroup>
