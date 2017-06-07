@@ -14,6 +14,8 @@ namespace MobileAppHowest.Models
         public string Subtitle { get; set; }
         public bool IsLocationRequired { get; set; }
 
+        public bool IsStaffRequired { get; set; }
+
         public override string ToString()
         {
             return SubCategoryUDesc;
