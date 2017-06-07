@@ -43,13 +43,12 @@ namespace MobileAppHowest.ViewModels
         }
 
         /// <summary>
-        /// Opvullen van de subcategorieën. Voorlopig is dit dummy data.
+        /// Opvullen van de subcategorieën.Voorlopig is dit dummy data.
         /// </summary>
         /// <returns>List<SubCategory></returns>
         private List<SubCategory> GetSubCategoryList()
         {
             _subCategoryList = new List<SubCategory>();
-
             List<String> descriptionList = new List<string>()
             {
                 "Catering",
@@ -70,6 +69,7 @@ namespace MobileAppHowest.ViewModels
             }
 
             return _subCategoryList;
+
         }
 
         /// <summary>
