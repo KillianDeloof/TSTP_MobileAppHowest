@@ -43,8 +43,4 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand" />
     </StackLayout>
-
-
-
-
 </ContentPage>

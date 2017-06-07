@@ -1,5 +1,6 @@
 ﻿using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
+using MobileAppHowest.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -41,14 +42,14 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCampus; }
             set {
                 _selectedCampus = value;
-                ShowLocationPage();
+                ShowLocationSelectorPage();
             }
         }
 
         /// <summary>
         /// Ophalen van de lijst van campussen.
         /// </summary>
-        private async void GetCampusList()
+        private async Task GetCampusList()
         {
             List<Campus> campusList = await APIDataGetRepository.GetCampusList();
             _campusList = new ObservableCollection<Campus>(campusList);
@@ -58,9 +59,9 @@ namespace MobileAppHowest.ViewModels
         /// Tonen van de LocationPage.
         /// </summary>
         /// <returns></returns>
-        private async Task ShowLocationPage()
+        private async Task ShowLocationSelectorPage()
         {
-            
+            await Navigation.PushAsync(new LocationSelectorPage());
         }
     }
 }

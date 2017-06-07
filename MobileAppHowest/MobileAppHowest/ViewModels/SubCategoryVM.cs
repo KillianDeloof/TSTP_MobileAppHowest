@@ -22,7 +22,8 @@ namespace MobileAppHowest.ViewModels
         public SubCategory SelectedSubCategory
         {
             get { return _selectedSubCategory; }
-            set {
+            set
+            {
                 _selectedSubCategory = value;
                 ShowCampusPage();
             }
@@ -63,7 +64,8 @@ namespace MobileAppHowest.ViewModels
                 _subCategoryList.Add(new SubCategory()
                 {
                     SubCategoryUDesc = descriptionList[i],
-                    Subtitle = "Subtitle test " + i
+                    Subtitle = "Subtitle test " + i,
+                    IsLocationRequired = true
                 });
             }
 
@@ -82,7 +84,7 @@ namespace MobileAppHowest.ViewModels
                 if (_selectedSubCategory.IsLocationRequired)
                     await Navigation.PushAsync(new CampusPage());
                 else
-                    await Navigation.PushAsync(new MessagePage());
+                    await Navigation.PushAsync(new CampusPage());
             }
         }
     }

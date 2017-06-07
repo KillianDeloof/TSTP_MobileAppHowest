@@ -19,8 +19,6 @@ namespace MobileAppHowest.Views
 		{
 			InitializeComponent();
             BindingContext = new CampusVM(Navigation);
-
-            //GetCampusList();
 		}
 
         //private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();
