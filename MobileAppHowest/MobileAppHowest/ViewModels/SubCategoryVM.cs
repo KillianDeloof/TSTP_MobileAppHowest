@@ -84,7 +84,7 @@ namespace MobileAppHowest.ViewModels
                 if (_selectedSubCategory.IsLocationRequired)
                     await Navigation.PushAsync(new CampusPage());
                 else
-                    await Navigation.PushAsync(new MessagePage());
+                    await Navigation.PushAsync(new CampusPage());
             }
         }
     }
