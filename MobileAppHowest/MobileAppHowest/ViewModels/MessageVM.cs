@@ -7,6 +7,7 @@ using Plugin.Media.Abstractions;
 using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using System.Threading.Tasks;
+using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -34,6 +35,11 @@ namespace MobileAppHowest.ViewModels
 
         private void SendClicked(object obj)
         {
+            SendTicket();
+        }
+
+        private async Task SendTicket()
+        {
             t.Name = "name: killian.deloof";
             t.Subject = "need koffie";
             t.PriorityId = new int?();
@@ -43,7 +49,6 @@ namespace MobileAppHowest.ViewModels
 
             //t.forum = "what is this field?";
             t.Category = "automaten";
-
 
             String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
