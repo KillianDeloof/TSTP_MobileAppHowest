@@ -19,19 +19,7 @@ namespace MobileAppHowest.Views
         public LoginPage()
         {
             InitializeComponent();
-            //BindingContext = new LoginVM();
-            BindingContext = new LoginVM(Navigation);
+            BindingContext = new LoginVM(Navigation, btnLogin);
         }
-
-        //public void BtnLogin_Clicked()
-        //{
-        //    (new LoginVM()).Login();
-        //}
-
-        //public async Task ShowCategoryPage()
-        //{
-        //    //Page newPage = new CategoryPage();
-        //    //await Navigation.PushAsync(newPage);
-        //}
     }
 }

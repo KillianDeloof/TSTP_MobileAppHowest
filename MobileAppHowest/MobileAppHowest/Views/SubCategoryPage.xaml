@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileAppHowest.Views.SubCategoryPage">
     <ContentPage.Content>
-        <ListView x:Name="listView" ItemsSource="{ Binding CategoryList }">
+        <ListView x:Name="listView"
+                  ItemsSource="{ Binding SubCategoryList }"
+                  SelectedItem="{ Binding SelectedSubCategory, Mode=TwoWay }" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

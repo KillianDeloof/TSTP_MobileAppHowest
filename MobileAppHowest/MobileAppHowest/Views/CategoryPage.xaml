@@ -6,7 +6,9 @@
 
     <!--<ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />-->
     <ContentPage.Content>
-        <ListView x:Name="listView" ItemsSource="{ Binding CategoryList }">
+        <ListView x:Name="listView"
+                  ItemsSource="{ Binding CategoryList }"
+                  SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

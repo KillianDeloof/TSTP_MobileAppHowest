@@ -38,6 +38,7 @@
                Source="HOWEST_Logo.png" />
 
         <Button Text="Login"
+                x:Name="btnLogin"
                 Command="{ Binding LoginCommand }"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="CenterAndExpand" />

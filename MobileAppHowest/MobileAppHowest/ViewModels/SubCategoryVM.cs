@@ -1,7 +1,9 @@
 ﻿using MobileAppHowest.Models;
+using MobileAppHowest.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MobileAppHowest.ViewModels
@@ -15,6 +17,18 @@ namespace MobileAppHowest.ViewModels
 
         INavigation Navigation = null;
 
+        // SubCategory die geselecteerd wordt in de view
+        private SubCategory _selectedSubCategory;
+        public SubCategory SelectedSubCategory
+        {
+            get { return _selectedSubCategory; }
+            set {
+                _selectedSubCategory = value;
+                ShowCampusPage();
+            }
+        }
+
+        // lijst met SubCategorieën
         private List<SubCategory> _subCategoryList = null;
         public List<SubCategory> SubCategoryList
         {
@@ -56,6 +70,13 @@ namespace MobileAppHowest.ViewModels
             return _subCategoryList;
         }
 
-        // hierna campus selecteren
+        /// <summary>
+        /// Tonen van de CampusPage indien _selectedSubCategory reeds opgevuld is.
+        /// </summary>
+        private async Task ShowCampusPage()
+        {
+            if (_selectedSubCategory != null)
+                await Navigation.PushAsync(new CampusPage());
+        }
     }
 }

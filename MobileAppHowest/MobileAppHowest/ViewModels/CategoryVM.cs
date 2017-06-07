@@ -1,5 +1,6 @@
 ﻿using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
+using MobileAppHowest.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,14 +13,28 @@ namespace MobileAppHowest.ViewModels
 {
     public class CategoryVM : INotifyPropertyChanged
     {
-        public CategoryVM()
+        public CategoryVM(INavigation navigation)
         {
-
+            this.Navigation = navigation;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private APIDataGetRepository _dataRepo = new APIDataGetRepository();        
+        private APIDataGetRepository _dataRepo = new APIDataGetRepository();
+        INavigation Navigation = null;
 
+        // wordt opgevuld met de geselecteerde Category
+        private Category _selectedCategory;
+        public Category SelectedCategory
+        {
+            get { return _selectedCategory; }
+            set {
+                _selectedCategory = value;
+                ShowSubCategoryPage();
+            }
+        }
+
+        // lijst van categorieën die worden opgevraagd wanneer de lijst wordt geladen
+        // inladen gebeurt in GetCategoryList()
         private List<Category> _categoryList = null;
         public ObservableCollection<Category> CategoryList
         {
@@ -74,6 +89,15 @@ namespace MobileAppHowest.ViewModels
             }
 
             return categoryList;
+        }
+
+        /// <summary>
+        /// Tonen van de SubCategoryPage als de geselecteerde Category niet null is.
+        /// </summary>
+        private async Task ShowSubCategoryPage()
+        {
+            if (_selectedCategory != null)
+                await Navigation.PushAsync(new SubCategoryPage());
         }
     }
 }
