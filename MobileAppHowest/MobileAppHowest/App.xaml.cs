@@ -35,11 +35,6 @@ namespace MobileAppHowest
             // Handle when your app resumes
         }
 
-        //public static Page ShowCampusPage()
-        //{
-        //    new NavigationPage(new CampusPage());
-        //}
-
         #region microsoftazuremobileclientsdk
 
         public static void Init(IAuthenticate authenticator)

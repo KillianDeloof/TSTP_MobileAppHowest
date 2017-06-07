@@ -24,7 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MessageVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SubCategoryVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TicketVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\CampusPage.xaml.cs">
       <DependentUpon>CampusPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -47,10 +46,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SubCategoryPage.xaml.cs">
       <DependentUpon>SubCategoryPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\TicketPage.xaml.cs">
-      <DependentUpon>TicketPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -100,12 +95,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SubCategoryPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\TicketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
