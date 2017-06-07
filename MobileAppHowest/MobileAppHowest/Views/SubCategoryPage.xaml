@@ -15,8 +15,8 @@
                                 <Image Source="{ Binding Picture }"
                                        WidthRequest="20"
                                        HeightRequest="20" />
-                                <Label Text="{ Binding CategoryUDesc }"
-                                       TextColor="#f35e20" />
+                                <!--<Label Text="{ Binding CategoryUDesc }"
+                                       TextColor="#eeeeee" />-->
                                 <Label Text="{ Binding Subtitle }"
                                        HorizontalOptions="EndAndExpand"
                                        TextColor="#503026" />
