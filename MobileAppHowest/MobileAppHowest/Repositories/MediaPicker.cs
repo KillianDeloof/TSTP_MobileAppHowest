@@ -15,7 +15,7 @@ namespace MobileAppHowest.Repositories
 {
     class MediaPicker// : ICameraService
     {
-        public async Task<MediaFile> TakePhoto()
+        public static async Task<MediaFile> TakePhoto()
         {
 
             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
@@ -38,7 +38,7 @@ namespace MobileAppHowest.Repositories
 
         }
 
-        public async Task<MediaFile> PickPhoto()
+        public static async Task<MediaFile> PickPhoto()
         {
             // Select a photo. 
             if (CrossMedia.Current.IsPickPhotoSupported)
