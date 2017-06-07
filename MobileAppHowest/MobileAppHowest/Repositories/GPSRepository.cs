@@ -15,7 +15,7 @@ namespace MobileAppHowest.Repositories
         /// Gets current coordinates from GPS, returns a double[] with: value[0] = lattitude and value[1] = longitude
         /// </summary>
         /// <returns>Task<double[]></returns>
-        public async Task<double[]> GetLocation()
+        public static async Task<double[]> GetLocation()
         {
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
