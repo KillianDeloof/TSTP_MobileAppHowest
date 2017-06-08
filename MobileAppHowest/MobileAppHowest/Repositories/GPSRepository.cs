@@ -50,7 +50,7 @@ namespace MobileAppHowest.Repositories
         /// <param name="latLong1"></param>
         /// <param name="latLong2"></param>
         /// <returns></returns>
-        public static double CalculateDistance(double[] latLong1, double[] latLong2)
+        private static double CalculateDistance(double[] latLong1, double[] latLong2)
         {
             double x1 = latLong1[1];
             double y1 = latLong1[0];
@@ -71,6 +71,7 @@ namespace MobileAppHowest.Repositories
         /// <returns>returns closest campusObject or returns null if no campus is closer then minDistance</returns>
         public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
         {
+            
             double closest = -1;
             Campus closeCamp = null;
             foreach (Campus camp in campuslist)

@@ -13,10 +13,9 @@ namespace MobileAppHowest
 	{
 		public App ()
 		{
-			InitializeComponent();
+            InitializeComponent();
 
-           MainPage = new NavigationPage(new MessagePage());
-            //MainPage = new NavigationPage(new MessagePage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         public static IAuthenticate Authenticator { get; private set; }
