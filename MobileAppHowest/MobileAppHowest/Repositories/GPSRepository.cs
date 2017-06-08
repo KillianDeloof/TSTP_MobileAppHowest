@@ -71,6 +71,7 @@ namespace MobileAppHowest.Repositories
         /// <returns>returns closest campusObject or returns null if no campus is closer then minDistance</returns>
         public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
         {
+            
             double closest = -1;
             Campus closeCamp = null;
             foreach (Campus camp in campuslist)
