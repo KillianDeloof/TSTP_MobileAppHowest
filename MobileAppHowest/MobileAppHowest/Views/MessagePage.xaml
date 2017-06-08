@@ -47,9 +47,18 @@
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    <!-- Stacpanel blauw/rood example -->
    
     <ContentPage.Content>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -67,7 +76,45 @@
                     <Label Text="Second" TextColor="#FFFFFF" HorizontalOptions="CenterAndExpand" />
                 </StackLayout>
             </Grid>
-        </StackLayout>
+        </StackLayout>-->
+
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="0"  Grid.Column="0" BackgroundColor="#eeeeee" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Label Text = "Overview" FontSize="Large"/>
+                <Editor Text="Subject" x:Name="Message"/>
+                <Label Text="Category:"/>
+                <Button Text="Category"
+                        Command="{ Binding CategoryCommand }"
+                        x:Name="btnCategory"
+                        BackgroundColor="#44c8f5"
+                        TextColor="White"/>
+                <Label Text="Location:"/>
+                <Button Text="No location selected"
+                        Command="{ Binding LocationCommand }" 
+                        x:Name="Location"
+                        BackgroundColor="#44c8f5"
+                        TextColor="White"/>
+            </StackLayout>
+
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal" Grid.Column="0" BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+                <Editor Text="Type your message..."  MinimumWidthRequest="100" WidthRequest="100"/>
+                <Button x:Name="btnPic" Command="{ Binding PictureCommand }" Text="Camera" />
+                <Button x:Name="btnAttach" Command="{ Binding AttachCommand }" Text="Attach" />
+                <Button x:Name="btnSend"  Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" />
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 
 
