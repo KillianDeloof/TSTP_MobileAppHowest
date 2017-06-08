@@ -3,36 +3,64 @@
 
 * APIDataGetRepository
 -----------------------
-Deze klasse staat in om de benodigde data afkostig van Meneer Daels API op te halen
+This class gets all data from the API
 
+returns a list of buildings frm the api
 -         public async Task<List<Building>> GetBuildingList()
-Dit haalt een lijst op van alle gebouwen
 
 
+gets a list of campus from the api
 -        public async Task<List<Campus>> GetCampusList()
 Haalt een lijst op van campussen
 
-
+gets a list of floors from the api
 -        public async Task<List<Floor>> GetFloorList()
- Ophalen van de lijst van verdiepen, aangeleverd door de API.
- Hierbij wordt gebruik gemaakt van een FloorFilter.
+-        public async Task<List<Floor>> GetFloorList(FloorFilter ff)
 
 
+gets a list of rooms from the api
+-         public async Task<List<Room>> GetRoomList()
 -         public async Task<List<Room>> GetRoomList(RoomFilter rf)
- Opvragen van de lijst van rooms, aangeleverd door de API.
 
 
-
+Gets a list of forums from api
 -         public async Task<List<Forum>> GetForumList()
-Opvragen van de lijst van verschillende forums 
 
-
+Gets a list of categorys
 -         public async Task<List<Category>> GetCategories()
-Opvragen van de lijst van verschillende categorieën
+
+Gets a list of hardcoded categorys, including their subCategorys
+-         public static List<Category> GetHardCodedCategoryList()
 
 
+* MediaPicker
+-----------------------
+this class is used to get a picture or video from the device's camera or gallary.
+
+opens the camera and returns a MediaFile when a picture is taken, or returns null of no picture is taken
+-										public static async Task<MediaFile> TakePhoto()
 
 
+opens the debice's gallary and returns the photo the user has selected as MediaFile
+-										public static async Task<MediaFile> PickPhoto()
 
+converts a MediaFile to a Byte Array
+-										public static byte[] MediaFileToByteArr(MediaFile mediafile)
+
+* MediaPicker
+-----------------------
+this class is used to get gps location and handle distance calculations
+
+gets the users location, this method can take some time
+-										public static async Task<double[]> GetLocation()
+
+gets the distances between the current location and the campusses, use this method before using GetClosestCampus
+-										public static void GetCampusDistances(List<Campus> campusList, double[] currentLatLong)
+
+calculate distance between 2 points
+-									 private static double CalculateDistance(double[] latLong1, double[] latLong2)
+
+returns the closest campus if it is closer then "minDistance"
+-										public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
 
 
