@@ -69,7 +69,8 @@ namespace MobileAppHowest.ViewModels
         private async Task GetAttachment()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            TicketRepository.AddAtachment(_t, photo);
+            TicketRepository tRepos = new TicketRepository();
+            tRepos.AddAtachment(_t, photo);
             //Attachment at = new Attachment();
             //at.Name = "photo.jpg";
             //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
@@ -81,7 +82,8 @@ namespace MobileAppHowest.ViewModels
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
-            TicketRepository.AddAtachment(_t, photo);
+            TicketRepository tRepos = new TicketRepository();
+            tRepos.AddAtachment(_t, photo);
             //Attachment at = new Attachment();
             //at.Name = "photo";
             //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
