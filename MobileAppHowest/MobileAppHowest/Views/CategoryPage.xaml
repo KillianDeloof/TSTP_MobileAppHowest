@@ -3,81 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CategoryPage" >
-
-    <!--<ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />-->
-    <!--<ContentPage.Content>-->
-        <ListView x:Name="listView"
+    
+    <ListView x:Name="listView"
                   ItemsSource="{ Binding CategoryList }"
                   SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }" 
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
                   IsVisible="true">
             
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout BackgroundColor="#eeeeee"
-                                     Orientation="Vertical"
-                                     VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand" >
-                            <StackLayout Orientation="Horizontal" Padding="20,0,0,0" MinimumHeightRequest="70"  VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand">
-                                <Image Source="{ Binding Picture }"
-                                       WidthRequest="50"
-                                       HeightRequest="50"
-                                       Margin="10,10,50,10" />
-                                <Label Text="{ Binding CategoryUDesc }"
-                                       TextColor="#212121" 
-                                       HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" />
-                            </StackLayout>
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout BackgroundColor="#eeeeee"
+                                    Orientation="Vertical"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand" >
+                        <StackLayout Orientation="Horizontal" Padding="20,0,0,0" MinimumHeightRequest="70"  VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand">
+                            <Image Source="{ Binding Picture }"
+                                    WidthRequest="50"
+                                    HeightRequest="50"
+                                    Margin="10,10,50,10" />
+                            <Label Text="{ Binding CategoryUDesc }"
+                                    TextColor="#212121" 
+                                    HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" />
                         </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-
-
-
-
-
-        <!--<Grid VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Margin="10" HeightRequest="50" BackgroundColor="Gray" Orientation ="Horizontal">
-                <Image  HeightRequest="10"/>
-                <Label Text="Test" FontSize="18" TextColor="White" VerticalTextAlignment="Center"/>
-            </StackLayout>
-            <ListView Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="true"  ItemsSource="{ Binding CategoryList }">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout BackgroundColor="#eee" Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding Picture}"  WidthRequest="50"
-                                       HeightRequest="50"
-                                       Margin="10,10,50,10"/>
-                                    <Label Text="{Binding CategoryUDesc}"  TextColor="#212121" 
-                                       HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" />
-                                </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <StackLayout Grid.Row="2" Margin="10" HeightRequest="50" BackgroundColor="Gray" Orientation ="Horizontal">
-                <Label Text="Test" FontSize="18" TextColor="White" VerticalTextAlignment="Center"></Label>
-            </StackLayout>
-        </Grid>-->
-
-
-
-
-    <!--</ContentPage.Content>-->
-
-
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 
 </ContentPage>
