@@ -29,7 +29,7 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCategory; }
             set {
                 _selectedCategory = value;
-                ShowCategoryPage();
+                ShowCategoryPage(_selectedCategory.SubCategoryList);
             }
         }
 
@@ -48,13 +48,12 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _categoryList = value;
-                //PropertyChanged("CategoryList", null);
             }
         }
 
         private void GetCategoryList()
         {
-            List<Category> categoryList = new List<Category>();
+            CategoryList = new ObservableCollection<Category>(_dataRepo.GetHardCodedCategoryList());
 
             List<String> catStringList = new List<String>
                 {
@@ -78,17 +77,17 @@ namespace MobileAppHowest.ViewModels
                 "ic_priority_high_black_24dp.png"
             };
 
-            for (int i = 0; i < catStringList.Count; i++)
-            {
-                categoryList.Add(new Category()
-                {
-                    CategoryUDesc = catStringList[i],
-                    Picture = categoryPictureList[i],
-                    Subtitle = "Subtitle test " + i
-                });
-            }
+            //for (int i = 0; i < catStringList.Count; i++)
+            //{
+            //    categoryList.Add(new Category()
+            //    {
+            //        CategoryUDesc = catStringList[i],
+            //        Picture = categoryPictureList[i],
+            //        Subtitle = "Subtitle test " + i
+            //    });
+            //}
 
-            CategoryList = new ObservableCollection<Category>(categoryList);
+            //CategoryList = new ObservableCollection<Category>(categoryList);
         }
 
         //private List<Category> GetCategoryStringList()
@@ -137,10 +136,10 @@ namespace MobileAppHowest.ViewModels
         /// <summary>
         /// Tonen van de SubCategoryPage als de geselecteerde Category niet null is.
         /// </summary>
-        private async Task ShowCategoryPage()
+        private async Task ShowCategoryPage(List<SubCategory> subCategoryList)
         {
             if (_selectedCategory != null)
-                await Navigation.PushAsync(new SubCategoryPage());
+                await Navigation.PushAsync(new SubCategoryPage(subCategoryList));
         }
     }
 }

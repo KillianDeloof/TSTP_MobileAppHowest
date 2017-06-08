@@ -14,10 +14,10 @@ namespace MobileAppHowest.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SubCategoryPage : ContentPage
 	{
-		public SubCategoryPage()
+		public SubCategoryPage(List<SubCategory> subCategoryList)
 		{
 			InitializeComponent();
-            BindingContext = new SubCategoryVM(Navigation);
+            BindingContext = new SubCategoryVM(Navigation, subCategoryList);
 		}
     }
 }

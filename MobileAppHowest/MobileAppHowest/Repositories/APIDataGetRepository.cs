@@ -98,51 +98,55 @@ namespace MobileAppHowest.Repositories
 
             return result;
         }
-
-
-
-
-        public static List<Category> GetHardCodedCategoryList()
+        
+        public List<Category> GetHardCodedCategoryList()
         {
             List<Category> list = new List<Category>();
 
             Category campus = new Category();
             campus.CategoryUDesc = "Campus";
+            campus.Picture = "ic_location_city_black_24dp.png";
             list.Add(campus);
 
             Category faciliteiten = new Category();
             faciliteiten.CategoryUDesc = "Faciliteiten";
+            faciliteiten.Picture = "ic_directions_bus_black_24dp.png";
             list.Add(faciliteiten);
 
             Category lesmateriaal = new Category();
             lesmateriaal.CategoryUDesc = "Study Materials";
+            lesmateriaal.Picture = "ic_book_black_24dp.png";
             list.Add(lesmateriaal);
 
             Category netwerk = new Category();
             netwerk.CategoryUDesc = "Network";
+            netwerk.Picture = "ic_settings_input_hdmi_black_24dp.png";
             list.Add(netwerk);
 
-            Category sorftwareHardware = new Category();
-            sorftwareHardware.CategoryUDesc = "Software AND Hardware";
-            list.Add(sorftwareHardware);
+            Category softwareHardware = new Category();
+            softwareHardware.CategoryUDesc = "Software & hardware";
+            softwareHardware.Picture = "ic_laptop_black_24dp.png";
+            list.Add(softwareHardware);
 
             Category organisatie = new Category();
             organisatie.CategoryUDesc = "Organization";
+            organisatie.Picture = "ic_priority_high_black_24dp.png";
             list.Add(organisatie);
 
             Category other = new Category();
             other.CategoryUDesc = "Other";
+            other.Picture = "ic_priority_high_black_24dp.png";
             list.Add(other);
 
             foreach (Category cat in list)
             {
-                GetHardcodedSupCat(cat);
+                cat.SubCategoryList = GetHardcodedSubCat(cat);
             }
 
             return list;
         }
 
-        private static List<SubCategory> GetHardcodedSupCat(Category cat)
+        private static List<SubCategory> GetHardcodedSubCat(Category cat)
         {
             List<SubCategory> list = new List<SubCategory>();
 

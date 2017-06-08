@@ -11,12 +11,14 @@ namespace MobileAppHowest.ViewModels
 {
     public class SubCategoryVM : INotifyPropertyChanged
     {
-        public SubCategoryVM(INavigation navigation)
+        public SubCategoryVM(INavigation navigation, List<SubCategory> subCategoryList)
         {
-            Navigation = navigation;
+            this.Navigation = navigation;
+            this._subCategoryList = subCategoryList;
         }
 
-        INavigation Navigation = null;
+        private INavigation Navigation = null;
+        private Ticket _newTicket = new Ticket();
 
         // SubCategory die geselecteerd wordt in de view
         private SubCategory _selectedSubCategory;
@@ -26,6 +28,7 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _selectedSubCategory = value;
+                _newTicket.Category = _selectedSubCategory.SubCategoryUDesc;
                 ShowCampusPage();
             }
         }
@@ -38,9 +41,6 @@ namespace MobileAppHowest.ViewModels
         {
             get
             {
-                if (_subCategoryList == null)
-                    GetSubCategoryList();
-
                 return _subCategoryList;
             }
         }
@@ -49,31 +49,31 @@ namespace MobileAppHowest.ViewModels
         /// Opvullen van de subcategorieën.Voorlopig is dit dummy data.
         /// </summary>
         /// <returns>List<SubCategory></returns>
-        private List<SubCategory> GetSubCategoryList()
-        {
-            _subCategoryList = new List<SubCategory>();
-            List<String> descriptionList = new List<string>()
-            {
-                "Catering",
-                "Meubilair",
-                "vuilnisbakken",
-                "sanitair",
-                "lokalen"
-            };
+        //private List<SubCategory> GetSubCategoryList()
+        //{
+        //    _subCategoryList = new List<SubCategory>();
+        //    List<String> descriptionList = new List<string>()
+        //    {
+        //        "Catering",
+        //        "Meubilair",
+        //        "vuilnisbakken",
+        //        "sanitair",
+        //        "lokalen"
+        //    };
 
-            for (int i = 0; i < descriptionList.Count; i++)
-            {
-                _subCategoryList.Add(new SubCategory()
-                {
-                    SubCategoryUDesc = descriptionList[i],
-                    Subtitle = "Subtitle test " + i,
-                    IsLocationRequired = true
-                });
-            }
+        //    for (int i = 0; i < descriptionList.Count; i++)
+        //    {
+        //        _subCategoryList.Add(new SubCategory()
+        //        {
+        //            SubCategoryUDesc = descriptionList[i],
+        //            Subtitle = "Subtitle test " + i,
+        //            IsLocationRequired = true
+        //        });
+        //    }
 
-            return _subCategoryList;
+        //    return _subCategoryList;
 
-        }
+        //}
 
         /// <summary>
         /// Tonen van de CampusPage indien _selectedSubCategory reeds opgevuld is.
@@ -85,9 +85,9 @@ namespace MobileAppHowest.ViewModels
                 // indien een locatie meegegeven moet worden, moet men op de CampusPage terechtkomen
                 // anders naar de MessagePage
                 if (_selectedSubCategory.IsLocationRequired)
-                    await Navigation.PushAsync(new CampusPage());
+                    await Navigation.PushAsync(new CampusPage(_newTicket));
                 else
-                    await Navigation.PushAsync(new CampusPage());
+                    await Navigation.PushAsync(new MessagePage(_newTicket));
             }
         }
     }

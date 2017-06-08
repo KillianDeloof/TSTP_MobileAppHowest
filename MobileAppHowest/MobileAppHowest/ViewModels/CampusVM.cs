@@ -13,28 +13,21 @@ namespace MobileAppHowest.ViewModels
 {
     public class CampusVM : INotifyPropertyChanged
     {
-        public CampusVM(INavigation navigation)
+        public CampusVM(INavigation navigation, Ticket ticket)
         {
             this.Navigation = navigation;
+            this._ticket = ticket;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private APIDataGetRepository _dataRepo = new APIDataGetRepository();
         private INavigation Navigation = null;
+        private Ticket _ticket = null;
 
         // lijst van campussen die wordt opgevuld wanneer de UI wordt aangesproken
         private ObservableCollection<Campus> _campusList = null;
         public ObservableCollection<Campus> CampusList
         {
-            //get
-            //{
-            //    if (_campusList == null)
-            //        GetCampusList();
-            //    this.PropertyChanged("CampusList", null);
-
-            //    return _campusList;
-            //}
-
             set
             {
                 _campusList = value;
@@ -43,8 +36,7 @@ namespace MobileAppHowest.ViewModels
                 {
                     if (PropertyChanged != null)
                     {
-                        PropertyChanged(this,
-                            new PropertyChangedEventArgs("CampusList"));
+                        PropertyChanged(this, new PropertyChangedEventArgs("CampusList"));
                     }
                 }
             }
@@ -64,6 +56,8 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCampus; }
             set {
                 _selectedCampus = value;
+                // TO DO: meegeven van geslecteerde campus aan volgende pagina
+
                 //ShowLocationSelectorPage();
                 ShowMessagePage();
             }
@@ -89,7 +83,7 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowMessagePage()
         {
-            await Navigation.PushAsync(new MessagePage());
+            await Navigation.PushAsync(new MessagePage(_ticket));
         }
     }
 }
