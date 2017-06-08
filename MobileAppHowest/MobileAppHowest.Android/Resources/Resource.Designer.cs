@@ -4328,11 +4328,17 @@ namespace MobileAppHowest.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int CardView_Light = 2131427342;
 			
+			// aapt resource value: 0x7f0b018c
+			public const int CustomActionBarTheme = 2131427724;
+			
 			// aapt resource value: 0x7f0b0189
 			public const int MainTheme = 2131427721;
 			
 			// aapt resource value: 0x7f0b018a
 			public const int MainTheme_Base = 2131427722;
+			
+			// aapt resource value: 0x7f0b018d
+			public const int MyActionBar = 2131427725;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int Platform_AppCompat = 2131427373;

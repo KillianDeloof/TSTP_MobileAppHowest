@@ -2,60 +2,73 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MobileAppHowest.Views.MessagePage">
-    <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="250*"/>
-                <RowDefinition Height="35*"/>
-            </Grid.RowDefinitions>
+    <!--<Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
 
-            <Frame Grid.Row="1" HasShadow="true">
-                <Grid  x:Name="MessageBar">
+
+
+
+        <StackLayout Grid.Row="0" BackgroundColor="#f5f5f5">
+            <Label FontSize = "20" Text="Overview" />
+            <Editor Text="Subject" x:Name="Message"/>
+            <Label Text="Category:"/>
+            <Button Text="Category"
+                        Command="{ Binding CategoryCommand }"
+                    x:Name="btnCategory"/>
+            <Label Text="Location:"/>
+            <Button Text="No location selected"
+                        Command="{ Binding LocationCommand }" 
+                    x:Name="Location"/>
+        </StackLayout>
+
+
+            <Grid  x:Name="MessageBar">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--<TextBox x:Name="txtMessage"   Text="Message..." />-->
-                <!--<Editor Text="Type your message..."-->
+
+
                 <Editor Grid.Column="0"  Text="Typ Your Message..." />
                 <Button x:Name="btnPic" Command="{ Binding PictureCommand }" Text="Camera" Grid.Column="1"/>
                 <Button x:Name="btnAttach" Command="{ Binding AttachCommand }" Text="Attachment" Grid.Column="2"/>
-                <Button x:Name="btnSend" Image="Assets/Howest_Logo.png" Command="{ Binding SendCommand }" Grid.Column="3" BackgroundColor="#45c8f5" />
+                <Button x:Name="btnSend" Image="Howest_Logo.png" Command="{ Binding SendCommand }" Grid.Column="3" BackgroundColor="#45c8f5" />
             </Grid>
-            </Frame>
-            
 
 
 
-            <!--<StackLayout Name="StackOverview" Grid.Row="0">
-                <Label FontSize = "20" Text="Overview" />
-                <Editor Text="Subject" />
-                <Label Text="Category:"/>
-                <Button Text="Category"/>
-                <Label Text="Location:"/>
-                <Button Text="No location selected"/>
-            </StackLayout>-->
 
-            
-            <StackLayout Grid.Row="0" BackgroundColor="#f5f5f5">
-                <Label FontSize = "20" Text="Overview" />
-                <Editor Text="Subject" />
-                <Label Text="Category:"/>
-                <Button Text="Category"
-                        Command="{ Binding CategoryCommand }" />
-                <Label Text="Location:"/>
-                <Button Text="No location selected"
-                        Command="{ Binding LocationCommand }" />
-            </StackLayout>
+    </Grid>-->
 
-            <!--<Grid Grid.Row="0">
-                <Button x:Name="btnTest" Text="Test"/>
 
-            </Grid>-->
 
-        </Grid>
-        
+   
+    <ContentPage.Content>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+
+                </Grid.RowDefinitions>
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0"  BackgroundColor="Blue" >
+                    <Label Text="First" TextColor="#FFFFFF" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="1" BackgroundColor="Red" >
+                    <Label Text="Second" TextColor="#FFFFFF" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
+
+
 </ContentPage>
