@@ -63,6 +63,7 @@ namespace MobileAppHowest.ViewModels
                     "Lesmateriaal",
                     "Netwerk",
                     "Software & hardware",
+                    "Organisatie",
                     "Overige"
                 };
 
@@ -73,6 +74,7 @@ namespace MobileAppHowest.ViewModels
                 "ic_book_black_24dp.png",
                 "ic_settings_input_hdmi_black_24dp.png",
                 "ic_laptop_black_24dp.png",
+                "ic_people_black_24dp.png",
                 "ic_priority_high_black_24dp.png"
             };
 

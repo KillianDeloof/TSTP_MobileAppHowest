@@ -86,6 +86,7 @@
     <Content Include="$(MSBuildThisFileDirectory)ic_directions_bus_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_laptop_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_location_city_black_24dp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)ic_people_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_priority_high_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_send_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_settings_input_hdmi_black_24dp.png" />
