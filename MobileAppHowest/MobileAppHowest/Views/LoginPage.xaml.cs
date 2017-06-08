@@ -1,6 +1,6 @@
-﻿using Android;
-using Android.App;
-using Android.Widget;
+﻿//using Android;
+//using Android.App;
+//using Android.Widget;
 using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using MobileAppHowest.ViewModels;
