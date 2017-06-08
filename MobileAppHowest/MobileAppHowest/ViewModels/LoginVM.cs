@@ -23,8 +23,10 @@ namespace MobileAppHowest.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public Command LoginCommand { get; }
         private LoginRepository _loginRepo = new LoginRepository();
+        private TicketRepository _ticketRepo = new TicketRepository();
         public INavigation Navigation { get; set; }
         private Button _btnLogin = null;
+        private Ticket _newTicket;
 
         public async void LoginClicked()
         {
@@ -34,6 +36,7 @@ namespace MobileAppHowest.ViewModels
             // indien login ok is -> naar CategoryPage()
             if (ui != null)
             {
+                _newTicket = _ticketRepo.MakeTicket(ui);
                 await ShowCategoryPage();
             }
             else
@@ -48,7 +51,7 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowCategoryPage()
         {
-            await Navigation.PushAsync(new CategoryPage());
+            await Navigation.PushAsync(new CategoryPage(_newTicket));
         }
 
 

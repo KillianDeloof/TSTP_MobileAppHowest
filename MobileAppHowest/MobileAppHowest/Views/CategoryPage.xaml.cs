@@ -1,4 +1,5 @@
-﻿using MobileAppHowest.ViewModels;
+﻿using MobileAppHowest.Models;
+using MobileAppHowest.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,10 @@ namespace MobileAppHowest.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CategoryPage : ContentPage
     {
-		public CategoryPage()
+		public CategoryPage(Ticket ticket)
 		{
 			InitializeComponent();
-            BindingContext = new CategoryVM(Navigation);
+            BindingContext = new CategoryVM(Navigation, ticket);
         }
 	}
 }
