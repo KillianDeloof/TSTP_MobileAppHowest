@@ -88,6 +88,11 @@ namespace MobileAppHowest.ViewModels
             
             List<Campus> campusList = await APIDataGetRepository.GetCampusList();
             CampusList = new ObservableCollection<Campus>(campusList);
+
+            //foreach (Campus c in campusList)
+            //{
+            //    Console.WriteLine(c.ToString());
+            //}
         }
 
         /// <summary>
