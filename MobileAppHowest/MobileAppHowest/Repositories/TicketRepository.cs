@@ -11,26 +11,36 @@ namespace MobileAppHowest.Repositories
     public class TicketRepository
     {
 
-
-        public static Ticket MakeTicket()
+        /// <summary>
+        /// call this when opening
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static Ticket MakeTicket(UserInfo user)
         {
             Ticket t = new Ticket();
-            t.Name = "name: killian.deloof";
-            t.Subject = "need koffie";
+
+            //t.Name = "name: killian.deloof";
+            t.Name = "name: " + user.FirstName + "." + user.LastName;
             t.PriorityId = new int?();
             t.TopicId = new int?();
-            t.Email = "killian.deloof@student.howest.be";
-            t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
-
-            t.Forum = "what is this field?";
-            t.Category = "automaten";
+            //t.Email = "killian.deloof@student.howest.be";
+            t.Email = user.Email;
 
             return t;
         }
 
-        public static Ticket FormatTicket()
+        public static Ticket FormatTicket(Ticket t, string subject, string message, SubCategory cat)
         {
-            return null;
+            //t.Subject = "need koffie";
+            t.Subject = subject;
+            //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+            t.Message = message;
+            t.Forum = "what is this field?";
+            //t.Category = "automaten";
+            t.Category = cat.ToString();
+
+            return t;
         }
 
         public static async Task SendTicket(Ticket t)
@@ -41,7 +51,8 @@ namespace MobileAppHowest.Repositories
         public static Ticket AddAtachment(Ticket t, MediaFile file)
         {
             Attachment at = new Attachment();
-            at.Name = "photo.jpg";
+            //at.Name = "photo.jpg";
+            at.Name = DateTime.Now.ToString() + ".jpg";
             byte[] bytearr = MediaPicker.MediaFileToByteArr(file);
             at.Content = bytearr;
             at.Type = "jpg";
