@@ -16,7 +16,7 @@ namespace MobileAppHowest.Repositories
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        public static Ticket MakeTicket(UserInfo user)
+        public Ticket MakeTicket(UserInfo user)
         {
             Ticket t = new Ticket();
 
@@ -30,7 +30,7 @@ namespace MobileAppHowest.Repositories
             return t;
         }
 
-        public static Ticket FormatTicket(Ticket t, string subject, string message, SubCategory cat)
+        public Ticket FormatTicket(Ticket t, string subject, string message, SubCategory cat)
         {
             //t.Subject = "need koffie";
             t.Subject = subject;
@@ -43,12 +43,12 @@ namespace MobileAppHowest.Repositories
             return t;
         }
 
-        public static async Task SendTicket(Ticket t)
+        public async Task SendTicket(Ticket t)
         {
             String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
 
-        public static Ticket AddAtachment(Ticket t, MediaFile file)
+        public Ticket AddAtachment(Ticket t, MediaFile file)
         {
             Attachment at = new Attachment();
             //at.Name = "photo.jpg";

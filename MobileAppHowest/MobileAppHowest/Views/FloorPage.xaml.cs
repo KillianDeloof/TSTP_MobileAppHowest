@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 
 namespace MobileAppHowest.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CategoryPage : ContentPage
-    {
-		public CategoryPage(Ticket ticket)
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class FloorPage : ContentPage
+	{
+		public FloorPage(Ticket ticket)
 		{
 			InitializeComponent();
-            BindingContext = new CategoryVM(Navigation, ticket);
-        }
+            BindingContext = new FloorVM(Navigation, ticket);
+		}
 	}
 }
