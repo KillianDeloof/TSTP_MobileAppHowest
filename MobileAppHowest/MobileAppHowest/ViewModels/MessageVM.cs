@@ -28,7 +28,7 @@ namespace MobileAppHowest.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
-        private Ticket _t = TicketRepository.MakeTicket();
+        private Ticket _t;
         private Room _r = new Room();
         private Button _button;
 
@@ -45,7 +45,9 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            _t = TicketRepository.FormatTicket();
+            TicketRepository tRepos = new TicketRepository();
+            SubCategory cat = new SubCategory();
+            _t = tRepos.FormatTicket(_t, "title", "message", cat);
             //_t.Name = "name: killian.deloof";
             //_t.Subject = "need koffie";
             //_t.PriorityId = new int?();
