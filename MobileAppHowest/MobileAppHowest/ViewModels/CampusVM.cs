@@ -26,6 +26,28 @@ namespace MobileAppHowest.ViewModels
         private ObservableCollection<Campus> _campusList = null;
         public ObservableCollection<Campus> CampusList
         {
+            //get
+            //{
+            //    if (_campusList == null)
+            //        GetCampusList();
+            //    this.PropertyChanged("CampusList", null);
+
+            //    return _campusList;
+            //}
+
+            set
+            {
+                _campusList = value;
+
+                if (_campusList != null)
+                {
+                    if (PropertyChanged != null)
+                    {
+                        PropertyChanged(this,
+                            new PropertyChangedEventArgs("CampusList"));
+                    }
+                }
+            }
             get
             {
                 if (_campusList == null)
@@ -52,7 +74,7 @@ namespace MobileAppHowest.ViewModels
         private async Task GetCampusList()
         {
             List<Campus> campusList = await APIDataGetRepository.GetCampusList();
-            _campusList = new ObservableCollection<Campus>(campusList);
+            CampusList = new ObservableCollection<Campus>(campusList);
         }
 
         /// <summary>

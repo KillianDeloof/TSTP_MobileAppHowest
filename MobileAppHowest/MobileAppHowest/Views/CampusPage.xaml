@@ -4,7 +4,8 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CampusPage">
 
-    <ListView x:Name="lvCampus" ItemsSource="{ Binding CampusList }"
-              SelectedItem="{ Binding SelectedCampus }" />
+    <ListView x:Name="lvCampus"
+              ItemsSource="{ Binding CampusList }"
+              SelectedItem="{ Binding SelectedCampus, Mode=OneWay }"  />
 
 </ContentPage>
