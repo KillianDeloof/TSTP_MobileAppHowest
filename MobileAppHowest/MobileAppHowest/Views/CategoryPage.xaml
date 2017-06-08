@@ -5,13 +5,13 @@
              x:Class="MobileAppHowest.Views.CategoryPage" >
 
     <!--<ListView x:Name="lvCategory" ItemsSource="{ Binding CategoryList }"  Grid.Row="1" />-->
-    <ContentPage.Content>
+    <!--<ContentPage.Content>-->
         <ListView x:Name="listView"
                   ItemsSource="{ Binding CategoryList }"
                   SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }" 
-                   HorizontalOptions="FillAndExpand"
+                  HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
-                   IsVisible="true">
+                  IsVisible="true">
             
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -19,20 +19,16 @@
                         <StackLayout BackgroundColor="#eeeeee"
                                      Orientation="Vertical"
                                      VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand"
-                                     >
-                            
+                                     HorizontalOptions="FillAndExpand" >
                             <StackLayout Orientation="Horizontal" Padding="20,0,0,0" MinimumHeightRequest="70"  VerticalOptions="FillAndExpand"
                                      HorizontalOptions="FillAndExpand">
                                 <Image Source="{ Binding Picture }"
                                        WidthRequest="50"
                                        HeightRequest="50"
-                                       Margin="10,10,50,10"/>
-
+                                       Margin="10,10,50,10" />
                                 <Label Text="{ Binding CategoryUDesc }"
                                        TextColor="#212121" 
-                                       HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center"/>
-
+                                       HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
@@ -80,7 +76,7 @@
 
 
 
-    </ContentPage.Content>
+    <!--</ContentPage.Content>-->
 
 
 

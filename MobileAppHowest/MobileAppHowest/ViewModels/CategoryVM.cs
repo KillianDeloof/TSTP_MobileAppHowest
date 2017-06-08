@@ -29,43 +29,43 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCategory; }
             set {
                 _selectedCategory = value;
-                ShowSubCategoryPage();
+                ShowCategoryPage();
             }
         }
 
         // lijst van categorieën die worden opgevraagd wanneer de lijst wordt geladen
         // inladen gebeurt in GetCategoryList()
-        private List<Category> _categoryList = null;
-        public ObservableCollection<Category> SubCategoryList
+        private ObservableCollection<Category> _categoryList = null;
+        public ObservableCollection<Category> CategoryList
         {
             get
             {
                 if (_categoryList == null)
                     GetCategoryList();
 
-                return new ObservableCollection<Category>(_categoryList);
+                return _categoryList;
+            }
+            set
+            {
+                _categoryList = value;
+                //PropertyChanged("CategoryList", null);
             }
         }
 
         private void GetCategoryList()
         {
-            _categoryList = GetCategoryStringList();
-        }
-
-        private List<Category> GetCategoryStringList()
-        {
             List<Category> categoryList = new List<Category>();
 
             List<String> catStringList = new List<String>
-            {
-                "Campus",
-                "Faciliteiten & diensten",
-                "Lesmateriaal",
-                "Netwerk",
-                "Software & hardware",
-                "Overige"
-            };
-            
+                {
+                    "Campus",
+                    "Faciliteiten & diensten",
+                    "Lesmateriaal",
+                    "Netwerk",
+                    "Software & hardware",
+                    "Overige"
+                };
+
             List<String> categoryPictureList = new List<String>()
             {
                 "ic_location_city_black_24dp.png",
@@ -76,11 +76,6 @@ namespace MobileAppHowest.ViewModels
                 "ic_priority_high_black_24dp.png"
             };
 
-            List<SubCategory> subCategoryList = new List<SubCategory>()
-            {
-
-            };
-
             for (int i = 0; i < catStringList.Count; i++)
             {
                 categoryList.Add(new Category()
@@ -88,17 +83,59 @@ namespace MobileAppHowest.ViewModels
                     CategoryUDesc = catStringList[i],
                     Picture = categoryPictureList[i],
                     Subtitle = "Subtitle test " + i
-                    //SubCategoryList
                 });
             }
 
-            return categoryList;
+            CategoryList = new ObservableCollection<Category>(categoryList);
         }
+
+        //private List<Category> GetCategoryStringList()
+        //{
+        //    List<Category> categoryList = new List<Category>();
+
+        //    List<String> catStringList = new List<String>
+        //    {
+        //        "Campus",
+        //        "Faciliteiten & diensten",
+        //        "Lesmateriaal",
+        //        "Netwerk",
+        //        "Software & hardware",
+        //        "Overige"
+        //    };
+
+        //    List<String> categoryPictureList = new List<String>()
+        //    {
+        //        "ic_location_city_black_24dp.png",
+        //        "ic_directions_bus_black_24dp.png",
+        //        "ic_book_black_24dp.png",
+        //        "ic_settings_input_hdmi_black_24dp.png",
+        //        "ic_laptop_black_24dp.png",
+        //        "ic_priority_high_black_24dp.png"
+        //    };
+
+        //    List<Category> categoryList = new List<Category>()
+        //    {
+
+        //    };
+
+        //    for (int i = 0; i < catStringList.Count; i++)
+        //    {
+        //        categoryList.Add(new Category()
+        //        {
+        //            CategoryUDesc = catStringList[i],
+        //            Picture = categoryPictureList[i],
+        //            Subtitle = "Subtitle test " + i
+        //            //SubCategoryList
+        //        });
+        //    }
+
+        //    return categoryList;
+        //}
 
         /// <summary>
         /// Tonen van de SubCategoryPage als de geselecteerde Category niet null is.
         /// </summary>
-        private async Task ShowSubCategoryPage()
+        private async Task ShowCategoryPage()
         {
             if (_selectedCategory != null)
                 await Navigation.PushAsync(new SubCategoryPage());

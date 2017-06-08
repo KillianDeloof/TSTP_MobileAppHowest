@@ -64,7 +64,8 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCampus; }
             set {
                 _selectedCampus = value;
-                ShowLocationSelectorPage();
+                //ShowLocationSelectorPage();
+                ShowMessagePage();
             }
         }
 
@@ -81,9 +82,14 @@ namespace MobileAppHowest.ViewModels
         /// Tonen van de LocationPage.
         /// </summary>
         /// <returns></returns>
-        private async Task ShowLocationSelectorPage()
+        //private async Task ShowLocationSelectorPage()
+        //{
+        //    await Navigation.PushAsync(new LocationSelectorPage());
+        //}
+
+        private async Task ShowMessagePage()
         {
-            await Navigation.PushAsync(new LocationSelectorPage());
+            await Navigation.PushAsync(new MessagePage());
         }
     }
 }
