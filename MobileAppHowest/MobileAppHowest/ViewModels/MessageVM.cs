@@ -47,7 +47,9 @@ namespace MobileAppHowest.ViewModels
         {
             TicketRepository tRepos = new TicketRepository();
             SubCategory cat = new SubCategory();
-            _t = tRepos.FormatTicket(_t, "title", "message", cat);
+            _t = tRepos.FormatTicket(_t, "Defect toestel", "Werkt niet, zie foto", cat);
+            await tRepos.SendTicket(_t);
+
             //_t.Name = "name: killian.deloof";
             //_t.Subject = "need koffie";
             //_t.PriorityId = new int?();

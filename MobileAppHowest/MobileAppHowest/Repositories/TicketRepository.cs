@@ -39,6 +39,8 @@ namespace MobileAppHowest.Repositories
             t.Forum = "what is this field?";
             //t.Category = "automaten";
             t.Category = cat.ToString();
+            t.Category = "automaten";//temp hardcoded
+
 
             return t;
         }
