@@ -70,13 +70,7 @@ namespace MobileAppHowest.ViewModels
             MediaFile photo = await MediaPicker.PickPhoto();
             Attachment at = new Attachment();
             at.Name = "photo";
-            byte[] bytearr;
-            using (var memoryStream = new MemoryStream())
-            {
-                photo.GetStream().CopyTo(memoryStream);
-                photo.Dispose();
-                bytearr = memoryStream.ToArray();
-            }
+            byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
             at.Content = bytearr;
             at.Type = "jpg";
             _t.Attachments.Add(at);
@@ -87,13 +81,7 @@ namespace MobileAppHowest.ViewModels
             MediaFile photo = await MediaPicker.TakePhoto();
             Attachment at = new Attachment();
             at.Name = "photo";
-            byte[] bytearr;
-            using (var memoryStream = new MemoryStream())
-            {
-                photo.GetStream().CopyTo(memoryStream);
-                photo.Dispose();
-                bytearr = memoryStream.ToArray();
-            }
+            byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
             at.Content = bytearr;
             at.Type = "jpg";
             _t.Attachments.Add(at);
