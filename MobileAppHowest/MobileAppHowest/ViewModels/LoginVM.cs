@@ -50,5 +50,7 @@ namespace MobileAppHowest.ViewModels
         {
             await Navigation.PushAsync(new CategoryPage());
         }
+
+
     }
 }

@@ -24,5 +24,7 @@ namespace MobileAppHowest.Views
             InitializeComponent();
             BindingContext = new LoginVM(Navigation, btnLogin);
         }
+
+
     }
 }
