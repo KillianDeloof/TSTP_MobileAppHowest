@@ -6,6 +6,7 @@ using Plugin.Media;
 using System.IO;
 using System.Linq;
 using Plugin.Media.Abstractions;
+using Xamarin.Forms;
 
 //this could also work
 //https://blog.xamarin.com/getting-started-with-the-media-plugin-for-xamarin/
@@ -29,6 +30,22 @@ namespace MobileAppHowest.Repositories
 
                 // Take a photo of the business receipt.
                 MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
+
+
+
+
+                //await Task.Delay(100);
+                //MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                //{
+                //    SaveToAlbum = true,
+                //    DefaultCamera = CameraDevice.Rear,
+                //    Directory = "OnePosInventory",
+                //    Name = "Media.jpg"
+                //});
+
+
+
+
                 return file;
             }
             else

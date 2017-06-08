@@ -24,12 +24,15 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
+
+           // _button = button;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
         private Ticket _t = new Ticket();
         private Room _r = new Room();
+        private Button _button;
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -96,6 +99,13 @@ namespace MobileAppHowest.ViewModels
             _t.Attachments.Add(at);
         }
 
+        private async Task GetPosition()
+        {
+            double[] latlong = await GPSRepository.GetLocation();
+            string location = "lat: " + latlong[0] + " / long: " + latlong[1];
+            _button.Text = location.ToString();
+        }
+
         private void PictureClicked(object obj)
         {
             TakePhoto();
@@ -103,7 +113,7 @@ namespace MobileAppHowest.ViewModels
 
         private void LocationClicked(object obj)
         {
-            throw new NotImplementedException();
+            GetPosition();
         }
 
         private void CategoryClicked(object obj)
