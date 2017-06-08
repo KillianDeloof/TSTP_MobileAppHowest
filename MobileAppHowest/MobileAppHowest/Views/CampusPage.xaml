@@ -6,6 +6,6 @@
 
     <ListView x:Name="lvCampus"
               ItemsSource="{ Binding CampusList }"
-              SelectedItem="{ Binding SelectedCampus, Mode=OneWay }"  />
+              SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }"  />
 
 </ContentPage>
