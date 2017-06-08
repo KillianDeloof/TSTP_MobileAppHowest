@@ -50,7 +50,7 @@ namespace MobileAppHowest.Repositories
         /// <param name="latLong1"></param>
         /// <param name="latLong2"></param>
         /// <returns></returns>
-        public static double CalculateDistance(double[] latLong1, double[] latLong2)
+        private static double CalculateDistance(double[] latLong1, double[] latLong2)
         {
             double x1 = latLong1[1];
             double y1 = latLong1[0];
