@@ -16,7 +16,7 @@ namespace MobileAppHowest.Views
 		public MessagePage()
 		{
 			InitializeComponent();
-            BindingContext = new MessageVM(Navigation);
+            BindingContext = new MessageVM(Navigation, btnAttach);
 		}
 	}
 }
