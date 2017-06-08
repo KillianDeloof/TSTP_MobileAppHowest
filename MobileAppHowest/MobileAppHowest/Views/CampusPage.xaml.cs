@@ -15,10 +15,10 @@ namespace MobileAppHowest.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CampusPage : ContentPage
 	{
-		public CampusPage()
+		public CampusPage(Ticket newTicket)
 		{
 			InitializeComponent();
-            BindingContext = new CampusVM(Navigation);
+            BindingContext = new CampusVM(Navigation, newTicket);
 		}
 
         //private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();

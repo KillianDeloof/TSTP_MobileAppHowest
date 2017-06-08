@@ -14,9 +14,10 @@ namespace MobileAppHowest.ViewModels
 {
     public class MessageVM : INotifyPropertyChanged
     {
-        public MessageVM(INavigation navigation)
+        public MessageVM(INavigation navigation, Ticket newTicket)
         {
             this.Navigation = navigation;
+            this._t = newTicket;
 
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
