@@ -32,6 +32,7 @@ namespace MobileAppHowest.Models
         public string CDESC { get; set; }
         // -- uit te zoeken --//
         public String IMKey { get; set; }
+        public String Picture { get; set; }
 
 
         // lat en long van de campus

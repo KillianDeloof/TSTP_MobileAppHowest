@@ -34,9 +34,9 @@ namespace MobileAppHowest.ViewModels
         }
 
         // lijst met SubCategorieën
-        private List<SubCategory> _subCategoryList = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private List<SubCategory> _subCategoryList = null;
         public List<SubCategory> SubCategoryList
         {
             get

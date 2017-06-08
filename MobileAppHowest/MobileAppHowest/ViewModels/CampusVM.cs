@@ -68,8 +68,27 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task GetCampusList()
         {
-            List<Campus> campusList = await APIDataGetRepository.GetCampusList();
-            CampusList = new ObservableCollection<Campus>(campusList);
+            ObservableCollection<Campus> campusList = new ObservableCollection<Campus>
+            {
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5, 8580 Kortrijk",
+                    CDESC = "Campus GKG",
+                    Picture = "campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Sint-Jorisstraat 21, 8500 Brugge",
+                    CDESC = "Campus SJS",
+                    Picture = "campus_SJS.jpg"
+                }
+            };
+
+            CampusList = campusList;
+
+            // TO DO: wijzigen naar onderstaande -> werkt reeds
+            //List<Campus> campusList = await APIDataGetRepository.GetCampusList();
+            //CampusList = new ObservableCollection<Campus>(campusList);
         }
 
         /// <summary>
