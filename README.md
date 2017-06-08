@@ -11,17 +11,14 @@ returns a list of buildings frm the api
 
 gets a list of campus from the api
 -        public async Task<List<Campus>> GetCampusList()
-Haalt een lijst op van campussen
 
 gets a list of floors from the api
 -        public async Task<List<Floor>> GetFloorList()
 -        public async Task<List<Floor>> GetFloorList(FloorFilter ff)
 
-
 gets a list of rooms from the api
 -         public async Task<List<Room>> GetRoomList()
 -         public async Task<List<Room>> GetRoomList(RoomFilter rf)
-
 
 Gets a list of forums from api
 -         public async Task<List<Forum>> GetForumList()
@@ -38,29 +35,29 @@ Gets a list of hardcoded categorys, including their subCategorys
 this class is used to get a picture or video from the device's camera or gallary.
 
 opens the camera and returns a MediaFile when a picture is taken, or returns null of no picture is taken
--										public static async Task<MediaFile> TakePhoto()
+-				public static async Task<MediaFile> TakePhoto()
 
 
 opens the debice's gallary and returns the photo the user has selected as MediaFile
--										public static async Task<MediaFile> PickPhoto()
+-				public static async Task<MediaFile> PickPhoto()
 
 converts a MediaFile to a Byte Array
--										public static byte[] MediaFileToByteArr(MediaFile mediafile)
+-				public static byte[] MediaFileToByteArr(MediaFile mediafile)
 
 * MediaPicker
 -----------------------
 this class is used to get gps location and handle distance calculations
 
 gets the users location, this method can take some time
--										public static async Task<double[]> GetLocation()
+-				public static async Task<double[]> GetLocation()
 
 gets the distances between the current location and the campusses, use this method before using GetClosestCampus
--										public static void GetCampusDistances(List<Campus> campusList, double[] currentLatLong)
+-			  public static void GetCampusDistances(List<Campus> campusList, double[] currentLatLong)
 
 calculate distance between 2 points
--									 private static double CalculateDistance(double[] latLong1, double[] latLong2)
+-			 private static double CalculateDistance(double[] latLong1, double[] latLong2)
 
 returns the closest campus if it is closer then "minDistance"
--										public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
+-				public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
 
 
