@@ -62,3 +62,12 @@ returns the closest campus if it is closer then "minDistance"
 - public static Campus GetClosestCampus(List<Campus> campuslist, double[] myLatLong, double minDistance)
 
 
+
+* flow van ticketobject
+-----------------------
+Ticket object is created via TicketRepos.cs
+The ticket object is created after the user is logged in, and then passed to the next windows.
+on the send window the final data of the ticket gets added once the user clicks send
+atachments are added to the alreasy existing ticket when the user selects an atachment.
+
+The Ticket object is only created and modifyd with the TicketRepos class.
