@@ -2183,8 +2183,26 @@ namespace MobileAppHowest.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
+			// aapt resource value: 0x7f020117
+			public const int avd_hide_password_1 = 2130837783;
+			
+			// aapt resource value: 0x7f020118
+			public const int avd_hide_password_2 = 2130837784;
+			
+			// aapt resource value: 0x7f020119
+			public const int avd_hide_password_3 = 2130837785;
+			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
+			
+			// aapt resource value: 0x7f02011a
+			public const int avd_show_password_1 = 2130837786;
+			
+			// aapt resource value: 0x7f02011b
+			public const int avd_show_password_2 = 2130837787;
+			
+			// aapt resource value: 0x7f02011c
+			public const int avd_show_password_3 = 2130837788;
 			
 			// aapt resource value: 0x7f020055
 			public const int BG_howest = 2130837589;
@@ -4310,11 +4328,17 @@ namespace MobileAppHowest.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int CardView_Light = 2131427342;
 			
+			// aapt resource value: 0x7f0b018c
+			public const int CustomActionBarTheme = 2131427724;
+			
 			// aapt resource value: 0x7f0b0189
 			public const int MainTheme = 2131427721;
 			
 			// aapt resource value: 0x7f0b018a
 			public const int MainTheme_Base = 2131427722;
+			
+			// aapt resource value: 0x7f0b018d
+			public const int MyActionBar = 2131427725;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int Platform_AppCompat = 2131427373;
