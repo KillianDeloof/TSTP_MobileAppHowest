@@ -24,13 +24,11 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
-
-           // _button = button;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
-        private Ticket _t = new Ticket();
+        private Ticket _t = TicketRepository.MakeTicket();
         private Room _r = new Room();
         private Button _button;
 
@@ -47,17 +45,18 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            _t.Name = "name: killian.deloof";
-            _t.Subject = "need koffie";
-            _t.PriorityId = new int?();
-            _t.TopicId = new int?();
-            _t.Email = "killian.deloof@student.howest.be";
-            _t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+            _t = TicketRepository.FormatTicket();
+            //_t.Name = "name: killian.deloof";
+            //_t.Subject = "need koffie";
+            //_t.PriorityId = new int?();
+            //_t.TopicId = new int?();
+            //_t.Email = "killian.deloof@student.howest.be";
+            //_t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
 
-            //t.forum = "what is this field?";
-            _t.Category = "automaten";
+            //_t.Forum = "what is this field?";
+            //_t.Category = "automaten";
 
-            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
 
         private void AttachClicked(object obj)
@@ -68,23 +67,25 @@ namespace MobileAppHowest.ViewModels
         private async Task GetAttachment()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            Attachment at = new Attachment();
-            at.Name = "photo";
-            byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            at.Content = bytearr;
-            at.Type = "jpg";
-            _t.Attachments.Add(at);
+            TicketRepository.AddAtachment(_t, photo);
+            //Attachment at = new Attachment();
+            //at.Name = "photo.jpg";
+            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
+            //at.Content = bytearr;
+            //at.Type = "jpg";
+            //_t.Attachments.Add(at);
         }
 
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
-            Attachment at = new Attachment();
-            at.Name = "photo";
-            byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            at.Content = bytearr;
-            at.Type = "jpg";
-            _t.Attachments.Add(at);
+            TicketRepository.AddAtachment(_t, photo);
+            //Attachment at = new Attachment();
+            //at.Name = "photo";
+            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
+            //at.Content = bytearr;
+            //at.Type = "jpg";
+            //_t.Attachments.Add(at);
         }
 
         private async Task GetPosition()
