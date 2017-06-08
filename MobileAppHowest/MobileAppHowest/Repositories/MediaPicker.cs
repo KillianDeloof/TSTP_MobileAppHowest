@@ -58,7 +58,17 @@ namespace MobileAppHowest.Repositories
         }
 
 
-
+        public static byte[] MediaFileToByteArr(MediaFile mediafile)
+        {
+            byte[] byteArr;
+            using (var memoryStream = new MemoryStream())
+            {
+                mediafile.GetStream().CopyTo(memoryStream);
+                mediafile.Dispose();
+                byteArr = memoryStream.ToArray();
+            }
+            return byteArr;
+        }
 
 
         //chomado style
