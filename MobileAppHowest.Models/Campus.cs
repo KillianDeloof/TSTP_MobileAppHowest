@@ -97,7 +97,15 @@ namespace MobileAppHowest.Models
 
         public override string ToString()
         {
-            return UCODE + " - " + UDESC.Substring(7);
+            if (UCODE != null && UDESC != null)
+            {
+                return UCODE + " - " + UDESC.Substring(7);
+            }
+            else
+            {
+                return "error, udesc or ucode = null";
+            }
+            
         }
 
 

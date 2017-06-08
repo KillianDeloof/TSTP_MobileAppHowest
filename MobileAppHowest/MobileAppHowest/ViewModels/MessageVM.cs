@@ -25,7 +25,7 @@ namespace MobileAppHowest.ViewModels
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
 
-            _button = button;
+           // _button = button;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
