@@ -10,8 +10,8 @@
     
     
     <ListView x:Name="lvPlace"
-              ItemsSource="{ Binding PlaceList }"
-              SelectedItem="{ Binding SelectedPlace, Mode=TwoWay }">
+              ItemsSource="{ Binding CampusList }"
+              SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }">
 
         <ListView.ItemTemplate>
             <DataTemplate>
@@ -29,7 +29,7 @@
                             <ColumnDefinition Width="305*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Image  Grid.RowSpan="5" VerticalOptions="Start" Source="Place.jpg"/>
+                        <Image  Grid.RowSpan="5" VerticalOptions="Start" Source="{ Binding Picture }"/>
                         <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start" FontSize="30"/>
                         <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="2" VerticalOptions="Center"/>
                         <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="3" VerticalOptions="Center"/>

@@ -78,7 +78,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\VAG_Rounded_Bold.ttf" />
     <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Campus _LPS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_LPS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_BUD.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_GKG.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_Level.jpg" />
