@@ -20,11 +20,9 @@ namespace MobileAppHowest.Models
         {
             Attachments = new List<Attachment>();
             ExtraFields = new Dictionary<string, object>();
-            //t.Name = "name: killian.deloof";
             Name = "name: " + user.FirstName + "." + user.LastName;
             PriorityId = new int?();
             TopicId = new int?();
-            //t.Email = "killian.deloof@student.howest.be";
             Email = user.Email;
         }
 
@@ -39,12 +37,10 @@ namespace MobileAppHowest.Models
         /// <param name="cat">the subcategory of the ticket</param>
         public void FormatTicket(string subject, string message, Category cat)
         {
-            //t.Subject = "need koffie";
+
             Subject = subject;
-            //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
             Message = message;
             Forum = "No Location";
-            //t.MainCategory = "automaten";
             Category = cat.ToString();
             if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
             {
