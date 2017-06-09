@@ -49,6 +49,19 @@ namespace MobileAppHowest.Models
             Category = "automaten";//temp hardcoded
         }
 
+        public void FormatTicket(string subject, string message, SubCategory cat, Room location)
+        {
+            //t.Subject = "need koffie";
+            Location = location;
+            Subject = subject;
+            //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+            Message = message;
+            Forum = "Location: " + location.UDESC;
+            //t.Category = "automaten";
+            Category = cat.ToString();
+            Category = "automaten";//temp hardcoded
+        }
+
 
         public void AddAtachment(byte[] byteArray)
         {
@@ -91,6 +104,8 @@ namespace MobileAppHowest.Models
         public string Forum { get; set; }
         public string Category { get; private set; }
         public string Source { get; set; }
+
+        public Room Location { get; private set; }
 
         /// <summary>
         /// A summary of the issue that the user is facing
