@@ -17,7 +17,7 @@ namespace MobileAppHowest.ViewModels
         public MessageVM(INavigation navigation, Ticket newTicket)
         {
             this.Navigation = navigation;
-            this._t = newTicket;
+            this._ticket = newTicket;
 
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
@@ -28,9 +28,10 @@ namespace MobileAppHowest.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
-        private Ticket _t;
+        private Ticket _ticket;
         private Room _r = new Room();
         private Button _button;
+        TicketRepository _tRepos = new TicketRepository();
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -45,9 +46,9 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            TicketRepository tRepos = new TicketRepository();
+            TicketRepository _ticketRepo = new TicketRepository();
             SubCategory cat = new SubCategory();
-            _t = tRepos.FormatTicket(_t, "title", "message", cat);
+            _ticket = _ticketRepo.FormatTicket(_ticket, "title", "message", cat);
             //_t.Name = "name: killian.deloof";
             //_t.Subject = "need koffie";
             //_t.PriorityId = new int?();
@@ -69,8 +70,7 @@ namespace MobileAppHowest.ViewModels
         private async Task GetAttachment()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            TicketRepository tRepos = new TicketRepository();
-            tRepos.AddAtachment(_t, photo);
+            _tRepos.AddAtachment(_ticket, photo);
             //Attachment at = new Attachment();
             //at.Name = "photo.jpg";
             //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
@@ -82,8 +82,7 @@ namespace MobileAppHowest.ViewModels
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
-            TicketRepository tRepos = new TicketRepository();
-            tRepos.AddAtachment(_t, photo);
+            _tRepos.AddAtachment(_ticket, photo);
             //Attachment at = new Attachment();
             //at.Name = "photo";
             //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
@@ -112,6 +111,32 @@ namespace MobileAppHowest.ViewModels
         private void CategoryClicked(object obj)
         {
             throw new NotImplementedException();
+        }
+
+        private String _message = "Type your message ...";
+        public String Message
+        {
+            get
+            {
+                return _message;
+            }
+            set
+            {
+                _message = value;
+                _ticket.Message = _message;
+            }
+        }
+
+        private String _subject = "Subject";
+        public String Subject
+        {
+            get {
+                return _subject;
+            }
+            set {
+                _subject = value;
+                _ticket.Subject = _subject;
+            }
         }
     }
 }
