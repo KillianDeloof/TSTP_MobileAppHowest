@@ -152,7 +152,7 @@ namespace MobileAppHowest.Models
         /// <summary>
         /// The list of attachments to add to this Ticket
         /// </summary>
-        public List<Attachment> Attachments { get; private set; }
+        public List<Attachment> Attachments { get; set; }//has to be public set to be able to sent to api
 
         /// <summary>
         /// The list of extra fields to populate with this ticket. The keys are specified in the OsTicket UI
