@@ -36,7 +36,7 @@ namespace MobileAppHowest.ViewModels
             // indien login ok is -> naar CategoryPage()
             if (ui != null)
             {
-                _newTicket = _ticketRepo.MakeTicket(ui);
+                _newTicket = new Ticket(ui);
                 await ShowCategoryPage();
             }
             else

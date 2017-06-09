@@ -47,12 +47,11 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            TicketRepository _ticketRepo = new TicketRepository();
             SubCategory cat = new SubCategory();
-            _ticket = _ticketRepo.FormatTicket(_ticket, "Defect toestel", "Werkt niet, zie foto", cat);
-            await _ticketRepo.SendTicket(_ticket);
+            _ticket.FormatTicket("Defect toestel", "Werkt niet, zie foto", cat);
 
-            
+            APIRepository apiRepos = new APIRepository();
+            await apiRepos.SendTicket(_ticket);
         }
 
         private void AttachClicked(object obj)
@@ -63,7 +62,7 @@ namespace MobileAppHowest.ViewModels
         private async Task GetAttachment()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            _tRepos.AddAtachment(_ticket, photo);
+            _ticket.AddAtachment(photo);
 
         }
 
@@ -71,7 +70,7 @@ namespace MobileAppHowest.ViewModels
         {
 
             MediaFile photo = await MediaPicker.TakePhoto();
-            _tRepos.AddAtachment(_ticket, photo);
+            _ticket.AddAtachment(photo);
 
         }
 

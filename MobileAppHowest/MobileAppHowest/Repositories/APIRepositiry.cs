@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Repositories
 {
-    public class APIDataGetRepository
+    public class APIRepository
     {
+
+        public async Task SendTicket(Ticket t)
+        {
+            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+        }
+
+
         /// <summary>
         /// Ophalen van de lijst van gebouwen, aangeleverd door de API.
         /// </summary>

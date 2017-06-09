@@ -20,7 +20,7 @@ namespace MobileAppHowest.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private APIDataGetRepository _dataRepo = new APIDataGetRepository();
+        private APIRepository _dataRepo = new APIRepository();
         INavigation Navigation = null;
         private Ticket _ticket;
 

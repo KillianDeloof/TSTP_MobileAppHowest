@@ -21,7 +21,7 @@ namespace MobileAppHowest.Views
             BindingContext = new CampusVM(Navigation, newTicket);
 		}
 
-        //private APIDataGetRepository _APIDataGetRepository = new APIDataGetRepository();
+        //private APIRepository _APIDataGetRepository = new APIRepository();
         //private GPSRepository _gpsRepo = new GPSRepository();
         
         //private async void GetCampusList()

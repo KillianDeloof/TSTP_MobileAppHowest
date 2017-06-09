@@ -20,7 +20,7 @@ namespace MobileAppHowest.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private APIDataGetRepository _dataRepo = new APIDataGetRepository();
+        private APIRepository _dataRepo = new APIRepository();
         private INavigation Navigation = null;
         private Ticket _ticket = null;
 
@@ -86,7 +86,7 @@ namespace MobileAppHowest.ViewModels
 
             //CampusList = campusList;
             
-            List<Campus> campusList = await APIDataGetRepository.GetCampusList();
+            List<Campus> campusList = await APIRepository.GetCampusList();
             CampusList = new ObservableCollection<Campus>(campusList);
 
             //foreach (Campus c in campusList)
