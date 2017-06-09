@@ -130,7 +130,7 @@ namespace MobileAppHowest.Repositories
 
             Category organisatie = new Category();
             organisatie.CategoryUDesc = "Organization";
-            organisatie.Picture = "ic_priority_high_black_24dp.png";
+            organisatie.Picture = "ic_people_black_24dp.png";
             list.Add(organisatie);
 
             Category other = new Category();
@@ -145,6 +145,12 @@ namespace MobileAppHowest.Repositories
 
             return list;
         }
+
+        /// <summary>
+        /// Get the sub categories of a main category
+        /// </summary>
+        /// <param name="cat"></param>
+        /// <returns>A list of sub categories</returns>
 
         private static List<SubCategory> GetHardcodedSubCat(Category cat)
         {
@@ -202,7 +208,7 @@ namespace MobileAppHowest.Repositories
                     list.Add(printing);
 
                     SubCategory studdySupport = new SubCategory();
-                    studdySupport.SubCategoryUDesc = "Studdy Support";
+                    studdySupport.SubCategoryUDesc = "Study Support";
                     list.Add(studdySupport);
 
                     list.Add(financial);
@@ -211,13 +217,13 @@ namespace MobileAppHowest.Repositories
 
                 case "Study Materials":
                     SubCategory studyMaterials = new SubCategory();
-                    studyMaterials.SubCategoryUDesc = "Studdy Materials";
+                    studyMaterials.SubCategoryUDesc = "Study Materials";
                     list.Add(studyMaterials);
 
                     list.Add(bookSales);
 
                     SubCategory studyPlatform = new SubCategory();
-                    studyPlatform.SubCategoryUDesc = "Studdy Platform";
+                    studyPlatform.SubCategoryUDesc = "Study Platform";
                     list.Add(studyPlatform);
 
                     list.Add(financial);
@@ -231,7 +237,7 @@ namespace MobileAppHowest.Repositories
                     list.Add(wifi);
 
                     SubCategory networkAcces = new SubCategory();
-                    networkAcces.SubCategoryUDesc = "Network Acces";
+                    networkAcces.SubCategoryUDesc = "Network Access";
                     list.Add(networkAcces);
 
                     SubCategory netWorkMaintenance = new SubCategory();
@@ -271,7 +277,7 @@ namespace MobileAppHowest.Repositories
 
                 case "Organization":
                     SubCategory generalOrganization = new SubCategory();
-                    generalOrganization.SubCategoryUDesc = "generalOrganization";
+                    generalOrganization.SubCategoryUDesc = "General organization";
                     list.Add(generalOrganization);
 
                     SubCategory events = new SubCategory();
