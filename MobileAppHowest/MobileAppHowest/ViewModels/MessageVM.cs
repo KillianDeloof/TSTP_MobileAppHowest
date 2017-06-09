@@ -119,7 +119,7 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            if (String.IsNullOrEmpty(_subject) && String.IsNullOrEmpty(_message))
+            if (!String.IsNullOrEmpty(_subject) && !String.IsNullOrEmpty(_message))
             {
                 SubCategory cat = new SubCategory();
                 _ticket.FormatTicket(_subject, _message, cat);

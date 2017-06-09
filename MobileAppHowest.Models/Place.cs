@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Models
 {
-    public class Place : BaseFilter
-    {
-        // kan zowel een lokaal, verdiep, als een forum zijn
-        public string UCode { get; set; }
-        public string UDesc { get; set; }
+    //public class Place : BaseFilter
+    //{
+    //    // kan zowel een lokaal, verdiep, als een forum zijn
+    //    public string UCode { get; set; }
+    //    public string UDesc { get; set; }
 
-        public override string ToString()
-        {
-            return UDesc;
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return UDesc;
+    //    }
+    //}
 }
