@@ -87,5 +87,17 @@ namespace MobileAppHowest.Models
         /// The list of extra fields to populate with this ticket. The keys are specified in the OsTicket UI
         /// </summary>
         public Dictionary<string, object> ExtraFields { get; private set; }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

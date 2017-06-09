@@ -32,6 +32,7 @@ namespace MobileAppHowest.Models
         public string CDESC { get; set; }
         // -- uit te zoeken --//
         public String IMKey { get; set; }
+        public String Picture { get; set; }
 
 
         // lat en long van de campus
@@ -96,7 +97,15 @@ namespace MobileAppHowest.Models
 
         public override string ToString()
         {
-            return UCODE + " - " + UDESC.Substring(7);
+            if (UCODE != null && UDESC != null)
+            {
+                return UCODE + " - " + UDESC.Substring(7);
+            }
+            else
+            {
+                return "error, udesc or ucode = null";
+            }
+            
         }
 
 

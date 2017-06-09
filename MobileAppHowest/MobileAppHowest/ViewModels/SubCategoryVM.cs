@@ -11,14 +11,15 @@ namespace MobileAppHowest.ViewModels
 {
     public class SubCategoryVM : INotifyPropertyChanged
     {
-        public SubCategoryVM(INavigation navigation, List<SubCategory> subCategoryList)
+        public SubCategoryVM(INavigation navigation, List<SubCategory> subCategoryList, Ticket ticket)
         {
             this.Navigation = navigation;
             this._subCategoryList = subCategoryList;
+            this._ticket = ticket;
         }
 
         private INavigation Navigation = null;
-        private Ticket _newTicket = new Ticket();
+        private Ticket _ticket;
 
         // SubCategory die geselecteerd wordt in de view
         private SubCategory _selectedSubCategory;
@@ -28,15 +29,15 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _selectedSubCategory = value;
-                _newTicket.Category = _selectedSubCategory.SubCategoryUDesc;
+                _ticket.Category = _selectedSubCategory.SubCategoryUDesc;
                 ShowCampusPage();
             }
         }
 
         // lijst met SubCategorieën
-        private List<SubCategory> _subCategoryList = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private List<SubCategory> _subCategoryList = null;
         public List<SubCategory> SubCategoryList
         {
             get
@@ -85,9 +86,9 @@ namespace MobileAppHowest.ViewModels
                 // indien een locatie meegegeven moet worden, moet men op de CampusPage terechtkomen
                 // anders naar de MessagePage
                 if (_selectedSubCategory.IsLocationRequired)
-                    await Navigation.PushAsync(new CampusPage(_newTicket));
+                    await Navigation.PushAsync(new CampusPage(_ticket));
                 else
-                    await Navigation.PushAsync(new MessagePage(_newTicket));
+                    await Navigation.PushAsync(new MessagePage(_ticket));
             }
         }
     }

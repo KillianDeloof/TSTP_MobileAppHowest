@@ -28,8 +28,9 @@ namespace MobileAppHowest.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
-        private Ticket _t = new Ticket();
+        private Ticket _t;
         private Room _r = new Room();
+        private Button _button;
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -44,17 +45,20 @@ namespace MobileAppHowest.ViewModels
 
         private async Task SendTicket()
         {
-            _t.Name = "name: killian.deloof";
-            _t.Subject = "need koffie";
-            _t.PriorityId = new int?();
-            _t.TopicId = new int?();
-            _t.Email = "killian.deloof@student.howest.be";
-            _t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+            TicketRepository tRepos = new TicketRepository();
+            SubCategory cat = new SubCategory();
+            _t = tRepos.FormatTicket(_t, "title", "message", cat);
+            //_t.Name = "name: killian.deloof";
+            //_t.Subject = "need koffie";
+            //_t.PriorityId = new int?();
+            //_t.TopicId = new int?();
+            //_t.Email = "killian.deloof@student.howest.be";
+            //_t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
 
-            //t.forum = "what is this field?";
-            _t.Category = "automaten";
+            //_t.Forum = "what is this field?";
+            //_t.Category = "automaten";
 
-            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
         }
 
         private void AttachClicked(object obj)
@@ -65,35 +69,34 @@ namespace MobileAppHowest.ViewModels
         private async Task GetAttachment()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            Attachment at = new Attachment();
-            at.Name = "photo";
-            byte[] bytearr;
-            using (var memoryStream = new MemoryStream())
-            {
-                photo.GetStream().CopyTo(memoryStream);
-                photo.Dispose();
-                bytearr = memoryStream.ToArray();
-            }
-            at.Content = bytearr;
-            at.Type = "jpg";
-            _t.Attachments.Add(at);
+            TicketRepository tRepos = new TicketRepository();
+            tRepos.AddAtachment(_t, photo);
+            //Attachment at = new Attachment();
+            //at.Name = "photo.jpg";
+            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
+            //at.Content = bytearr;
+            //at.Type = "jpg";
+            //_t.Attachments.Add(at);
         }
 
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
-            Attachment at = new Attachment();
-            at.Name = "photo";
-            byte[] bytearr;
-            using (var memoryStream = new MemoryStream())
-            {
-                photo.GetStream().CopyTo(memoryStream);
-                photo.Dispose();
-                bytearr = memoryStream.ToArray();
-            }
-            at.Content = bytearr;
-            at.Type = "jpg";
-            _t.Attachments.Add(at);
+            TicketRepository tRepos = new TicketRepository();
+            tRepos.AddAtachment(_t, photo);
+            //Attachment at = new Attachment();
+            //at.Name = "photo";
+            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
+            //at.Content = bytearr;
+            //at.Type = "jpg";
+            //_t.Attachments.Add(at);
+        }
+
+        private async Task GetPosition()
+        {
+            double[] latlong = await GPSRepository.GetLocation();
+            string location = "lat: " + latlong[0] + " / long: " + latlong[1];
+            _button.Text = location.ToString();
         }
 
         private void PictureClicked(object obj)
@@ -103,7 +106,7 @@ namespace MobileAppHowest.ViewModels
 
         private void LocationClicked(object obj)
         {
-            throw new NotImplementedException();
+            GetPosition();
         }
 
         private void CategoryClicked(object obj)
