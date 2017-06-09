@@ -17,14 +17,13 @@ using Xamarin.Forms.Xaml;
 namespace MobileAppHowest.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class LoginPage : ContentPage
+    public partial class LoginPage : ContentPage
 	{
         public LoginPage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
             BindingContext = new LoginVM(Navigation, btnLogin);
         }
-
-
     }
 }

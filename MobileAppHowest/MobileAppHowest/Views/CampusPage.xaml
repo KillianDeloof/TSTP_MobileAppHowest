@@ -4,8 +4,40 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CampusPage">
 
-    <ListView x:Name="lvCampus"
-              ItemsSource="{ Binding CampusList }"
-              SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }"  />
+    
+    <!-- BUG   Ziet er op Android heel raar uit-->
+    
+    
+    
+    <ListView x:Name="lvPlace"
+              ItemsSource="{ Binding PlaceList }"
+              SelectedItem="{ Binding SelectedPlace, Mode=TwoWay }">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="213*"/>
+                            <ColumnDefinition Width="305*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image  Grid.RowSpan="5" VerticalOptions="Start" Source="Place.jpg"/>
+                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start" FontSize="30"/>
+                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="2" VerticalOptions="Center"/>
+                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="3" VerticalOptions="Center"/>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+
+    </ListView>
 
 </ContentPage>

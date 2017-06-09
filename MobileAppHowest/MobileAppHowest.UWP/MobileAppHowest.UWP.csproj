@@ -90,6 +90,15 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\Campus _LPS.jpg" />
+    <Content Include="Assets\Campus_BUD.jpg" />
+    <Content Include="Assets\Campus_GKG.jpg" />
+    <Content Include="Assets\Campus_Level.jpg" />
+    <Content Include="Assets\Campus_NHS.jpg" />
+    <Content Include="Assets\Campus_RDR.jpg" />
+    <Content Include="Assets\Campus_RSS.jpg" />
+    <Content Include="Assets\Campus_SJS.jpg" />
+    <Content Include="Assets\Campus_VES.jpeg" />
     <Content Include="Assets\Fonts\VAG_Rounded_Bold.ttf" />
     <None Include="project.json" />
   </ItemGroup>

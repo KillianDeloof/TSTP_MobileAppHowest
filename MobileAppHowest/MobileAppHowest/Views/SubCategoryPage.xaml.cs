@@ -1,4 +1,5 @@
 ﻿using MobileAppHowest.Models;
+using MobileAppHowest.Repositories;
 using MobileAppHowest.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,10 @@ namespace MobileAppHowest.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SubCategoryPage : ContentPage
 	{
-		public SubCategoryPage(List<SubCategory> subCategoryList, Ticket ticket)
-		{
-			InitializeComponent();
+        public SubCategoryPage(List<SubCategory> subCategoryList, Ticket ticket)
+        {
+            InitializeComponent();
             BindingContext = new SubCategoryVM(Navigation, subCategoryList, ticket);
-		}
+        }
     }
 }

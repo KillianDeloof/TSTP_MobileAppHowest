@@ -39,63 +39,7 @@ namespace MobileAppHowest.ViewModels
         public Command PictureCommand { get; }
         public Command CategoryCommand { get; }
         public Command LocationCommand { get; }
-
-        private void SendClicked(object obj)
-        {
-            SendTicket();
-        }
-
-        private async Task SendTicket()
-        {
-            SubCategory cat = new SubCategory();
-            _ticket.FormatTicket("Defect toestel", "Werkt niet, zie foto", cat);
-
-            APIRepository apiRepos = new APIRepository();
-            await apiRepos.SendTicket(_ticket);
-        }
-
-        private void AttachClicked(object obj)
-        {
-            GetAttachment();
-        }
-
-        private async Task GetAttachment()
-        {
-            MediaFile photo = await MediaPicker.PickPhoto();
-            _ticket.AddAtachment(photo);
-
-        }
-
-        private async Task TakePhoto()
-        {
-
-            MediaFile photo = await MediaPicker.TakePhoto();
-            _ticket.AddAtachment(photo);
-
-        }
-
-        private async Task GetPosition()
-        {
-            double[] latlong = await GPSRepository.GetLocation();
-            string location = "lat: " + latlong[0] + " / long: " + latlong[1];
-            _button.Text = location.ToString();
-        }
-
-        private void PictureClicked(object obj)
-        {
-            TakePhoto();
-        }
-
-        private void LocationClicked(object obj)
-        {
-            GetPosition();
-        }
-
-        private void CategoryClicked(object obj)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         private String _message = "Type your message ...";
         public String Message
         {
@@ -113,13 +57,98 @@ namespace MobileAppHowest.ViewModels
         private String _subject = "Subject";
         public String Subject
         {
-            get {
+            get
+            {
                 return _subject;
             }
-            set {
+            set
+            {
                 _subject = value;
                 _ticket.Subject = _subject;
             }
         }
+
+        private void SendClicked(object obj)
+        {
+            SendTicket();
+        }
+
+        private void AttachClicked(object obj)
+        {
+            GetAttachment();
+        }
+
+        private async Task GetAttachment()
+        {
+            MediaFile photo = await MediaPicker.PickPhoto();
+            _ticket.AddAtachment(photo);
+
+        }
+
+        private void PictureClicked(object obj)
+        {
+            TakePhoto();
+        }
+
+        private void LocationClicked(object obj)
+        {
+            ShowCampusPage();
+        }
+
+        private void CategoryClicked(object obj)
+        {
+            ShowCategoryPage();
+        }
+
+        private async Task TakePhoto()
+        {
+
+            MediaFile photo = await MediaPicker.TakePhoto();
+            _tRepos.AddAtachment(_ticket, photo);
+
+        }
+
+        private async Task ShowCampusPage()
+        {
+            await Navigation.PushAsync(new CampusPage(_ticket));
+        }
+
+        private async Task ShowCategoryPage()
+        {
+            await Navigation.PushAsync(new CategoryPage(_ticket));
+        }
+
+        private async Task SendTicket()
+        {
+            if (String.IsNullOrEmpty(_subject) && String.IsNullOrEmpty(_message))
+            {
+                TicketRepository _ticketRepo = new TicketRepository();
+                SubCategory cat = new SubCategory();
+                _ticket = _ticketRepo.FormatTicket(_ticket, _subject, _message, cat);
+                //_t.Name = "name: killian.deloof";
+                //_t.Subject = "need koffie";
+                //_t.PriorityId = new int?();
+                //_t.TopicId = new int?();
+                //_t.Email = "killian.deloof@student.howest.be";
+                //_t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+
+                //_t.Forum = "what is this field?";
+                //_t.Category = "automaten";
+
+                //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            }
+            else
+            {
+                // TO DO: wat te doen indien subject of message leeg is
+                Console.WriteLine("Subject of message is leeg.");
+            }
+        }
+
+        // opvragen van locatie
+        //private async Task GetPosition()
+        //{
+        //    double[] latlong = await GPSRepository.GetLocation();
+        //    string location = "lat: " + latlong[0] + " / long: " + latlong[1];
+        //}
     }
 }
