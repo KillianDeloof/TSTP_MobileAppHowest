@@ -81,8 +81,15 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\VAG_Rounded_Bold.ttf" />
     <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
-    <Content Include="$(MSBuildThisFileDirectory)campus_GKG.jpg" />
-    <Content Include="$(MSBuildThisFileDirectory)campus_SJS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus _LPS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_BUD.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_GKG.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_Level.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_NHS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_RDR.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_RSS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_SJS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_VES.jpeg" />
     <Content Include="$(MSBuildThisFileDirectory)HOWEST_Logo.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_book_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_directions_bus_black_24dp.png" />
