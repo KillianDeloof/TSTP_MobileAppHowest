@@ -57,27 +57,27 @@ namespace MobileAppHowest.ViewModels
         {
             CategoryList = new ObservableCollection<Category>(_dataRepo.GetHardCodedCategoryList());
 
-            //List<Category> categoryList = new List<Category>();
+            List<String> catStringList = new List<String>
+                {
+                    "Campus",
+                    "Faciliteiten & diensten",
+                    "Lesmateriaal",
+                    "Netwerk",
+                    "Software & hardware",
+                    "Organisatie",
+                    "Overige"
+                };
 
-            //List<String> catStringList = new List<String>
-            //{
-            //    "Campus",
-            //    "Faciliteiten & diensten",
-            //    "Lesmateriaal",
-            //    "Netwerk",
-            //    "Software & hardware",
-            //    "Overige"
-            //};
-
-            //List<String> categoryPictureList = new List<String>()
-            //{
-            //    "ic_location_city_black_24dp.png",
-            //    "ic_directions_bus_black_24dp.png",
-            //    "ic_book_black_24dp.png",
-            //    "ic_settings_input_hdmi_black_24dp.png",
-            //    "ic_laptop_black_24dp.png",
-            //    "ic_priority_high_black_24dp.png"
-            //};
+            List<String> categoryPictureList = new List<String>()
+            {
+                "ic_location_city_black_24dp.png",
+                "ic_directions_bus_black_24dp.png",
+                "ic_book_black_24dp.png",
+                "ic_settings_input_hdmi_black_24dp.png",
+                "ic_laptop_black_24dp.png",
+                "ic_people_black_24dp.png",
+                "ic_priority_high_black_24dp.png"
+            };
 
             //for (int i = 0; i < catStringList.Count; i++)
             //{
