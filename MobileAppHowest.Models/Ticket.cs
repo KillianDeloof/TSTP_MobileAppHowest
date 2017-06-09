@@ -43,23 +43,20 @@ namespace MobileAppHowest.Models
             Subject = subject;
             //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
             Message = message;
-            Forum = "what is this field?";
+            Forum = "No Location";
             //t.Category = "automaten";
             Category = cat.ToString();
-            Category = "automaten";//temp hardcoded
+            if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
+            {
+                Category = "No Category";
+            }
         }
 
         public void FormatTicket(string subject, string message, SubCategory cat, Room location)
         {
-            //t.Subject = "need koffie";
+            FormatTicket(subject, message, cat);
             Location = location;
-            Subject = subject;
-            //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
-            Message = message;
-            Forum = "Location: " + location.UDESC;
-            //t.Category = "automaten";
-            Category = cat.ToString();
-            Category = "automaten";//temp hardcoded
+            Forum = "Location: " + location.UDESC;      
         }
 
 
