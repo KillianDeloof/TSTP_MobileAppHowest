@@ -14,10 +14,14 @@ using Xamarin.Forms;
 
 namespace MobileAppHowest.Repositories
 {
+
     public class MediaPicker// : ICameraService
     {
         public static async Task<MediaFile> TakePhoto()
         {
+
+
+            await CrossMedia.Current.Initialize();
 
             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
             {
@@ -30,22 +34,6 @@ namespace MobileAppHowest.Repositories
 
                 // Take a photo of the business receipt.
                 MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
-
-
-
-
-                //await Task.Delay(100);
-                //MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-                //{
-                //    SaveToAlbum = true,
-                //    DefaultCamera = CameraDevice.Rear,
-                //    Directory = "OnePosInventory",
-                //    Name = "Media.jpg"
-                //});
-
-
-
-
                 return file;
             }
             else
@@ -53,7 +41,9 @@ namespace MobileAppHowest.Repositories
                 return null;
             }
 
+
         }
+
 
         public static async Task<MediaFile> PickPhoto()
         {

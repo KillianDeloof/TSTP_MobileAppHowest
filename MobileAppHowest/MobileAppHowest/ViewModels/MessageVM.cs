@@ -9,7 +9,7 @@ using MobileAppHowest.Repositories;
 using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 using System.IO;
-using MobileAppHowest.Views;
+using Plugin.Media;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -82,12 +82,7 @@ namespace MobileAppHowest.ViewModels
         {
             MediaFile photo = await MediaPicker.PickPhoto();
             _tRepos.AddAtachment(_ticket, photo);
-            //Attachment at = new Attachment();
-            //at.Name = "photo.jpg";
-            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            //at.Content = bytearr;
-            //at.Type = "jpg";
-            //_t.Attachments.Add(at);
+
         }
 
         private void PictureClicked(object obj)
@@ -107,14 +102,10 @@ namespace MobileAppHowest.ViewModels
 
         private async Task TakePhoto()
         {
+
             MediaFile photo = await MediaPicker.TakePhoto();
             _tRepos.AddAtachment(_ticket, photo);
-            //Attachment at = new Attachment();
-            //at.Name = "photo";
-            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            //at.Content = bytearr;
-            //at.Type = "jpg";
-            //_t.Attachments.Add(at);
+
         }
 
         private async Task ShowCampusPage()
