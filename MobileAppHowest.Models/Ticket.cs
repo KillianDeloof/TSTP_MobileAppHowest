@@ -89,7 +89,7 @@ namespace MobileAppHowest.Models
         public string Name { get; private set; }
 
         public string Forum { get; set; }
-        public string Category { get; set; }
+        public string Category { get; private set; }
         public string Source { get; set; }
 
         /// <summary>
