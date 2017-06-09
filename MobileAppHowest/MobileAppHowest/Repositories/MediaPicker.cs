@@ -14,6 +14,7 @@ using Xamarin.Forms;
 
 namespace MobileAppHowest.Repositories
 {
+
     public class MediaPicker// : ICameraService
     {
         public static async Task<MediaFile> TakePhoto()
@@ -32,15 +33,13 @@ namespace MobileAppHowest.Repositories
                 };
 
                 // Take a photo of the business receipt.
-                MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);   
-                return file;   
+                MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
+                return file;
             }
             else
             {
                 return null;
             }
-
-
 
 
         }
