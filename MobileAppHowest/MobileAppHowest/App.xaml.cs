@@ -15,7 +15,7 @@ namespace MobileAppHowest
 		{
             InitializeComponent();
 
-            MainPage = new NavigationPage(new CampusPage(new Models.Ticket()));
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         public static IAuthenticate Authenticator { get; private set; }

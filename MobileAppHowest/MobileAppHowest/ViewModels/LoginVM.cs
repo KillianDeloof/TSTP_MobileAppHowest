@@ -23,7 +23,6 @@ namespace MobileAppHowest.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public Command LoginCommand { get; }
         private LoginRepository _loginRepo = new LoginRepository();
-        private TicketRepository _ticketRepo = new TicketRepository();
         public INavigation Navigation { get; set; }
         private Button _btnLogin = null;
         private Ticket _newTicket;

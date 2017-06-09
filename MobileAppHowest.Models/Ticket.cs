@@ -26,9 +26,10 @@ namespace MobileAppHowest.Models
             TopicId = new int?();
             //t.Email = "killian.deloof@student.howest.be";
             Email = user.Email;
-
-
         }
+
+
+
 
         /// <summary>
         /// adds the required fields to the ticket
@@ -94,13 +95,13 @@ namespace MobileAppHowest.Models
         /// <summary>
         /// A summary of the issue that the user is facing
         /// </summary>
-        public string Subject { get; set; }
+        public string Subject { get; private set; }
 
         /// <summary>
         /// A description of the issue that the user is facing.
         /// If IsMessageHtml is true, then this field is treated as HTML
         /// </summary>
-        public string Message { get; set; }
+        public string Message { get; private set; }
 
         /// <summary>
         /// Whether or not to treat the Message property as an HTML fragment or plain text.

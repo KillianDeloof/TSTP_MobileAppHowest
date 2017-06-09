@@ -32,7 +32,6 @@ namespace MobileAppHowest.ViewModels
         private Ticket _ticket;
         private Room _r = new Room();
         private Button _button;
-        TicketRepository _tRepos = new TicketRepository();
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -50,7 +49,7 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _message = value;
-                _ticket.Message = _message;
+                //_ticket.Message = _message;
             }
         }
 
@@ -64,7 +63,7 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _subject = value;
-                _ticket.Subject = _subject;
+                //_ticket.Subject = _subject;
             }
         }
 
@@ -75,10 +74,10 @@ namespace MobileAppHowest.ViewModels
 
         private void AttachClicked(object obj)
         {
-            GetAttachment();
+            PickPhoto();
         }
 
-        private async Task GetAttachment()
+        private async Task PickPhoto()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
             _ticket.AddAtachment(photo);
@@ -104,38 +103,30 @@ namespace MobileAppHowest.ViewModels
         {
 
             MediaFile photo = await MediaPicker.TakePhoto();
-            _tRepos.AddAtachment(_ticket, photo);
+            _ticket.AddAtachment(photo);
 
         }
 
         private async Task ShowCampusPage()
         {
-            await Navigation.PushAsync(new CampusPage(_ticket));
+            //await Navigation.PushAsync(new CampusPage(_ticket));
         }
 
         private async Task ShowCategoryPage()
         {
-            await Navigation.PushAsync(new CategoryPage(_ticket));
+           // await Navigation.PushAsync(new CategoryPage(_ticket));
         }
 
         private async Task SendTicket()
         {
             if (String.IsNullOrEmpty(_subject) && String.IsNullOrEmpty(_message))
             {
-                TicketRepository _ticketRepo = new TicketRepository();
                 SubCategory cat = new SubCategory();
-                _ticket = _ticketRepo.FormatTicket(_ticket, _subject, _message, cat);
-                //_t.Name = "name: killian.deloof";
-                //_t.Subject = "need koffie";
-                //_t.PriorityId = new int?();
-                //_t.TopicId = new int?();
-                //_t.Email = "killian.deloof@student.howest.be";
-                //_t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
+                _ticket.FormatTicket(_subject, _message, cat);
 
-                //_t.Forum = "what is this field?";
-                //_t.Category = "automaten";
-
-                //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+                APIRepository apirepos = new APIRepository();
+                await apirepos.SendTicket(_ticket);
+               
             }
             else
             {
