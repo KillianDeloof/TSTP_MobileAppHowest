@@ -44,7 +44,7 @@ opens the debice's gallary and returns the photo the user has selected as MediaF
 converts a MediaFile to a Byte Array
 - public static byte[] MediaFileToByteArr(MediaFile mediafile)
 
-* MediaPicker
+* GPSRepository
 -----------------------
 this class is used to get gps location and handle distance calculations
 
@@ -63,11 +63,24 @@ returns the closest campus if it is closer then "minDistance"
 
 
 
-* flow van ticketobject
+* Ticket.cs
 -----------------------
-Ticket object is created via TicketRepos.cs
-The ticket object is created after the user is logged in, and then passed to the next windows.
-on the send window the final data of the ticket gets added once the user clicks send
-atachments are added to the alreasy existing ticket when the user selects an atachment.
 
-The Ticket object is only created and modifyd with the TicketRepos class.
+Create a new ticket object, an UserInfo object has to be given
+- public Ticket(UserInfo user)
+
+Fill in the nessesairy proppertys for the Ticket object
+- public void FormatTicket(string subject, string message, Category cat)
+
+Same method but with the option to add a Room object as location
+- public void FormatTicket(string subject, string message, Category cat, Room location)
+
+add a Byte[] attachment to the ticket
+- public void AddAtachment(byte[] byteArray)
+
+Add a MediaFile object attachment to the ticket
+- public void AddAtachment(MediaFile mediaFile)
+
+Setter is only public because it needs to be for the send-api, do not use Attachment propperty!
+-ticketObj.Attachments.add()
+
