@@ -21,7 +21,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\TicketRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CampusVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategoryVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FloorVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LocationSelectorVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MessageVM.cs" />
@@ -32,10 +31,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\CategoryPage.xaml.cs">
       <DependentUpon>CategoryPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\FloorPage.xaml.cs">
-      <DependentUpon>FloorPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\LocationSelectorPage.xaml.cs">
@@ -112,12 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MessagePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\FloorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

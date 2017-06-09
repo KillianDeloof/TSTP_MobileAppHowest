@@ -106,7 +106,7 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowMessagePage()
         {
-            await Navigation.PushAsync(new FloorPage(_ticket));
+            await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
     }
 }
