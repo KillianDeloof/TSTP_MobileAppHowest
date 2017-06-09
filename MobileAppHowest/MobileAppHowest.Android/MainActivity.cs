@@ -10,6 +10,7 @@ using MobileAppHowest.Models.MobileSDK;
 using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
+using Plugin.Media;
 
 namespace MobileAppHowest.Droid
 {
@@ -41,7 +42,7 @@ namespace MobileAppHowest.Droid
         #endregion
 
 
-        protected override void OnCreate(Bundle bundle)
+        protected async override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -52,6 +53,9 @@ namespace MobileAppHowest.Droid
             // Initialize Azure Mobile Apps
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             #endregion
+            //init camera --------------------------------------
+
+            //end enit camera-----------------------------
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 

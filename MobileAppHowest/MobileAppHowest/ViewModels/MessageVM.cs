@@ -9,6 +9,7 @@ using MobileAppHowest.Repositories;
 using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 using System.IO;
+using Plugin.Media;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -48,20 +49,10 @@ namespace MobileAppHowest.ViewModels
         {
             TicketRepository _ticketRepo = new TicketRepository();
             SubCategory cat = new SubCategory();
-            _t = tRepos.FormatTicket(_t, "Defect toestel", "Werkt niet, zie foto", cat);
-            await tRepos.SendTicket(_t);
+            _ticket = _ticketRepo.FormatTicket(_ticket, "Defect toestel", "Werkt niet, zie foto", cat);
+            await _ticketRepo.SendTicket(_ticket);
 
-            //_t.Name = "name: killian.deloof";
-            //_t.Subject = "need koffie";
-            //_t.PriorityId = new int?();
-            //_t.TopicId = new int?();
-            //_t.Email = "killian.deloof@student.howest.be";
-            //_t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
-
-            //_t.Forum = "what is this field?";
-            //_t.Category = "automaten";
-
-            //String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", _t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+            
         }
 
         private void AttachClicked(object obj)
@@ -73,24 +64,15 @@ namespace MobileAppHowest.ViewModels
         {
             MediaFile photo = await MediaPicker.PickPhoto();
             _tRepos.AddAtachment(_ticket, photo);
-            //Attachment at = new Attachment();
-            //at.Name = "photo.jpg";
-            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            //at.Content = bytearr;
-            //at.Type = "jpg";
-            //_t.Attachments.Add(at);
+
         }
 
         private async Task TakePhoto()
         {
+
             MediaFile photo = await MediaPicker.TakePhoto();
             _tRepos.AddAtachment(_ticket, photo);
-            //Attachment at = new Attachment();
-            //at.Name = "photo";
-            //byte[] bytearr = MediaPicker.MediaFileToByteArr(photo);
-            //at.Content = bytearr;
-            //at.Type = "jpg";
-            //_t.Attachments.Add(at);
+
         }
 
         private async Task GetPosition()

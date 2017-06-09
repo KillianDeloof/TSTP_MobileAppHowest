@@ -19,6 +19,9 @@ namespace MobileAppHowest.Repositories
         public static async Task<MediaFile> TakePhoto()
         {
 
+
+            await CrossMedia.Current.Initialize();
+
             if (CrossMedia.Current.IsCameraAvailable && CrossMedia.Current.IsTakePhotoSupported)
             {
                 // Supply media options for saving our photo after it's taken.
@@ -29,31 +32,19 @@ namespace MobileAppHowest.Repositories
                 };
 
                 // Take a photo of the business receipt.
-                MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
-
-
-
-
-                //await Task.Delay(100);
-                //MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-                //{
-                //    SaveToAlbum = true,
-                //    DefaultCamera = CameraDevice.Rear,
-                //    Directory = "OnePosInventory",
-                //    Name = "Media.jpg"
-                //});
-
-
-
-
-                return file;
+                MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);   
+                return file;   
             }
             else
             {
                 return null;
             }
 
+
+
+
         }
+
 
         public static async Task<MediaFile> PickPhoto()
         {
