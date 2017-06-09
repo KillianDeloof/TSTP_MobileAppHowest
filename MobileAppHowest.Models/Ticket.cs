@@ -37,22 +37,22 @@ namespace MobileAppHowest.Models
         /// <param name="subject">title of the ticket</param>
         /// <param name="message">the message of the ticket</param>
         /// <param name="cat">the subcategory of the ticket</param>
-        public void FormatTicket(string subject, string message, SubCategory cat)
+        public void FormatTicket(string subject, string message, Category cat)
         {
             //t.Subject = "need koffie";
             Subject = subject;
             //t.Message = "de koffie automaat werkt niet!, i need my koffie" + _r;
             Message = message;
             Forum = "No Location";
-            //t.Category = "automaten";
+            //t.MainCategory = "automaten";
             Category = cat.ToString();
             if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
             {
-                Category = "No Category";
+                Category = "No MainCategory";
             }
         }
 
-        public void FormatTicket(string subject, string message, SubCategory cat, Room location)
+        public void FormatTicket(string subject, string message, Category cat, Room location)
         {
             FormatTicket(subject, message, cat);
             Location = location;

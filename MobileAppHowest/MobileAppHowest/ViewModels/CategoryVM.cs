@@ -24,9 +24,9 @@ namespace MobileAppHowest.ViewModels
         INavigation Navigation = null;
         private Ticket _ticket;
 
-        // wordt opgevuld met de geselecteerde Category
-        private Category _selectedCategory;
-        public Category SelectedCategory
+        // wordt opgevuld met de geselecteerde MainCategory
+        private MainCategory _selectedCategory;
+        public MainCategory SelectedCategory
         {
             get { return _selectedCategory; }
             set {
@@ -37,8 +37,8 @@ namespace MobileAppHowest.ViewModels
 
         // lijst van categorieën die worden opgevraagd wanneer de lijst wordt geladen
         // inladen gebeurt in GetCategoryList()
-        private ObservableCollection<Category> _categoryList = null;
-        public ObservableCollection<Category> CategoryList
+        private ObservableCollection<MainCategory> _categoryList = null;
+        public ObservableCollection<MainCategory> CategoryList
         {
             get
             {
@@ -55,7 +55,7 @@ namespace MobileAppHowest.ViewModels
 
         private void GetCategoryList()
         {
-            CategoryList = new ObservableCollection<Category>(_dataRepo.GetHardCodedCategoryList());
+            CategoryList = new ObservableCollection<MainCategory>(_dataRepo.GetHardCodedCategoryList());
 
             List<String> catStringList = new List<String>
                 {
@@ -81,7 +81,7 @@ namespace MobileAppHowest.ViewModels
 
             //for (int i = 0; i < catStringList.Count; i++)
             //{
-            //    categoryList.Add(new Category()
+            //    categoryList.Add(new MainCategory()
             //    {
             //        CategoryUDesc = catStringList[i],
             //        Picture = categoryPictureList[i],
@@ -89,12 +89,12 @@ namespace MobileAppHowest.ViewModels
             //    });
             //}
 
-            //CategoryList = new ObservableCollection<Category>(categoryList);
+            //CategoryList = new ObservableCollection<MainCategory>(categoryList);
         }
 
-        //private List<Category> GetCategoryStringList()
+        //private List<MainCategory> GetCategoryStringList()
         //{
-        //    List<Category> categoryList = new List<Category>();
+        //    List<MainCategory> categoryList = new List<MainCategory>();
 
         //    List<String> catStringList = new List<String>
         //    {
@@ -116,14 +116,14 @@ namespace MobileAppHowest.ViewModels
         //        "ic_priority_high_black_24dp.png"
         //    };
 
-        //    List<Category> categoryList = new List<Category>()
+        //    List<MainCategory> categoryList = new List<MainCategory>()
         //    {
 
         //    };
 
         //    for (int i = 0; i < catStringList.Count; i++)
         //    {
-        //        categoryList.Add(new Category()
+        //        categoryList.Add(new MainCategory()
         //        {
         //            CategoryUDesc = catStringList[i],
         //            Picture = categoryPictureList[i],
@@ -138,7 +138,7 @@ namespace MobileAppHowest.ViewModels
         /// <summary>
         /// Tonen van de SubCategoryPage als de geselecteerde Category niet null is.
         /// </summary>
-        private async Task ShowCategoryPage(List<SubCategory> subCategoryList)
+        private async Task ShowCategoryPage(List<Category> subCategoryList)
         {
             if (_selectedCategory != null)
                 await Navigation.PushAsync(new SubCategoryPage(subCategoryList, _ticket));

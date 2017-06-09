@@ -11,7 +11,7 @@ namespace MobileAppHowest.ViewModels
 {
     public class SubCategoryVM : INotifyPropertyChanged
     {
-        public SubCategoryVM(INavigation navigation, List<SubCategory> subCategoryList, Ticket ticket)
+        public SubCategoryVM(INavigation navigation, List<Category> subCategoryList, Ticket ticket)
         {
             this.Navigation = navigation;
             this._subCategoryList = subCategoryList;
@@ -21,9 +21,9 @@ namespace MobileAppHowest.ViewModels
         private INavigation Navigation = null;
         private Ticket _ticket;
 
-        // SubCategory die geselecteerd wordt in de view
-        private SubCategory _selectedSubCategory;
-        public SubCategory SelectedSubCategory
+        // Category die geselecteerd wordt in de view
+        private Category _selectedSubCategory;
+        public Category SelectedSubCategory
         {
             get { return _selectedSubCategory; }
             set
@@ -37,8 +37,8 @@ namespace MobileAppHowest.ViewModels
         // lijst met SubCategorieën
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private List<SubCategory> _subCategoryList = null;
-        public List<SubCategory> SubCategoryList
+        private List<Category> _subCategoryList = null;
+        public List<Category> SubCategoryList
         {
             get
             {
@@ -50,9 +50,9 @@ namespace MobileAppHowest.ViewModels
         /// Opvullen van de subcategorieën.Voorlopig is dit dummy data.
         /// </summary>
         /// <returns>List<SubCategory></returns>
-        //private List<SubCategory> GetSubCategoryList()
+        //private List<Category> GetSubCategoryList()
         //{
-        //    _subCategoryList = new List<SubCategory>();
+        //    _subCategoryList = new List<Category>();
         //    List<String> descriptionList = new List<string>()
         //    {
         //        "Catering",
@@ -64,7 +64,7 @@ namespace MobileAppHowest.ViewModels
 
         //    for (int i = 0; i < descriptionList.Count; i++)
         //    {
-        //        _subCategoryList.Add(new SubCategory()
+        //        _subCategoryList.Add(new Category()
         //        {
         //            SubCategoryUDesc = descriptionList[i],
         //            Subtitle = "Subtitle test " + i,

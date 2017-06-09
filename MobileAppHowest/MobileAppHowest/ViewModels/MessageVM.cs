@@ -121,7 +121,7 @@ namespace MobileAppHowest.ViewModels
         {
             if (!String.IsNullOrEmpty(_subject) && !String.IsNullOrEmpty(_message))
             {
-                SubCategory cat = new SubCategory();
+                Category cat = new Category();
                 _ticket.FormatTicket(_subject, _message, cat);
 
                 APIRepository apirepos = new APIRepository();
