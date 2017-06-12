@@ -40,7 +40,7 @@
         <!--<BoxView HeightRequest="20" HorizontalOptions="FillAndExpand"/>-->
 
 
-        <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
+        <ListView x:Name="listViewCategory" HasUnevenRows="true" SeparatorVisibility="Default"                        
                       VerticalOptions="Fill" MinimumHeightRequest="65" HeightRequest="2500"
                       ItemsSource="{ Binding CategoryList }"
                       SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }"
