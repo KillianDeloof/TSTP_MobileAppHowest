@@ -69,8 +69,62 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task GetCampusList()
         {
-            List<Campus> campusList = await APIRepository.GetCampusList();
-            CampusList = new ObservableCollection<Campus>(campusList);
+            List<Campus> list = new List<Campus>
+            {
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                },
+                new Campus()
+                {
+                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+                    UCODE = "Campus GKG",
+                    Picture = "Campus_GKG.jpg"
+                }
+            };
+
+            return list;
+
+            //List<Campus> campusList = await APIRepository.GetCampusList();
+            //CampusList = new ObservableCollection<Campus>(campusList);
         }
 
         private void CampusSelected()
