@@ -116,8 +116,7 @@
                 <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
                       VerticalOptions="Fill" MinimumHeightRequest="50" HeightRequest="{Binding Height}"
                       ItemsSource="{ Binding PictureNameList }"
-                      SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }"
-                      >
+                      SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -130,7 +129,12 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Button HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Text="Dit moet databinding" FontSize="Small" BackgroundColor="#00FFFFFF" />
+                                        <Button HorizontalOptions="Start"
+                                                Command="{ Binding AttachmentListCommand }"
+                                                Grid.Row="0" Grid.Column="0"
+                                                Text="Dit moet databinding"
+                                                FontSize="Small"
+                                                BackgroundColor="#00FFFFFF" />
                                     </Grid>
                                 </ViewCell.View>
                             </ViewCell>

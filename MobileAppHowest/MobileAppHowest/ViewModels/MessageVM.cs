@@ -26,6 +26,7 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
+            AttachmentListCommand = new Command(AttachmentButtonClicked);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,7 +40,8 @@ namespace MobileAppHowest.ViewModels
         public Command PictureCommand { get; }
         public Command CategoryCommand { get; }
         public Command LocationCommand { get; }
-        
+        public Command AttachmentListCommand { get; }
+
         private String _message = "Type your message ...";
         public String Message
         {
@@ -88,6 +90,11 @@ namespace MobileAppHowest.ViewModels
         private void PictureClicked(object obj)
         {
             TakePhoto();
+        }
+
+        private void AttachmentButtonClicked(object obj)
+        {
+            // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
         }
 
         private void LocationClicked(object obj)
