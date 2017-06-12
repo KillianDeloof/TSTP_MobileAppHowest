@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIRepositiry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\DataBaseRepos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GPSRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\MediaPicker.cs" />
