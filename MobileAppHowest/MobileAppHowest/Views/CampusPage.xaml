@@ -30,8 +30,8 @@
                                     </Grid.ColumnDefinitions>
                                     <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" WidthRequest="100" HeightRequest="100" Source = "{Binding Picture}">
                                     </Image>
-                                    <Label Grid.Row="0" Grid.Column="2" Text="Graaf Karel de goedelaan" FontSize="Medium" />
-                                    <Label Grid.Row="1" Grid.Column="2" Text="ADDRESS" FontSize="Small" />
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{ Binding UDESC }" FontSize="Medium" />
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{ Binding Address }" FontSize="Small" />
                                 </Grid>
                             </ViewCell.View>
                         </ViewCell>
