@@ -15,8 +15,8 @@ namespace MobileAppHowest
 		{
             InitializeComponent();
 
-           // MainPage = new NavigationPage(new LoginPage());
-                      MainPage = new NavigationPage(new MessagePage(new Models.Ticket(new Models.UserInfo())));
+           MainPage = new NavigationPage(new LoginPage());
+           //          MainPage = new NavigationPage(new MessagePage(new Models.Ticket(new Models.UserInfo())));
 
         }
 

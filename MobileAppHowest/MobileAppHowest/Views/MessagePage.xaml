@@ -47,16 +47,16 @@
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
     <!-- Stacpanel blauw/rood example -->
-   
+
     <ContentPage.Content>
         <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand">
@@ -100,7 +100,7 @@
                         BackgroundColor="#44c8f5"
                         TextColor="White"
                         BorderRadius="10">
-                    
+
 
                 </Button>
                 <Label Text="Location:"/>
@@ -109,14 +109,74 @@
                         x:Name="Location"
                         BackgroundColor="#44c8f5"
                         TextColor="White"/>
+
+                <Label Text="Attachment(s):"/>
+                <!--LIJST-->
+
+                <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
+                      VerticalOptions="Fill" MinimumHeightRequest="50" HeightRequest="{Binding Height}"
+                      ItemsSource="{ Binding PictureNameList }"
+                      SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }"
+                      >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button HorizontalOptions="Start" Grid.Row="0" Grid.Column="0" Text="Dit moet databinding" FontSize="Small" BackgroundColor="#00FFFFFF" />
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <!--EINDE LIJST-->
             </StackLayout>
 
-            <StackLayout Grid.Row="1" Orientation="Horizontal" Grid.Column="0" BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Editor Text="{ Binding Message }" MinimumWidthRequest="100" WidthRequest="250" HorizontalOptions="FillAndExpand"/>
+            <!--<StackLayout Grid.Row="1" Orientation="Horizontal" Grid.Column="0" BackgroundColor="White"  HorizontalOptions="FillAndExpand">
+                <Editor Text="{ Binding Message }" />
                 <Button x:Name="btnPic" Command="{ Binding PictureCommand }" Image="ic_photo_camera_black_24dp.png" BackgroundColor="#00FFFFFF"/>
                 <Button x:Name="btnAttach" Command="{ Binding AttachCommand }" Image="ic_attach_file_black_24dp.png" BackgroundColor="#00FFFFFF"/>
-                <Button x:Name="btnSend"  Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png"/>
-            </StackLayout>
+                <Button x:Name="btnSend"  Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png" BorderRadius="5"/>
+            </StackLayout>-->
+
+
+
+            <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Editor Text="{ Binding Message }" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"/>
+                <Button Grid.Row="0" Grid.Column="3" x:Name="btnPic" Command="{ Binding PictureCommand }" Image="ic_photo_camera_black_24dp.png" BackgroundColor="#00FFFFFF"/>
+                <Button Grid.Row="0" Grid.Column="4" x:Name="btnAttach" Command="{ Binding AttachCommand }" Image="ic_attach_file_black_24dp.png" BackgroundColor="#00FFFFFF"/>
+                <Button Grid.Row="0" Grid.Column="5" x:Name="btnSend"  Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png" BorderRadius="5"/>
+
+
+            </Grid>
+
+
+
+
+
         </Grid>
     </ContentPage.Content>
 
