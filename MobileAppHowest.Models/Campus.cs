@@ -105,11 +105,8 @@ namespace MobileAppHowest.Models
             {
                 return "error, udesc or ucode = null";
             }
-            
+
         }
-
-
-
 
 
     }

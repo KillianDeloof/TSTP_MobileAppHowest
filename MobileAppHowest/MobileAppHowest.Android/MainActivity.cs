@@ -55,7 +55,7 @@ namespace MobileAppHowest.Droid
             #endregion
             //init camera --------------------------------------
 
-            //end enit camera-----------------------------
+            //end init camera-----------------------------
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 

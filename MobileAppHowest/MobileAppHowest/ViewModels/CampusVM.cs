@@ -68,31 +68,14 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task GetCampusList()
         {
-            //ObservableCollection<Campus> campusList = new ObservableCollection<Campus>
-            //{
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5, 8580 Kortrijk",
-            //        CDESC = "Campus GKG",
-            //        Picture = "campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Sint-Jorisstraat 21, 8500 Brugge",
-            //        CDESC = "Campus SJS",
-            //        Picture = "campus_SJS.jpg"
-            //    }
-            //};
 
-            //CampusList = campusList;
-            
             List<Campus> campusList = await APIRepository.GetCampusList();
             CampusList = new ObservableCollection<Campus>(campusList);
 
-            //foreach (Campus c in campusList)
-            //{
-            //    Console.WriteLine(c.ToString());
-            //}
+            foreach (Campus c in campusList)
+            {
+                Console.WriteLine(c.ToString());
+            }
         }
 
         /// <summary>
@@ -106,6 +89,13 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowMessagePage()
         {
+
+            //await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
+            string action = await App.Current.MainPage.DisplayActionSheet("Select Building", null, null, "A", "B", "Villa", "Testvalue");
+
+            //var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
+            //Debug.WriteLine("Action: " + action);
+
             await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
     }

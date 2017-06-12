@@ -23,5 +23,12 @@ namespace MobileAppHowest.Models
         /// The actual byte content of the Attachment
         /// </summary>
         public byte[] Content { get; set; }
+
+
+
+        public override string ToString()
+        {
+            return Name; 
+        }
     }
 }
