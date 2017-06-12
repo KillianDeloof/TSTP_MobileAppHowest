@@ -121,7 +121,7 @@ namespace MobileAppHowest.ViewModels
                 }
             };
 
-            return list;
+            CampusList = new ObservableCollection<Campus>(list);
 
             //List<Campus> campusList = await APIRepository.GetCampusList();
             //CampusList = new ObservableCollection<Campus>(campusList);
