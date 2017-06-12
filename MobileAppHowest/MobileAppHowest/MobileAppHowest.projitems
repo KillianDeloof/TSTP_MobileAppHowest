@@ -89,13 +89,16 @@
     <Content Include="$(MSBuildThisFileDirectory)Campus_SJS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_VES.jpeg" />
     <Content Include="$(MSBuildThisFileDirectory)HOWEST_Logo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)ic_attach_file_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_book_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_directions_bus_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_laptop_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_location_city_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_people_black_24dp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)ic_photo_camera_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_priority_high_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_send_black_24dp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)ic_send_white_24px.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_settings_input_hdmi_black_24dp.png" />
   </ItemGroup>
   <ItemGroup>
