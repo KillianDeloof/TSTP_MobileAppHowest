@@ -30,7 +30,8 @@ namespace MobileAppHowest.Repositories
                 {
                     Directory = "Receipts",
                     Name = $"{DateTime.UtcNow}.jpg",
-                    DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Rear
+                    DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Rear//,
+                    //PhotoSize = PhotoSize.Small
                 };
 
                 // Take a photo of the business receipt.
@@ -51,7 +52,13 @@ namespace MobileAppHowest.Repositories
             // Select a photo. 
             if (CrossMedia.Current.IsPickPhotoSupported)
             {
-                MediaFile photo = await CrossMedia.Current.PickPhotoAsync();
+                //var mediaOptions = new Plugin.Media.Abstractions.PickMediaOptions
+                //{
+                //    PhotoSize = PhotoSize.Small
+                //};
+
+
+                MediaFile photo = await CrossMedia.Current.PickPhotoAsync(/*mediaOptions*/);
                 return photo;
             }
             else
