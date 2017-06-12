@@ -127,7 +127,9 @@ namespace MobileAppHowest.ViewModels
 
                 APIRepository apirepos = new APIRepository();
                 await apirepos.SendTicket(_ticket);
-               
+                //DisplayAlert
+                await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
+
             }
             else
             {
