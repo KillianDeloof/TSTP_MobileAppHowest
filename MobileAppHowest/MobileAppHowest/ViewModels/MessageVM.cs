@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 using System.IO;
 using Plugin.Media;
+using MobileAppHowest.Views;
 
 namespace MobileAppHowest.ViewModels
 {

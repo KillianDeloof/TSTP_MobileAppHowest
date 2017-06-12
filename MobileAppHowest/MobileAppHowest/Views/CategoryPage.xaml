@@ -6,7 +6,7 @@
     
     <ListView x:Name="listView"
                   ItemsSource="{ Binding CategoryList }"
-                  SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }" 
+                  SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }"
                   HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
                   IsVisible="true">
