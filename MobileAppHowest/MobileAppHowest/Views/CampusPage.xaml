@@ -4,11 +4,6 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CampusPage">
 
-    
-    <!-- BUG   Ziet er op Android heel raar uit-->
-    
-    
-    
     <ListView x:Name="lvPlace"
               ItemsSource="{ Binding CampusList }"
               SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }">
