@@ -76,6 +76,7 @@ namespace MobileAppHowest.Models
             Attachments.Add(at);
         }
 
+
         public void AddAtachment(MediaFile mediaFile)
         {
             byte[] byteArr;
