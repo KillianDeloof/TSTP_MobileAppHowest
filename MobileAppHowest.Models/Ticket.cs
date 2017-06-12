@@ -60,7 +60,7 @@ namespace MobileAppHowest.Models
         {
             Attachment at = new Attachment();
             at.Name = DateTime.Now.ToString() + ".jpg";
-            if (byteArray.Length >= 3000000)
+            if (byteArray.Length <= 3000000)
             {
                 at.Content = byteArray;
             }
