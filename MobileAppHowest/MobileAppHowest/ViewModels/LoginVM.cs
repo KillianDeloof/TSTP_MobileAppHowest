@@ -30,6 +30,7 @@ namespace MobileAppHowest.ViewModels
         public async void LoginClicked()
         {
             _btnLogin.IsEnabled = false;
+            _btnLogin.Text = "Loading..."
             UserInfo ui = await _loginRepo.Login();
 
             // indien login ok is -> naar CategoryPage()

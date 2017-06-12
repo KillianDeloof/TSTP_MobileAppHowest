@@ -58,18 +58,22 @@ namespace MobileAppHowest.Models
 
         public void AddAtachment(byte[] byteArray)
         {
+            Attachment at = new Attachment();
+            at.Name = DateTime.Now.ToString() + ".jpg";
             if (byteArray.Length >= 3000000)
             {
-                Attachment at = new Attachment();
-                at.Name = DateTime.Now.ToString() + ".jpg";
                 at.Content = byteArray;
-                at.Type = "jpg";
-                Attachments.Add(at);
             }
             else
             {
                 //photo to big
+                byteArray = new byte[1];
+                byteArray[0] = 00000000;
+
             }
+            at.Content = byteArray;
+            at.Type = "jpg";
+            Attachments.Add(at);
         }
 
         public void AddAtachment(MediaFile mediaFile)
