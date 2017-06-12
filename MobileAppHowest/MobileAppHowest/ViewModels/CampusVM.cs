@@ -74,25 +74,25 @@ namespace MobileAppHowest.ViewModels
             //    {
             //        Address = "Graaf Karel de Goedelaan 5, 8580 Kortrijk",
             //        CDESC = "Campus GKG",
-            //        Picture = "campus_GKG.jpg"
+            //        Picture = "Campus_GKG.jpg"
             //    },
             //    new Campus()
             //    {
             //        Address = "Sint-Jorisstraat 21, 8500 Brugge",
             //        CDESC = "Campus SJS",
-            //        Picture = "campus_SJS.jpg"
+            //        Picture = "Campus_SJS.jpg"
             //    }
             //};
 
             //CampusList = campusList;
-            
+
             List<Campus> campusList = await APIRepository.GetCampusList();
             CampusList = new ObservableCollection<Campus>(campusList);
 
-            //foreach (Campus c in campusList)
-            //{
-            //    Console.WriteLine(c.ToString());
-            //}
+            foreach (Campus c in campusList)
+            {
+                Console.WriteLine(c.ToString());
+            }
         }
 
         /// <summary>

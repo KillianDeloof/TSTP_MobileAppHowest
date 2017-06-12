@@ -4,35 +4,41 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CampusPage">
 
-    <ListView x:Name="lvPlace"
-              ItemsSource="{ Binding CampusList }"
+    <ScrollView>
+        <StackLayout>
+            <BoxView HeightRequest="10" HorizontalOptions="FillAndExpand"/>
+          
+
+            <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
+                      VerticalOptions="Fill" MinimumHeightRequest="50" HeightRequest="{Binding Height}"
+                       ItemsSource="{ Binding CampusList }"
               SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }">
-
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <Grid x:Name="controlGrid" RowSpacing="1" ColumnSpacing="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="213*"/>
-                            <ColumnDefinition Width="305*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Image  Grid.RowSpan="5" VerticalOptions="Start" Source="{ Binding Picture }"/>
-                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start" FontSize="30"/>
-                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="2" VerticalOptions="Center"/>
-                        <Label Text="Label" Grid.Column="1" HorizontalOptions="Start" Grid.Row="3" VerticalOptions="Center"/>
-                    </Grid>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-
-    </ListView>
-
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Margin="0,0,50,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="20"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" WidthRequest="100" HeightRequest="100" Source = "{Binding Picture}">
+                                    </Image>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="Graaf Karel de goedelaan" FontSize="Medium" />
+                                    <Label Grid.Row="1" Grid.Column="2" Text="ADDRESS" FontSize="Small" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
