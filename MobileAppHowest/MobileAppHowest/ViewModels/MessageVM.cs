@@ -136,6 +136,27 @@ namespace MobileAppHowest.ViewModels
             }
         }
 
+        //private List<String> _pictureNameList;
+
+        //public List<String> PictureNameList
+        //{
+        //    get {
+        //        return _pictureNameList;
+        //    }
+        //    set {
+        //        _pictureNameList = value;
+        //    }
+        //}
+
+
+        //private void GetAttachmentNameList()
+        //{
+        //    List<String> AttachmentNameList = new List<String>();
+        //    _ticket.Attachments.ForEach(a => AttachmentNameList.Add(a.Name));
+
+        //    PictureNameList = AttachmentNameList;
+        //}
+
         // opvragen van locatie
         //private async Task GetPosition()
         //{

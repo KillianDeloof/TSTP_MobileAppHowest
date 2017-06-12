@@ -1,4 +1,6 @@
 ﻿using MobileAppHowest.Models;
+using MobileAppHowest.Models.Filters;
+using MobileAppHowest.Repositories;
 using MobileAppHowest.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,64 +18,102 @@ namespace MobileAppHowest.Views
 	{
 		public LocationSelectorPage(Ticket ticket)
 		{
-			InitializeComponent();
+            this._ticket = ticket;
+            InitializeComponent();
             BindingContext = new LocationSelectorVM(Navigation, ticket);
-            CreateAccordion(GetFloorList());
-		}
-
-        private List<Floor> GetFloorList()
-        {
-            return new List<Floor>
-            {
-                new Floor()
-                {
-                    UDESC = "A"
-                },
-                new Floor()
-                {
-                    UDESC = "B"
-                },
-                new Floor()
-                {
-                    UDESC = "C"
-                }
-            };
+            Start();
         }
 
-        private List<Room> GetRoomList()
+        private APIRepository _apiRepo = new APIRepository();
+        private Ticket _ticket = null;
+
+        private async Task<List<Floor>> GetFloorList()
         {
-            return new List<Room>
-            {
-                new Room()
-                {
-                    UDESC = "GKG.A.A.0.0.7"
-                },
+            // TO DO:
+            // mag niet als constante!
+            //_ticket.Building.UDESC = "GKG.A";
 
-                new Room()
-                {
-                    UDESC = "GKG.A.A.0.0.8"
-                },
+            List<Floor> floorList = await _apiRepo.GetFloorList();
+            List<Floor> filteredList = floorList.ToList().Where(f => f.UDESC.Split('.')[1] == _ticket.Building.UDESC.Split('.')[1]).ToList<Floor>();
 
-                new Room()
-                {
-                    UDESC = "GKG.A.A.0.0.9"
-                }
-            };
+            return filteredList;
+            
+            //-- dummy data --//
+            
+            //return new List<Floor>
+            //{
+            //    new Floor()
+            //    {
+            //        UDESC = "A"
+            //    },
+            //    new Floor()
+            //    {
+            //        UDESC = "B"
+            //    },
+            //    new Floor()
+            //    {
+            //        UDESC = "C"
+            //    }
+            //};
         }
 
-        private void CreateAccordion(List<Floor> floorList)
+        private async Task<List<Room>> GetRoomList()
         {
-            foreach(Floor floor in floorList)
+            List<Room> roomList = await _apiRepo.GetRoomList(new RoomFilter());
+            return roomList;
+
+
+            //-- dummy data --//
+
+            //return new List<Room>
+            //{
+            //    new Room()
+            //    {
+            //        UDESC = "GKG.A.A.0.0.7"
+            //    },
+
+            //    new Room()
+            //    {
+            //        UDESC = "GKG.A.A.0.0.8"
+            //    },
+
+            //    new Room()
+            //    {
+            //        UDESC = "GKG.A.A.0.0.9"
+            //    }
+            //};
+        }
+
+        private void Start()
+        {
+            CreateAccordion();
+        }
+
+        private async Task CreateAccordion()
+        {
+            List<Floor> floorList = await GetFloorList();
+            List<Room> roomList = await GetRoomList();
+
+            foreach (Floor floor in floorList)
             {
-                CreateAccordeonItemView(GetRoomList());
+                List<Room> filteredList = roomList
+                    .Where(r => (r.UDESC.Split('.')[0] == floor.UDESC.Split('.')[0]) &&
+                        (r.UDESC.Split('.')[1] == floor.UDESC.Split('.')[1]) &&
+                        (r.UDESC.Split('.')[3] == floor.UDESC.Split('.')[3]))
+                    .ToList<Room>();
+                
+                CreateAccordeonItemView(filteredList, floor.UDESC.Split('.')[3]);
             }
         }
 
-        private void CreateAccordeonItemView(List<Room> roomList)
+        private void CreateAccordeonItemView(List<Room> roomList, String floorNumber)
         {
+            if (roomList.Count == 0)
+                return;
+
             var itemView = new Xamarin.CustomControls.AccordionItemView()
             {
-                Text = "Floor x",
+                Text = "Floor " + floorNumber,
                 ActiveTextColor = Xamarin.Forms.Color.White,
                 TextColor = Xamarin.Forms.Color.White,
                 BackgroundColor = new Xamarin.Forms.Color(
@@ -102,10 +142,9 @@ namespace MobileAppHowest.Views
 
             foreach (Room room in roomList)
             {
-                Console.WriteLine();
                 var label = new Label()
                 {
-                    Text = room.UDESC.Split('.')[2].ToString() + "." + room.UDESC.Split('.')[3].ToString() + "." + room.UDESC.Split('.')[4].ToString() + "." + room.UDESC.Split('.')[5].ToString(),
+                    Text = room.UDESC.ToString(),
                     HorizontalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand,
                     VerticalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand
                 };

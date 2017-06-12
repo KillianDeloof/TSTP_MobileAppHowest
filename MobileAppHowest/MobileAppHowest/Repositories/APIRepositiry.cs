@@ -46,6 +46,16 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        public async Task<List<Wing>> GetWingList()
+        {
+            List<Wing> result = new List<Wing>();
+            String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/Wing", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
+            List<Wing> page = JsonConvert.DeserializeObject<List<Wing>>(pagejson);
+            result.AddRange(page);
+
+            return result;
+        }
+
         /// <summary>
         /// Ophalen van de lijst van verdiepen, aangeleverd door de API.
         /// Hierbij wordt gebruik gemaakt van een FloorFilter.

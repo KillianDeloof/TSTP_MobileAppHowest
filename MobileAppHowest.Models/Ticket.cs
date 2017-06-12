@@ -27,7 +27,7 @@ namespace MobileAppHowest.Models
         }
 
 
-
+        public int WingID { get; set; }
 
         /// <summary>
         /// adds the required fields to the ticket
@@ -154,10 +154,9 @@ namespace MobileAppHowest.Models
         /// </summary>
         public Dictionary<string, object> ExtraFields { get; private set; }
 
+        public Building Building { get; set; }
 
-
-
-
+        public Wing Wing { get; set; }
 
 
 

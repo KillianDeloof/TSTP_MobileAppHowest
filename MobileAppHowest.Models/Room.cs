@@ -23,8 +23,8 @@ namespace MobileAppHowest.Models
         public int? RoomCategoryID { get; set; }
         public int? RoomFunctionID { get; set; }
         public double? Surface { get; set; }
-        public int? UtilisationCapacity { get; set; }    //number of chairs for students
-        public int? OccupationCapacity { get; set; }     //1 or 0: 1 can be rostered, 0 cannot
+        public int? UtilisationCapacity { get; set; }       //number of chairs for students
+        public int? OccupationCapacity { get; set; }        //1 or 0: 1 can be rostered, 0 cannot
         public String ConstructionPlanCode { get; set; }    //the id on the constructionplan
         public String IMKey { get; set; }
         public Boolean Rosterable { get; set; }
@@ -39,6 +39,7 @@ namespace MobileAppHowest.Models
         public String Furniture { get; set; }
         public String Facilities { get; set; }
         public String FloorMaterial { get; set; }
+        public Floor Floor { get; set; }
 
         public override string ToString()
         {
