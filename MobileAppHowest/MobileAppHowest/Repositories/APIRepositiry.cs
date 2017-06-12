@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace MobileAppHowest.Repositories
 {
-    public class APIDataGetRepository
+    public class APIRepository
     {
+
+        public async Task SendTicket(Ticket t)
+        {
+            String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
+        }
+
+
         /// <summary>
         /// Ophalen van de lijst van gebouwen, aangeleverd door de API.
         /// </summary>
@@ -99,46 +106,46 @@ namespace MobileAppHowest.Repositories
             return result;
         }
         
-        public List<Category> GetHardCodedCategoryList()
+        public List<MainCategory> GetHardCodedCategoryList()
         {
-            List<Category> list = new List<Category>();
+            List<MainCategory> list = new List<MainCategory>();
 
-            Category campus = new Category();
+            MainCategory campus = new MainCategory();
             campus.CategoryUDesc = "Campus";
             campus.Picture = "ic_location_city_black_24dp.png";
             list.Add(campus);
 
-            Category faciliteiten = new Category();
+            MainCategory faciliteiten = new MainCategory();
             faciliteiten.CategoryUDesc = "Faciliteiten";
             faciliteiten.Picture = "ic_directions_bus_black_24dp.png";
             list.Add(faciliteiten);
 
-            Category lesmateriaal = new Category();
+            MainCategory lesmateriaal = new MainCategory();
             lesmateriaal.CategoryUDesc = "Study Materials";
             lesmateriaal.Picture = "ic_book_black_24dp.png";
             list.Add(lesmateriaal);
 
-            Category netwerk = new Category();
+            MainCategory netwerk = new MainCategory();
             netwerk.CategoryUDesc = "Network";
             netwerk.Picture = "ic_settings_input_hdmi_black_24dp.png";
             list.Add(netwerk);
 
-            Category softwareHardware = new Category();
+            MainCategory softwareHardware = new MainCategory();
             softwareHardware.CategoryUDesc = "Software & hardware";
             softwareHardware.Picture = "ic_laptop_black_24dp.png";
             list.Add(softwareHardware);
 
-            Category organisatie = new Category();
+            MainCategory organisatie = new MainCategory();
             organisatie.CategoryUDesc = "Organization";
             organisatie.Picture = "ic_people_black_24dp.png";
             list.Add(organisatie);
 
-            Category other = new Category();
+            MainCategory other = new MainCategory();
             other.CategoryUDesc = "Other";
             other.Picture = "ic_priority_high_black_24dp.png";
             list.Add(other);
 
-            foreach (Category cat in list)
+            foreach (MainCategory cat in list)
             {
                 cat.SubCategoryList = GetHardcodedSubCat(cat);
             }
@@ -152,40 +159,40 @@ namespace MobileAppHowest.Repositories
         /// <param name="cat"></param>
         /// <returns>A list of sub categories</returns>
 
-        private static List<SubCategory> GetHardcodedSubCat(Category cat)
+        private static List<Category> GetHardcodedSubCat(MainCategory cat)
         {
-            List<SubCategory> list = new List<SubCategory>();
+            List<Category> list = new List<Category>();
 
-            SubCategory bookSales = new SubCategory();
+            Category bookSales = new Category();
             bookSales.SubCategoryUDesc = "BookSales";
 
-            SubCategory financial = new SubCategory();
+            Category financial = new Category();
             financial.SubCategoryUDesc = "Financial";
 
             switch (cat.CategoryUDesc)
             {
                 case "Campus":
-                    SubCategory cateringAndVending = new SubCategory();
+                    Category cateringAndVending = new Category();
                     cateringAndVending.SubCategoryUDesc = "Catering And Vending Machines";
                     cateringAndVending.IsLocationRequired = true;
                     list.Add(cateringAndVending);
 
-                    SubCategory furniture = new SubCategory();
+                    Category furniture = new Category();
                     furniture.SubCategoryUDesc = "Furniture";
                     furniture.IsLocationRequired = true;
                     list.Add(furniture);
 
-                    SubCategory wasteManegment = new SubCategory();
+                    Category wasteManegment = new Category();
                     wasteManegment.SubCategoryUDesc = "Waste Manegment";
                     wasteManegment.IsLocationRequired = true;
                     list.Add(wasteManegment);
 
-                    SubCategory sanitary = new SubCategory();
+                    Category sanitary = new Category();
                     sanitary.SubCategoryUDesc = "Sanitary";
                     sanitary.IsLocationRequired = true;
                     list.Add(sanitary);
 
-                    SubCategory classRooms = new SubCategory();
+                    Category classRooms = new Category();
                     classRooms.SubCategoryUDesc = "ClassRooms and Maintenance";
                     classRooms.IsLocationRequired = true;
                     list.Add(classRooms);
@@ -193,21 +200,21 @@ namespace MobileAppHowest.Repositories
                     break;
 
                 case "Faciliteiten":
-                    SubCategory mobility = new SubCategory();
+                    Category mobility = new Category();
                     mobility.SubCategoryUDesc = "Mobility";
                     list.Add(mobility);
 
                     list.Add(bookSales);
 
-                    SubCategory sportOffers = new SubCategory();
+                    Category sportOffers = new Category();
                     sportOffers.SubCategoryUDesc = "Sport Offers";
                     list.Add(sportOffers);
 
-                    SubCategory printing = new SubCategory();
+                    Category printing = new Category();
                     printing.SubCategoryUDesc = "Printing";
                     list.Add(printing);
 
-                    SubCategory studdySupport = new SubCategory();
+                    Category studdySupport = new Category();
                     studdySupport.SubCategoryUDesc = "Study Support";
                     list.Add(studdySupport);
 
@@ -216,13 +223,13 @@ namespace MobileAppHowest.Repositories
                     break;
 
                 case "Study Materials":
-                    SubCategory studyMaterials = new SubCategory();
+                    Category studyMaterials = new Category();
                     studyMaterials.SubCategoryUDesc = "Study Materials";
                     list.Add(studyMaterials);
 
                     list.Add(bookSales);
 
-                    SubCategory studyPlatform = new SubCategory();
+                    Category studyPlatform = new Category();
                     studyPlatform.SubCategoryUDesc = "Study Platform";
                     list.Add(studyPlatform);
 
@@ -231,71 +238,71 @@ namespace MobileAppHowest.Repositories
                     break;
 
                 case "Network":
-                    SubCategory wifi = new SubCategory();
+                    Category wifi = new Category();
                     wifi.SubCategoryUDesc = "WiFi";
                     wifi.IsLocationRequired = true;
                     list.Add(wifi);
 
-                    SubCategory networkAcces = new SubCategory();
+                    Category networkAcces = new Category();
                     networkAcces.SubCategoryUDesc = "Network Access";
                     list.Add(networkAcces);
 
-                    SubCategory netWorkMaintenance = new SubCategory();
+                    Category netWorkMaintenance = new Category();
                     netWorkMaintenance.SubCategoryUDesc = "Network Maintenance";
                     netWorkMaintenance.IsLocationRequired = true;
                     list.Add(netWorkMaintenance);
 
-                    SubCategory generalNetwork = new SubCategory();
+                    Category generalNetwork = new Category();
                     generalNetwork.SubCategoryUDesc = "General Network";
                     list.Add(generalNetwork);
 
                     break;
 
                 case "Software AND Hardware":
-                    SubCategory softWare = new SubCategory();
+                    Category softWare = new Category();
                     softWare.SubCategoryUDesc = "SoftWare";
                     list.Add(softWare);
 
-                    SubCategory sharepointDocenten = new SubCategory();
+                    Category sharepointDocenten = new Category();
                     sharepointDocenten.SubCategoryUDesc = "Sharepoint Docenten";
                     sharepointDocenten.IsStaffRequired = true;
                     list.Add(sharepointDocenten);
 
-                    SubCategory helpdesk = new SubCategory();
+                    Category helpdesk = new Category();
                     helpdesk.SubCategoryUDesc = "HelpDesk AND Remote Helpdesk";
                     list.Add(helpdesk);
 
-                    SubCategory macSupport = new SubCategory();
+                    Category macSupport = new Category();
                     macSupport.SubCategoryUDesc = "Mac Support";
                     list.Add(macSupport);
 
-                    SubCategory signPost = new SubCategory();
+                    Category signPost = new Category();
                     signPost.SubCategoryUDesc = "SignPost";
                     list.Add(signPost);
 
                     break;
 
                 case "Organization":
-                    SubCategory generalOrganization = new SubCategory();
+                    Category generalOrganization = new Category();
                     generalOrganization.SubCategoryUDesc = "General organization";
                     list.Add(generalOrganization);
 
-                    SubCategory events = new SubCategory();
+                    Category events = new Category();
                     events.SubCategoryUDesc = "Events";
                     list.Add(events);
 
-                    SubCategory onderwijsOrganizatie = new SubCategory();
+                    Category onderwijsOrganizatie = new Category();
                     onderwijsOrganizatie.SubCategoryUDesc = "Educational organization";
                     list.Add(onderwijsOrganizatie);
 
                     break;
 
                 case "Other":
-                    SubCategory energyManegment = new SubCategory();
+                    Category energyManegment = new Category();
                     energyManegment.SubCategoryUDesc = "Energy Manegment";
                     list.Add(energyManegment);
 
-                    SubCategory other = new SubCategory();
+                    Category other = new Category();
                     other.SubCategoryUDesc = "Other";
                     list.Add(other);
 
@@ -313,13 +320,13 @@ namespace MobileAppHowest.Repositories
         /// Opvragen van de lijst van verschillende categorieën problemen, aangeleverd door de API.
         /// </summary>
         /// <returns>Task<List<Category>></returns>
-        //public async Task<List<Category>> GetCategoryList()
+        //public async Task<List<MainCategory>> GetCategoryList()
         //{
         //    try
         //    {
-        //        List<Category> result = new List<Category>();
+        //        List<MainCategory> result = new List<MainCategory>();
         //        String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<string>("/api/category", System.Net.Http.HttpMethod.Get, null, System.Threading.CancellationToken.None);
-        //        List<Category> page = JsonConvert.DeserializeObject<List<Category>>(pagejson);
+        //        List<MainCategory> page = JsonConvert.DeserializeObject<List<MainCategory>>(pagejson);
         //        result.AddRange(page);
 
         //        //List<String> categoryList = new List<string>();

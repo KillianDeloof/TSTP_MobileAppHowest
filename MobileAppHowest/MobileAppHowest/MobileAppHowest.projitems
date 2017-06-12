@@ -12,13 +12,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIDataGetRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIRepositiry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GPSRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\ICameraService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\IFileService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\MediaPicker.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Repositories\TicketRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CampusVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CategoryVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LocationSelectorVM.cs" />
@@ -81,7 +78,7 @@
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\VAG_Rounded_Bold.ttf" />
     <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Campus _LPS.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_LPS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_BUD.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_GKG.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_Level.jpg" />
