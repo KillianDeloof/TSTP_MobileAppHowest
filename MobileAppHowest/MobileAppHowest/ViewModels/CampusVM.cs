@@ -89,6 +89,13 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowMessagePage()
         {
+
+            //await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
+            string action = await App.Current.MainPage.DisplayActionSheet("Select Building", null, null, "A", "B", "Villa", "Testvalue");
+
+            //var action = await DisplayActionSheet("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
+            //Debug.WriteLine("Action: " + action);
+
             await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
     }
