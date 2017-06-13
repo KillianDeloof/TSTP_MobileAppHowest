@@ -22,6 +22,7 @@ namespace MobileAppHowest.ViewModels
             this.Navigation = navigation;
             this._ticket = newTicket;
             this._buttonSend = btnSend;
+
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
             PictureCommand = new Command(PictureClicked);
