@@ -114,9 +114,9 @@
                 <!--LIJST-->
 
                 <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
-                      VerticalOptions="Fill" MinimumHeightRequest="50" HeightRequest="{Binding Height}"
+                      VerticalOptions="Fill" MinimumHeightRequest="50"
                       ItemsSource="{ Binding PictureNameList }"
-                      SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }" >
+                      SelectedItem="{ Binding AttachmentListCommand }" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -129,9 +129,9 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Button Command="{ Binding AttachmentListCommand }"
-                                                Grid.Row="0" Grid.Column="0"
-                                                Text="Dit moet databinding"
+                                        <Button Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="{ Binding Name }"
                                                 FontSize="Small"
                                                 BackgroundColor="#00FFFFFF"
                                                 HorizontalOptions="FillAndExpand"/>

@@ -58,34 +58,40 @@ namespace MobileAppHowest.Models
 
         public void AddAtachment(byte[] byteArray)
         {
-            Attachment at = new Attachment();
-            at.Name = DateTime.Now.ToString() + ".jpg";
+            Attachment at = new Attachment()
+            {
+                Name = DateTime.Now.ToString() + ".jpg"
+            };
+
             if (byteArray.Length <= 3000000)
             {
                 at.Content = byteArray;
             }
             else
             {
-                //photo to big
+                // photo to big
                 byteArray = new byte[1];
                 byteArray[0] = 00000000;
 
             }
             at.Content = byteArray;
             at.Type = "jpg";
+
             Attachments.Add(at);
         }
 
 
-        public void AddAtachment(MediaFile mediaFile)
+        public void AddAttachment(MediaFile mediaFile)
         {
             byte[] byteArr;
+
             using (var memoryStream = new MemoryStream())
             {
                 mediaFile.GetStream().CopyTo(memoryStream);
                 mediaFile.Dispose();
                 byteArr = memoryStream.ToArray();
             }
+
             AddAtachment(byteArr);
         }
 
@@ -188,7 +194,7 @@ namespace MobileAppHowest.Models
         /// <summary>
         /// The list of attachments to add to this Ticket
         /// </summary>
-        public List<Attachment> Attachments { get; set; }//has to be public set to be able to sent to api
+        public List<Attachment> Attachments { get; set; } // has to be public set to be able to sent to api
 
 
         /// <summary>
