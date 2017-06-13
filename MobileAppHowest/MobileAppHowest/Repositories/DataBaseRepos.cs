@@ -10,43 +10,65 @@ namespace MobileAppHowest.Repositories
     {
 
 
-        public void CreateDatabase()
+        public void CreateDatabase(object sourceFile)
         {
 
         }
-        public void InitializeDatabase(string filePath)
+        public void ConnectToDatabase(string filePath)
+        {
+            
+        }
+        public void UpdateDatabase()
         {
 
         }
+        public DateTime GetLastUpdate()
+        {
+            return DateTime.Now;
+        }
+        public void SafeLastUpdated()
+        {
+
+        }
+
+        //-----------------------------------------data------------------------------------------
         public UserInfo GetUserInfo()
         {
             return null;
         }
-        public Campus GetCampus()
+        public List<Campus> GetCampusList()
         {
             return null;
         }
-        public Building GetBuildings()
+        public List<Building> GetBuildingList()
         {
             return null;
         }
-        public Building GetBuildings(Campus campusFilter)
+        public List<Building> GetBuildingList(Campus campusFilter)
         {
             return null;
         }
-        public Floor GetFloor()
+        public List<Floor> GetFloorList()
         {
             return null;
         }
-        public Floor GetFloor(Building buildingFilter)
+        public List<Floor> GetFloorList(Building buildingFilter)
         {
             return null;
         }
-        public Room GetRoom()
+        public List<Room> GetRoomList()
         {
             return null;
         }
-        public Room GetRoom(Floor floorFilter)
+        public List<Room> GetRoomList(Floor floorFilter)
+        {
+            return null;
+        }
+        public List<MainCategory> GetMainCategorys()
+        {
+            return null;
+        }
+        public List<Category> GetCategorys(MainCategory mainCat)
         {
             return null;
         }
@@ -54,9 +76,30 @@ namespace MobileAppHowest.Repositories
         {
 
         }
+        public void SafeCampusList(List<Campus> campusList)
+        {
 
+        }
+        public void SafeBuildingList(List<Building> buildingList)
+        {
 
+        }
+        public void SafeFloorList(List<Floor> floorList)
+        {
 
+        }
+        public void SafeRoomList(List<Room> roomList)
+        {
+
+        }
+        public void SafeMainCatList(List<MainCategory> mainCatList)
+        {
+
+        }
+        public void SafeCatList(List<Category> catList)
+        {
+
+        }
 
 
     }
