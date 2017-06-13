@@ -129,8 +129,7 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Button HorizontalOptions="Start"
-                                                Command="{ Binding AttachmentListCommand }"
+                                        <Button Command="{ Binding AttachmentListCommand }"
                                                 Grid.Row="0" Grid.Column="0"
                                                 Text="Dit moet databinding"
                                                 FontSize="Small"
