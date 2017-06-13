@@ -142,11 +142,13 @@ namespace MobileAppHowest.ViewModels
                 bool answer = await App.Current.MainPage.DisplayAlert("Send Ticket?", "Send Ticket?", "yes", "no");
                 if (answer == true)
                 {
+                    _buttonSend.IsEnabled = false;
                     _ticket.FormatTicket(_subject, _message, _ticket.Category);
                     APIRepository apirepos = new APIRepository();
                     await apirepos.SendTicket(_ticket);
                     //DisplayAlert
                     await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
+                    _buttonSend.IsEnabled = true;
                 }
             }
             else
