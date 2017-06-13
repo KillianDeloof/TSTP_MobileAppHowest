@@ -126,7 +126,7 @@ namespace MobileAppHowest.Repositories
             list.Add(campus);
 
             MainCategory faciliteiten = new MainCategory();
-            faciliteiten.CategoryUDesc = "Faciliteiten";
+            faciliteiten.CategoryUDesc = "Facilities";
             faciliteiten.Picture = "ic_directions_bus_black_24dp.png";
             list.Add(faciliteiten);
 
@@ -209,7 +209,7 @@ namespace MobileAppHowest.Repositories
 
                     break;
 
-                case "Faciliteiten":
+                case "Facilities":
                     Category mobility = new Category();
                     mobility.SubCategoryUDesc = "Mobility";
                     list.Add(mobility);
