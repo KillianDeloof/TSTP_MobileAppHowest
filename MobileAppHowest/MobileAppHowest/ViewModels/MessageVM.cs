@@ -188,16 +188,16 @@ namespace MobileAppHowest.ViewModels
 
         private void GetAttachmentNameList()
         {
-            //List<String> AttachmentNameList = new List<String>();
-            //_ticket.Attachments.ForEach(a => AttachmentNameList.Add(a.Name));
+            List<String> AttachmentNameList = new List<String>();
+            _ticket.Attachments.ForEach(a => AttachmentNameList.Add(a.Name));
 
-            //PictureNameList = AttachmentNameList;
-            PictureNameList = new List<String>
-            {
-                "photo01.jpg",
-                "photo02.jpg",
-                "photo03.jpg"
-            };
+            PictureNameList = AttachmentNameList;
+            //PictureNameList = new List<String>
+            //{
+            //    "photo01.jpg",
+            //    "photo02.jpg",
+            //    "photo03.jpg"
+            //};
         }
 
         // opvragen van locatie
