@@ -268,7 +268,7 @@ namespace MobileAppHowest.Repositories
 
                     break;
 
-                case "Software AND Hardware":
+                case "Software & hardware":
                     Category softWare = new Category();
                     softWare.SubCategoryUDesc = "SoftWare";
                     list.Add(softWare);
