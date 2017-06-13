@@ -20,13 +20,14 @@ namespace MobileAppHowest.Models
         {
             Attachments = new List<Attachment>();
             ExtraFields = new Dictionary<string, object>();
-            Name = "name: " + user.FirstName + "." + user.LastName;
+            //Name = "name: " + user.FirstName + "." + user.LastName;
             PriorityId = new int?();
             TopicId = new int?();
-            Email = user.Email;
+            //Email = user.Email;
+            UserInfo = user;
         }
 
-
+        public UserInfo UserInfo { get; private set; }
         public int WingID { get; set; }
 
         /// <summary>
@@ -37,7 +38,6 @@ namespace MobileAppHowest.Models
         /// <param name="cat">the subcategory of the ticket</param>
         public void FormatTicket(string subject, string message, string cat)
         {
-
             Subject = subject;
             Message = message;
             Forum = "No Location";
@@ -94,15 +94,51 @@ namespace MobileAppHowest.Models
         /// value must parse into an e-mail address otherwise OsTicket will
         /// throw an exception on submission
         /// </summary>
-        public string Email { get; private set; }
+        //public string Email { get; private set; }
+
+
+        private string email;
+
+        public string Email
+        {
+            get { return UserInfo.Email; }
+            private set { email = value; }
+        }
+
 
         /// <summary>
         /// The name of the user submitting the ticket.
         /// </summary>
-        public string Name { get; private set; }
+        //public string Name { get; private set; }
+
+        private string name;
+
+        public string Name
+        {
+            get { return "name: " + UserInfo.FirstName + "." + UserInfo.LastName; ; }
+            private set { name = value; }
+        }
+
 
         public string Forum { get; set; }
-        public string Category { get; private set; }
+        //public string Category { get; private set; }
+
+        private string category;
+
+        public string Category
+        {
+            get { return category; }
+            private set { category = value; }
+        }
+
+        private Category catObj;
+
+        public Category CatObj
+        {
+            get { return catObj; }
+            set { catObj = value; }
+        }
+
         public string Source { get; set; }
 
         public Room Location { get; private set; }
