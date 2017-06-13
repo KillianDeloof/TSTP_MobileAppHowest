@@ -39,8 +39,20 @@ namespace MobileAppHowest.Models
         public void FormatTicket(string subject, string message, Category cat)
         {
             Subject = subject;
-            Message = message;
-            Forum = "No Location";
+            if (!String.IsNullOrEmpty(Location.ToString()))
+            {
+                Message = message + "       Location: " + Location;
+            }
+            else
+            {
+                Message = message;
+            }
+            string roles = "";
+            foreach (string role in UserInfo.Roles)
+            {
+                roles = roles + role;
+            }
+            Forum = roles;
             CatObj = cat;
             if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
             {
@@ -50,9 +62,8 @@ namespace MobileAppHowest.Models
 
         public void FormatTicket(string subject, string message, Category cat, Room location)
         {
-            FormatTicket(subject, message, cat);
             Location = location;
-            Forum = "Location: " + location.UDESC;      
+            FormatTicket(subject, message, cat);      
         }
 
 

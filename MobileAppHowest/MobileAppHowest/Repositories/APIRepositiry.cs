@@ -11,7 +11,11 @@ namespace MobileAppHowest.Repositories
 {
     public class APIRepository
     {
-
+        /// <summary>
+        /// sends the completed ticket to the api (use ticketObj.FormatTicket to complete the ticket)
+        /// </summary>
+        /// <param name="t">the ticket to be send</param>
+        /// <returns></returns>
         public async Task SendTicket(Ticket t)
         {
             String res = await AzureMobileClient.DefaultClient.InvokeApiAsync<Ticket, string>("/api/OSTicket", t, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
@@ -46,6 +50,10 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+        /// <summary>
+        /// gets the wings from the api
+        /// </summary>
+        /// <returns>list of wing objects</returns>
         public async Task<List<Wing>> GetWingList()
         {
             List<Wing> result = new List<Wing>();
@@ -56,11 +64,11 @@ namespace MobileAppHowest.Repositories
             return result;
         }
 
+
         /// <summary>
-        /// Ophalen van de lijst van verdiepen, aangeleverd door de API.
-        /// Hierbij wordt gebruik gemaakt van een FloorFilter.
+        /// gets a list of floors from the api
         /// </summary>
-        /// <returns>Task<List<Floor>></returns>
+        /// <returns>a list of floor objects</returns>
         public async Task<List<Floor>> GetFloorList()
         {
             List<Floor> result = new List<Floor>();
@@ -81,9 +89,10 @@ namespace MobileAppHowest.Repositories
         }
 
         /// <summary>
-        /// Opvragen van de lijst van rooms, aangeleverd door de API.
+        /// gets a list of rooms from api
         /// </summary>
-        /// <returns>Task<List<Room>></returns>
+        /// <param name="rf">room filter</param>
+        /// <returns>returns a list of room objects</returns>
         public async Task<List<Room>> GetRoomList(RoomFilter rf)
         {
             List<Room> result = new List<Room>();
@@ -103,9 +112,9 @@ namespace MobileAppHowest.Repositories
         }
 
         /// <summary>
-        /// Opvragen van de lijst van verschillende forums, aangeleverd door de API.
+        /// gets the forums from the api
         /// </summary>
-        /// <returns>Task<List<Forum>></returns>
+        /// <returns>returns a list of forum objects</returns>
         public async Task<List<Forum>> GetForumList()
         {
             List<Forum> result = new List<Forum>();
@@ -115,7 +124,11 @@ namespace MobileAppHowest.Repositories
 
             return result;
         }
-        
+
+        /// <summary>
+        /// gets a hardcoded list of the categorys
+        /// </summary>
+        /// <returns>a list of category objects, including their sup categorys</returns>
         public List<MainCategory> GetHardCodedCategoryList()
         {
             List<MainCategory> list = new List<MainCategory>();
@@ -126,7 +139,7 @@ namespace MobileAppHowest.Repositories
             list.Add(campus);
 
             MainCategory faciliteiten = new MainCategory();
-            faciliteiten.CategoryUDesc = "Faciliteiten";
+            faciliteiten.CategoryUDesc = "Facilities";
             faciliteiten.Picture = "ic_directions_bus_black_24dp.png";
             list.Add(faciliteiten);
 
@@ -166,7 +179,7 @@ namespace MobileAppHowest.Repositories
         /// <summary>
         /// Get the sub categories of a main category
         /// </summary>
-        /// <param name="cat"></param>
+        /// <param name="cat">main category</param>
         /// <returns>A list of sub categories</returns>
 
         private static List<Category> GetHardcodedSubCat(MainCategory cat)
@@ -209,7 +222,7 @@ namespace MobileAppHowest.Repositories
 
                     break;
 
-                case "Faciliteiten":
+                case "Facilities":
                     Category mobility = new Category();
                     mobility.SubCategoryUDesc = "Mobility";
                     list.Add(mobility);
@@ -268,7 +281,7 @@ namespace MobileAppHowest.Repositories
 
                     break;
 
-                case "Software AND Hardware":
+                case "Software & hardware":
                     Category softWare = new Category();
                     softWare.SubCategoryUDesc = "SoftWare";
                     list.Add(softWare);
@@ -326,10 +339,7 @@ namespace MobileAppHowest.Repositories
             return list;
         }
 
-        /// <summary>
-        /// Opvragen van de lijst van verschillende categorieën problemen, aangeleverd door de API.
-        /// </summary>
-        /// <returns>Task<List<Category>></returns>
+
         //public async Task<List<MainCategory>> GetCategoryList()
         //{
         //    try
