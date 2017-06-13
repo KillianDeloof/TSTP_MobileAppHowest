@@ -27,6 +27,7 @@ namespace MobileAppHowest.ViewModels
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
             AttachmentListCommand = new Command(AttachmentButtonClicked);
+            MessageClickedCommand = new Command(MessageClicked);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,6 +42,7 @@ namespace MobileAppHowest.ViewModels
         public Command CategoryCommand { get; }
         public Command LocationCommand { get; }
         public Command AttachmentListCommand { get; }
+        public Command MessageClickedCommand { get; }
 
         private String _message = "Type your message ...";
         public String Message
@@ -107,6 +109,11 @@ namespace MobileAppHowest.ViewModels
             ShowCategoryPage();
         }
 
+        private void MessageClicked(object obj)
+        {
+            Console.WriteLine(obj.ToString());
+        }
+
         private async Task TakePhoto()
         {
 
@@ -159,7 +166,6 @@ namespace MobileAppHowest.ViewModels
                 _pictureNameList = value;
             }
         }
-
 
         private void GetAttachmentNameList()
         {
