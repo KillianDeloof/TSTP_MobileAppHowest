@@ -11,6 +11,7 @@ using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 using System.IO;
 using Plugin.Media;
 using MobileAppHowest.Views;
+using System.Collections.ObjectModel;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -91,8 +92,9 @@ namespace MobileAppHowest.ViewModels
         private async Task PickPhoto()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            _ticket.AddAtachment(photo);
+            _ticket.AddAttachment(photo);
 
+            PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
         }
 
         private void PictureClicked(object obj)
@@ -126,10 +128,10 @@ namespace MobileAppHowest.ViewModels
 
         private async Task TakePhoto()
         {
-
             MediaFile photo = await MediaPicker.TakePhoto();
-            _ticket.AddAtachment(photo);
+            _ticket.AddAttachment(photo);
 
+            PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
         }
 
         private async Task ShowCampusPage()
@@ -153,45 +155,52 @@ namespace MobileAppHowest.ViewModels
                     _ticket.FormatTicket(_subject, _message, _ticket.CatObj);
                     APIRepository apirepos = new APIRepository();
                     await apirepos.SendTicket(_ticket);
-                    //DisplayAlert
+                    // displayAlert
                     await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
                     _buttonSend.IsEnabled = true;
 
-                    //refresh ticket
+                    // refresh ticket
                     _ticket = new Ticket(_ticket.UserInfo);
-                    await Navigation.PushAsync(new CategoryPage(_ticket));//return to catogoryselector with the new ticket
+                    // return to catogoryselector with the new ticket
+                    await Navigation.PushAsync(new CategoryPage(_ticket));
                 }
             }
             else
             {
-                // TO DO: wat te doen indien subject of message leeg is
+                // wat te doen indien subject of message leeg is
                 await App.Current.MainPage.DisplayAlert("No Subject", "Please fill in subject and message", "Ok");
                 Console.WriteLine("Subject of message is leeg.");
             }
         }
 
-
-        private List<String> _pictureNameList;
-
-        public List<String> PictureNameList
+        private ObservableCollection<Attachment> _pictureNameList;
+        public ObservableCollection<Attachment> PictureNameList
         {
             get
             {
-                GetAttachmentNameList();
+                _pictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
                 return _pictureNameList;
             }
             set
             {
-                _pictureNameList = value;
+                if (_pictureNameList.Count != value.Count)
+                {
+                    _pictureNameList = value;
+
+                    if (PropertyChanged != null)
+                        PropertyChanged(this, new PropertyChangedEventArgs("PictureNameList"));
+                }
             }
         }
 
         private void GetAttachmentNameList()
         {
-            List<String> AttachmentNameList = new List<String>();
-            _ticket.Attachments.ForEach(a => AttachmentNameList.Add(a.Name));
+            //List<Attachment> attachmentNameList = new List<Attachment>();
+            //_ticket.Attachments.ForEach(a => attachmentNameList.Add(a));
 
-            PictureNameList = AttachmentNameList;
+            //PictureNameList = attachmentNameList;
+
+
             //PictureNameList = new List<String>
             //{
             //    "photo01.jpg",
