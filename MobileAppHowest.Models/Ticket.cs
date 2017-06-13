@@ -39,21 +39,22 @@ namespace MobileAppHowest.Models
         public void FormatTicket(string subject, string message, Category cat)
         {
             Subject = subject;
-            if (!String.IsNullOrEmpty(Location.ToString()))
-            {
+
+            if (Location != null)
                 Message = message + "       Location: " + Location;
-            }
             else
-            {
                 Message = message;
-            }
+
             string roles = "";
+
             foreach (string role in UserInfo.Roles)
             {
                 roles = roles + role;
             }
+
             Forum = roles;
             CatObj = cat;
+
             if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
             {
                 Category = "No Category";

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.MessagePage">
     <!--<Grid>
         <Grid.RowDefinitions>
@@ -116,7 +117,7 @@
                 <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
                       VerticalOptions="Fill" MinimumHeightRequest="50"
                       ItemsSource="{ Binding PictureNameList }"
-                      SelectedItem="{ Binding AttachmentListCommand }" >
+                      SelectedItem="{ Binding SelectedAttachment, Mode=TwoWay }" >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

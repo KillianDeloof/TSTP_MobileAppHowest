@@ -28,14 +28,16 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
-            AttachmentListCommand = new Command(AttachmentButtonClicked);
             MessageClickedCommand = new Command(MessageClicked);
         }
 
-        private void AttachmentButtonClicked(object obj)
+        private void AttachmentClicked()
         {
+            if (_selectedAttachment == null)
+                return;
+
             // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
-            DeleteAtach(obj);
+            DeleteAtach();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -80,6 +82,16 @@ namespace MobileAppHowest.ViewModels
             }
         }
 
+        private Attachment _selectedAttachment;
+        public Attachment SelectedAttachment
+        {
+            get { return _selectedAttachment; }
+            set {
+                _selectedAttachment = value;
+                AttachmentClicked();
+            }
+        }
+
         private void SendClicked(object obj)
         {
             SendTicket();
@@ -103,12 +115,12 @@ namespace MobileAppHowest.ViewModels
             TakePhoto();
         }
 
-        private async void DeleteAtach(object obj)
+        private async void DeleteAtach()
         {
             string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Cancel", "Delete");
             if (action == "Delete")
             {
-                _ticket.Attachments.Remove((Attachment)obj);
+                _ticket.Attachments.Remove(_selectedAttachment);
             }
         }
 
