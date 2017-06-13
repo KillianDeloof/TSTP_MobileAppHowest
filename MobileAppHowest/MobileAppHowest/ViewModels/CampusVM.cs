@@ -36,9 +36,7 @@ namespace MobileAppHowest.ViewModels
                 if (_campusList != null)
                 {
                     if (PropertyChanged != null)
-                    {
                         PropertyChanged(this, new PropertyChangedEventArgs("CampusList"));
-                    }
                 }
             }
             get
@@ -57,103 +55,119 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCampus; }
             set {
                 _selectedCampus = value;
-                // TO DO: meegeven van geslecteerde campus aan volgende pagina
-                
                 CampusSelected();
             }
         }
 
+        // lijst met buildings
+        private List<Building> _buildingList;
+        public List<Building> BuildingList
+        {
+            get { return _buildingList; }
+            set { _buildingList = value; }
+        }
 
         /// <summary>
         /// Ophalen van de lijst van campussen.
         /// </summary>
         private async Task GetCampusList()
         {
-            List<Campus> list = new List<Campus>
-            {
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                }
-            };
+            List<Campus> campusList = await APIRepository.GetCampusList();
+            CampusList = new ObservableCollection<Campus>(campusList);
 
-            CampusList = new ObservableCollection<Campus>(list);
+            //-- dummy data --//
+            //List<Campus> list = new List<Campus>
+            //{
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    }
+            //};
 
-            //List<Campus> campusList = await APIRepository.GetCampusList();
-            //CampusList = new ObservableCollection<Campus>(campusList);
+            //CampusList = new ObservableCollection<Campus>(list);
         }
 
         private void CampusSelected()
         {
-            ShowBuildingPopUp();
+            if (_selectedCampus != null)
+                ShowBuildingPopUp();
         }
-        
+
         private async Task ShowBuildingPopUp()
         {
-            List<Building> filteredList = (await _apiRepo.GetBuildingList()).Where(b => b.Campus.UCODE.Split('.')[0] == _selectedCampus.UCODE.Split('.')[0]).ToList<Building>();
+            BuildingList = await _apiRepo.GetBuildingList();
+            List<Building> filteredList = _buildingList.Where(b => b.Campus.UCODE.Split('.')[0] == _selectedCampus.UCODE.Split('.')[0]).ToList<Building>();
             String[] buildingArray = new String[filteredList.Count];
 
             for (int i = 0; i < filteredList.Count; i++)
             {
-                buildingArray[i] = "Building " + filteredList[i].UCODE.Substring(filteredList[i].UCODE.IndexOf('.'));
+                buildingArray[i] = "Building " + filteredList[i].UCODE.Substring(filteredList[i].UCODE.IndexOf('.')).Replace(".", "");
             }
             
-            string action = await App.Current.MainPage.DisplayActionSheet("Select Building", null, null, buildingArray);
+            // tonen van de pop-up & opvragen/verwerken gekozen waarde
+            String buildingAction = await App.Current.MainPage.DisplayActionSheet("Select Building", null, null, buildingArray);
+            buildingAction = buildingAction.Remove(0, buildingAction.Length - 1);
+
+            HandleSelectedBuilding(buildingAction);
+        }
+
+        private void HandleSelectedBuilding(String building)
+        {
+            // building is het gekozen gebouw, bv "A"
+            _ticket.Building = _buildingList.ToList<Building>().Where(b => b.UCODE.ToLower() == (_selectedCampus.UCODE + "." + building).ToLower()).FirstOrDefault();
+
+            ShowLocationSelectorPage();
         }
 
         /// <summary>
-        /// Tonen van de LocationPage.
+        /// Tonen van de ShowLocationSelectorPage en meegeven van ticket.
         /// </summary>
-        /// <returns></returns>
-        //private async Task ShowLocationSelectorPage()
-        //{
-        //    await Navigation.PushAsync(new LocationSelectorPage());
-        //}
-        private async Task ShowMessagePage()
+        /// <returns>Task</returns>
+        private async Task ShowLocationSelectorPage()
         {
             await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
