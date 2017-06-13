@@ -16,11 +16,11 @@ namespace MobileAppHowest.ViewModels
 {
     public class MessageVM : INotifyPropertyChanged
     {
-        public MessageVM(INavigation navigation, Ticket newTicket)
+        public MessageVM(INavigation navigation, Ticket newTicket, Button btnSend)
         {
             this.Navigation = navigation;
             this._ticket = newTicket;
-
+            this._buttonSend = btnSend;
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
             PictureCommand = new Command(PictureClicked);
@@ -39,7 +39,7 @@ namespace MobileAppHowest.ViewModels
         private INavigation Navigation = null;
         private Ticket _ticket;
         private Room _r = new Room();
-        private Button _button;
+        private Button _buttonSend;
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -100,7 +100,11 @@ namespace MobileAppHowest.ViewModels
 
         private async void DeleteAtach(object obj)
         {
-            string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Edit", "Delete");
+            string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Cancel", "Delete");
+            if (action == "Delete")
+            {
+                _ticket.Attachments.Remove((Attachment)obj);
+            }
         }
 
         private void LocationClicked(object obj)
@@ -135,17 +139,20 @@ namespace MobileAppHowest.ViewModels
         {
             if (!String.IsNullOrEmpty(_subject) && !String.IsNullOrEmpty(_message))
             {
-                _ticket.FormatTicket(_subject, _message, _ticket.Category);
-
-                APIRepository apirepos = new APIRepository();
-                await apirepos.SendTicket(_ticket);
-                //DisplayAlert
-                await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
-
+                bool answer = await App.Current.MainPage.DisplayAlert("Send Ticket?", "Send Ticket?", "yes", "no");
+                if (answer == true)
+                {
+                    _ticket.FormatTicket(_subject, _message, _ticket.Category);
+                    APIRepository apirepos = new APIRepository();
+                    await apirepos.SendTicket(_ticket);
+                    //DisplayAlert
+                    await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
+                }
             }
             else
             {
                 // TO DO: wat te doen indien subject of message leeg is
+                await App.Current.MainPage.DisplayAlert("No Subject", "Please fill in subject and message", "Ok");
                 Console.WriteLine("Subject of message is leeg.");
             }
         }
