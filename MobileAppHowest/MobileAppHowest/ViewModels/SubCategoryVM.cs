@@ -29,7 +29,7 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _selectedSubCategory = value;
-                _ticket.FormatTicket("", "", _selectedSubCategory.ToString());
+                _ticket.FormatTicket("", "", _selectedSubCategory);
                 ShowCampusPage();
             }
         }

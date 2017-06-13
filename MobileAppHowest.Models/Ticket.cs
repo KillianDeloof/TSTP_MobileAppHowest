@@ -36,19 +36,19 @@ namespace MobileAppHowest.Models
         /// <param name="subject">title of the ticket</param>
         /// <param name="message">the message of the ticket</param>
         /// <param name="cat">the subcategory of the ticket</param>
-        public void FormatTicket(string subject, string message, string cat)
+        public void FormatTicket(string subject, string message, Category cat)
         {
             Subject = subject;
             Message = message;
             Forum = "No Location";
-            Category = cat;
-            if (String.IsNullOrEmpty(cat))
+            CatObj = cat;
+            if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
             {
-                Category = "No MainCategory";
+                Category = "No Category";
             }
         }
 
-        public void FormatTicket(string subject, string message, string cat, Room location)
+        public void FormatTicket(string subject, string message, Category cat, Room location)
         {
             FormatTicket(subject, message, cat);
             Location = location;
@@ -127,7 +127,7 @@ namespace MobileAppHowest.Models
 
         public string Category
         {
-            get { return category; }
+            get { return CatObj.SubCategoryUDesc; }
             private set { category = value; }
         }
 
