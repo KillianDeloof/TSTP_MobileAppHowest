@@ -29,6 +29,11 @@ namespace MobileAppHowest.ViewModels
             AttachmentListCommand = new Command(AttachmentButtonClicked);
         }
 
+        private void AttachmentButtonClicked(object obj)
+        {
+            // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         private INavigation Navigation = null;
         private Ticket _ticket;
@@ -92,9 +97,9 @@ namespace MobileAppHowest.ViewModels
             TakePhoto();
         }
 
-        private void AttachmentButtonClicked(object obj)
+        private async void AttachmentClick()
         {
-            // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
+            string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Edit", "Delete");
         }
 
         private void LocationClicked(object obj)
