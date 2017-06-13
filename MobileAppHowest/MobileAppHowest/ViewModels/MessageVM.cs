@@ -32,6 +32,7 @@ namespace MobileAppHowest.ViewModels
         private void AttachmentButtonClicked(object obj)
         {
             // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
+            DeleteAtach(obj);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -97,7 +98,7 @@ namespace MobileAppHowest.ViewModels
             TakePhoto();
         }
 
-        private async void AttachmentClick()
+        private async void DeleteAtach(object obj)
         {
             string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Edit", "Delete");
         }
@@ -134,8 +135,7 @@ namespace MobileAppHowest.ViewModels
         {
             if (!String.IsNullOrEmpty(_subject) && !String.IsNullOrEmpty(_message))
             {
-                Category cat = new Category();
-                _ticket.FormatTicket(_subject, _message, cat);
+                _ticket.FormatTicket(_subject, _message, _ticket.Category);
 
                 APIRepository apirepos = new APIRepository();
                 await apirepos.SendTicket(_ticket);
