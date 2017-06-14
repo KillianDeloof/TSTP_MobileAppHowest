@@ -80,32 +80,20 @@ namespace MobileAppHowest.Models
         /// <returns>returns true if the attachment was sucsesfully added, false if not</returns>
         public bool AddAtachment(byte[] byteArray)
         {
-            bool isSuccess = false;
-            if (this.Attachments.Count < 8)
+            if (this.Attachments.Count < 8 && byteArray.Length <= 3000000)
             {
                 Attachment at = new Attachment()
                 {
                     Name = DateTime.Now.ToString() + ".jpg"
                 };
-
-                if (byteArray.Length <= 3000000)
-                {
-                    at.Content = byteArray;
-                    isSuccess = true;
-                }
-                else
-                {
-                    // photo to big
-                    byteArray = new byte[1];
-                    byteArray[0] = 00000000;
-
-                }
+                at.Content = byteArray;
                 at.Content = byteArray;
                 at.Type = "jpg";
 
                 Attachments.Add(at);
+                return true;
             }
-            return isSuccess;
+            return false;
         }
 
         /// <summary>
