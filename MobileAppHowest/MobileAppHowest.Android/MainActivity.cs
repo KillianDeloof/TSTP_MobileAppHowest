@@ -53,9 +53,6 @@ namespace MobileAppHowest.Droid
             // Initialize Azure Mobile Apps
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
             #endregion
-            //init camera --------------------------------------
-
-            //end init camera-----------------------------
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 

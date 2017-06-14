@@ -17,7 +17,7 @@ namespace MobileAppHowest.Models
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-
+        public int UserID { get; set; }
 
         /// <summary>
         /// Constructs a new Ticket
