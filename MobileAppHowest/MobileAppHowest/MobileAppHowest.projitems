@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\APIRepositiry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\DataBaseRepos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\GPSRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Repositories\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\LoginRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Repositories\MediaPicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CampusVM.cs" />
