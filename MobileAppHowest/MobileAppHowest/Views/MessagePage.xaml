@@ -58,7 +58,7 @@
 
     <!-- Stacpanel blauw/rood example -->
 
-    <ContentPage.Content>
+    <!--<ContentPage.Content>-->
         <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
             <Grid ColumnSpacing="0" RowSpacing="0" HorizontalOptions="FillAndExpand">
                 <Grid.ColumnDefinitions>
@@ -170,10 +170,18 @@
                 </Grid.ColumnDefinitions>
 
 
-                <Editor Text="{ Binding Message }" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"/>
-                <Button Grid.Row="0" Grid.Column="3" x:Name="btnPic" Command="{ Binding PictureCommand }" Image="ic_photo_camera_black_24dp.png" BackgroundColor="#00FFFFFF"/>
+            <Editor Text="{ Binding Message }" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" >
+                <!--<Editor.GestureRecognizers>
+                        <TapGestureRecognizer Command="{ Binding MessageClickedCommand } />
+                    </Editor.GestureRecognizers>-->
+                <!--<Editor.GestureRecognizers>
+                    <TapGestureRecognizer Command="{ Binding MessageClickedCommand }" />
+                </Editor.GestureRecognizers>-->
+            </Editor>
+
+            <Button Grid.Row="0" Grid.Column="3" x:Name="btnPic" Command="{ Binding PictureCommand }" Image="ic_photo_camera_black_24dp.png" BackgroundColor="#00FFFFFF"/>
                 <Button Grid.Row="0" Grid.Column="4" x:Name="btnAttach" Command="{ Binding AttachCommand }" Image="ic_attach_file_black_24dp.png" BackgroundColor="#00FFFFFF"/>
-                <Button Grid.Row="0" Grid.Column="5" x:Name="btnSend"  Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png" BorderRadius="5"/>
+                <Button Grid.Row="0" Grid.Column="5" x:Name="btnSend" Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png" BorderRadius="5"/>
             </Grid>
 
 
@@ -181,7 +189,7 @@
 
 
         </Grid>
-    </ContentPage.Content>
+    <!--</ContentPage.Content>-->
 
 
 </ContentPage>
