@@ -30,7 +30,13 @@ namespace MobileAppHowest.Repositories
         public void InsertUser(UserInfo user)
         {
             // ADD
-            _sqLiteConnection.Insert(user);
+            _sqLiteConnection.InsertOrReplace(user);
+        }
+
+        public UserInfo GetUser()
+        {
+            UserInfo user = _sqLiteConnection.Table<UserInfo>().FirstOrDefault();           
+            return user;
         }
 
 
