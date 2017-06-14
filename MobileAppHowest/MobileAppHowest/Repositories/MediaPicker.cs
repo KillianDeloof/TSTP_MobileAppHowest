@@ -31,7 +31,7 @@ namespace MobileAppHowest.Repositories
                     Directory = "Receipts",
                     Name = $"{DateTime.UtcNow}.jpg",
                     DefaultCamera = Plugin.Media.Abstractions.CameraDevice.Rear,
-                    //PhotoSize = PhotoSize.Small
+                    PhotoSize = PhotoSize.Small
                 };
 
                 // Take a photo of the business receipt.
