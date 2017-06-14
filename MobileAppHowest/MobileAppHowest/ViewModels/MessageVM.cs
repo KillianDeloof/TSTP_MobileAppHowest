@@ -12,6 +12,7 @@ using System.IO;
 using Plugin.Media;
 using MobileAppHowest.Views;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -23,12 +24,18 @@ namespace MobileAppHowest.ViewModels
             this._ticket = newTicket;
             this._buttonSend = btnSend;
 
+            MessageClickedCommand = new Command(MessageClicked);
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
-            MessageClickedCommand = new Command(MessageClicked);
+            //MessageClickedCommand = new Command(MessageClicked);
+        }
+
+        private void MessageClicked()
+        {
+            Message = "";
         }
 
         private void AttachmentClicked()
@@ -134,10 +141,10 @@ namespace MobileAppHowest.ViewModels
             ShowCategoryPage();
         }
 
-        private void MessageClicked(object obj)
-        {
-            Console.WriteLine(obj.ToString());
-        }
+        //private void MessageClicked(object obj)
+        //{
+        //    Console.WriteLine(obj.ToString());
+        //}
 
         private async Task TakePhoto()
         {
@@ -205,6 +212,11 @@ namespace MobileAppHowest.ViewModels
                 }
             }
         }
+
+        //private void MessageClicked(object obj)
+        //{
+        //    Message = "";
+        //}
 
         private void GetAttachmentNameList()
         {

@@ -20,5 +20,6 @@ namespace MobileAppHowest.Views
             
             BindingContext = new MessageVM(Navigation, newTicket, btnSend);
 		}
-	}
+
+    }
 }
