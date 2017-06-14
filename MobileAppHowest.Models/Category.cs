@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace MobileAppHowest.Models
 {
     public class Category
     {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+
+
         public int SubCategoryId { get; set; }
         public string SubCategoryUCode { get; set; }
         public string SubCategoryUDesc { get; set; }

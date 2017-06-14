@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace MobileAppHowest.Models
 {
     public class Room
     {
-        /// <summary>
-        /// id of the room
-        /// </summary>
+
+
+        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
         public int FloorID { get; set; }

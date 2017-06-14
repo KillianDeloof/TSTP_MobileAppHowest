@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SQLite;
 
 namespace MobileAppHowest.Models
 {
     public class MainCategory
     {
+        [PrimaryKey, AutoIncrement]
+        public int ID { get; set; }
+
         public int CategoryId { get; set; }
         public string CategoryUCode { get; set; }
         public string CategoryUDesc { get; set; }
