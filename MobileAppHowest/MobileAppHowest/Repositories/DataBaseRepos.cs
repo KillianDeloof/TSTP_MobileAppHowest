@@ -2,22 +2,23 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+//using SQLite.Net;
 
 
 namespace MobileAppHowest.Repositories
 {
-    class DataBaseRepos
+    class DataBaseRepos// : ISQLite
     {
+        //public SQLiteConnection GetConnection()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
 
-        public void CreateDatabase(object sourceFile)
-        {
 
-        }
-        public void ConnectToDatabase(string filePath)
-        {
-            
-        }
+
+        //---------------------------------------------------
+
         public void UpdateDatabase()
         {
 
