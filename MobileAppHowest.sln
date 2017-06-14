@@ -11,11 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppHowest.UWP", "Mobi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppHowest.Models", "MobileAppHowest.Models\MobileAppHowest.Models.csproj", "{67F9D3A8-F71E-4428-913F-C37AE82CDB24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppHowest.iOS", "..\..\MobileAppHowest.iOS\MobileAppHowest.iOS.csproj", "{767D020D-23D8-44D7-81D3-6E631DAA895B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MobileAppHowest.iOS", "MobileAppHowest\MobileAppHowest.iOS\MobileAppHowest.iOS.csproj", "{767D020D-23D8-44D7-81D3-6E631DAA895B}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		MobileAppHowest\MobileAppHowest\MobileAppHowest.projitems*{3ddf4921-8bf2-4035-a426-61f83025c849}*SharedItemsImports = 4
+		MobileAppHowest\MobileAppHowest\MobileAppHowest.projitems*{767d020d-23d8-44d7-81d3-6e631daa895b}*SharedItemsImports = 4
 		MobileAppHowest\MobileAppHowest\MobileAppHowest.projitems*{7e6ebf16-b8e8-454f-8314-8a3930086720}*SharedItemsImports = 4
 		MobileAppHowest\MobileAppHowest\MobileAppHowest.projitems*{c806ad50-d91b-4105-9263-91272c36340a}*SharedItemsImports = 13
 	EndGlobalSection
