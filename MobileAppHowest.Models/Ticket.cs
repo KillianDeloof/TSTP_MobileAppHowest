@@ -67,36 +67,49 @@ namespace MobileAppHowest.Models
             FormatTicket(subject, message, cat);      
         }
 
-
-        public void AddAtachment(byte[] byteArray)
+        /// <summary>
+        /// Adds an attachment to the ticket
+        /// </summary>
+        /// <param name="byteArray">the attachment to be added as a byte array</param>
+        /// <returns>returns true if the attachment was sucsesfully added, false if not</returns>
+        public bool AddAtachment(byte[] byteArray)
         {
-            Attachment at = new Attachment()
+            bool isSuccess = false;
+            if (this.Attachments.Count < 8)
             {
-                Name = DateTime.Now.ToString() + ".jpg"
-            };
+                Attachment at = new Attachment()
+                {
+                    Name = DateTime.Now.ToString() + ".jpg"
+                };
 
-            if (byteArray.Length <= 3000000)
-            {
+                if (byteArray.Length <= 3000000)
+                {
+                    at.Content = byteArray;
+                    isSuccess = true;
+                }
+                else
+                {
+                    // photo to big
+                    byteArray = new byte[1];
+                    byteArray[0] = 00000000;
+
+                }
                 at.Content = byteArray;
-            }
-            else
-            {
-                // photo to big
-                byteArray = new byte[1];
-                byteArray[0] = 00000000;
+                at.Type = "jpg";
 
+                Attachments.Add(at);
             }
-            at.Content = byteArray;
-            at.Type = "jpg";
-
-            Attachments.Add(at);
+            return isSuccess;
         }
 
-
-        public void AddAttachment(MediaFile mediaFile)
+        /// <summary>
+        /// Adds an attachment to the ticket
+        /// </summary>
+        /// <param name="mediaFile">the attachment to be added as a MediaFile Type</param>
+        /// <returns>returns true if the attachment was sucsesfully added, false if not</returns>
+        public bool AddAttachment(MediaFile mediaFile)
         {
             byte[] byteArr;
-
             using (var memoryStream = new MemoryStream())
             {
                 mediaFile.GetStream().CopyTo(memoryStream);
@@ -104,16 +117,9 @@ namespace MobileAppHowest.Models
                 byteArr = memoryStream.ToArray();
             }
 
-            AddAtachment(byteArr);
+            bool isSuccess = AddAtachment(byteArr);
+            return isSuccess;
         }
-
-        /// <summary>
-        /// The e-mail address of the user submitting the ticket. This
-        /// value must parse into an e-mail address otherwise OsTicket will
-        /// throw an exception on submission
-        /// </summary>
-        //public string Email { get; private set; }
-
 
         private string email;
 
@@ -123,11 +129,6 @@ namespace MobileAppHowest.Models
             private set { email = value; }
         }
 
-
-        /// <summary>
-        /// The name of the user submitting the ticket.
-        /// </summary>
-        //public string Name { get; private set; }
 
         private string name;
 
@@ -139,7 +140,6 @@ namespace MobileAppHowest.Models
 
 
         public string Forum { get; set; }
-        //public string Category { get; private set; }
 
         private string category;
 
