@@ -72,63 +72,65 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task GetCampusList()
         {
-           // List<Campus> campusList = await APIRepository.GetCampusList();
-           // CampusList = new ObservableCollection<Campus>(campusList);
+            List<Campus> campusList = await APIRepository.GetCampusList();
+            campusList.ForEach(c => c.Picture = "Campus_" + c.UCODE + ".jpg");
+            CampusList = new ObservableCollection<Campus>(campusList);
 
             //-- dummy data --//
-            List<Campus> list = new List<Campus>
-            {
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Renaat de Rudderlaan 5 8580 Kortrijk",
-                    UCODE = "Campus RDR",
-                    Picture = "Campus_RDR.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Campus The Square luie paard straat 11",
-                    UCODE = "Campus Square",
-                    Picture = "Campus_LPS.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_RDR.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                },
-                new Campus()
-                {
-                    Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-                    UCODE = "Campus GKG",
-                    Picture = "Campus_GKG.jpg"
-                }
-            };
 
-            CampusList = new ObservableCollection<Campus>(list);
+            //List<Campus> list = new List<Campus>
+            //{
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    },
+            //    new Campus()
+            //    {
+            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
+            //        UCODE = "Campus GKG",
+            //        Picture = "Campus_GKG.jpg"
+            //    }
+            //};
+
+            //CampusList = new ObservableCollection<Campus>(list);
         }
 
         private void CampusSelected()
