@@ -18,11 +18,15 @@ namespace MobileAppHowest.ViewModels
 {
     public class MessageVM : INotifyPropertyChanged
     {
-        public MessageVM(INavigation navigation, Ticket newTicket, Button btnSend)
+        public MessageVM(MessagePage messagePage, Ticket newTicket, Button btnSend)
         {
-            this.Navigation = navigation;
+            this._messagePage = messagePage;
+            this.Navigation = _messagePage.Navigation;
             this._ticket = newTicket;
             this._buttonSend = btnSend;
+
+            this._messagePage.FindByName<Button>("btnCategory").Text = _ticket.Category.ToString();
+            this._messagePage.FindByName<Button>("btnLocation").Text = _ticket.Location.UCODE.ToString();
 
             MessageClickedCommand = new Command(MessageClicked);
             SendCommand = new Command(SendClicked);
@@ -52,6 +56,7 @@ namespace MobileAppHowest.ViewModels
         private Ticket _ticket;
         private Room _r = new Room();
         private Button _buttonSend;
+        private MessagePage _messagePage = null;
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }

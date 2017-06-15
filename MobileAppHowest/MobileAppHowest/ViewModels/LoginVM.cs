@@ -3,6 +3,7 @@ using MobileAppHowest.Repositories;
 using MobileAppHowest.Views;
 using Prism.Navigation;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -26,6 +27,7 @@ namespace MobileAppHowest.ViewModels
         public INavigation Navigation { get; set; }
         private Button _btnLogin = null;
         private Ticket _newTicket;
+        private DataBaseRepos _db = new DataBaseRepos("tstpdb");
 
         public async void LoginClicked()
         {
@@ -33,17 +35,12 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.Text = "Loading...";
             UserInfo ui = await _loginRepo.Login();
 
-            //database test ------------------------------------------
-            //DataBaseRepos datarepo = new DataBaseRepos();
-            //datarepo.InsertUser(ui);
-
-
-            //--------------------------------------------------------
-
             // indien login ok is -> naar CategoryPage()
             if (ui != null)
             {
                 _newTicket = new Ticket(ui);
+                _db.CreateTable<UserInfo>();
+                _db.SaveItem<UserInfo>(ui);
                 await ShowCategoryPage();
             }
             else
@@ -51,6 +48,14 @@ namespace MobileAppHowest.ViewModels
                 // TO DO: opvangen wat er gebeurt als er login mislukte
 
             }
+
+            //_db.GetItems<UserInfo>()
+            //List<UserInfo> uiList = _db.Query<UserInfo>("select * from UserInfo", null);
+            //foreach(UserInfo usi in uiList)
+            //{
+            //    Console.WriteLine(usi.FirstName + " " + usi.LastName);
+            //}
+            UserInfo usi = _db.GetUser(1);
         }
 
         /// <summary>

@@ -30,7 +30,7 @@
             <Label Text="Location:"/>
             <Button Text="No location selected"
                         Command="{ Binding LocationCommand }" 
-                        x:Name="Location"
+                        x:Name="btnLocation"
                         BackgroundColor="#44c8f5"
                         TextColor="White"/>
 
