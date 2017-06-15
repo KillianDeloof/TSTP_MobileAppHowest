@@ -8,7 +8,7 @@ namespace MobileAppHowest.Models.Filters
 {
     public class BaseFilter
     {
-        public int PageSize { get; set; } = 50;
+        public int PageSize { get; set; } = 20000;
         public int EffectivePageSize
         {
             get
