@@ -16,18 +16,7 @@ namespace MobileAppHowest.Repositories
 
         //---------------------------------------------------
 
-        public void UpdateDatabase()
-        {
-
-        }
-        public DateTime GetLastUpdate()
-        {
-            return DateTime.Now;
-        }
-        public void SafeLastUpdated()
-        {
-
-        }
+        
 
         //-----------------------------------------data------------------------------------------
         public UserInfo GetUserInfo()
