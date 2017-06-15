@@ -58,7 +58,7 @@
 
 
 
-    <ListView x:Name="listViewCategory" HasUnevenRows="true" SeparatorVisibility="Default"                        
+    <ListView x:Name="listViewSubCategory" HasUnevenRows="true" SeparatorVisibility="Default"                        
                       VerticalOptions="Fill" MinimumHeightRequest="65" HeightRequest="2500"
                       ItemsSource="{ Binding SubCategoryList }"
                       SelectedItem="{ Binding SelectedSubCategory, Mode=TwoWay }"

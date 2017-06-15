@@ -13,9 +13,10 @@ namespace MobileAppHowest.ViewModels
 {
     public class CategoryVM : INotifyPropertyChanged
     {
-        public CategoryVM(INavigation navigation, Ticket ticket)
+        public CategoryVM(INavigation navigation, CategoryPage categoryPage, Ticket ticket)
         {
             this.Navigation = navigation;
+            this._categoryPage = categoryPage;
             this._ticket = ticket;
         }
 
@@ -23,6 +24,7 @@ namespace MobileAppHowest.ViewModels
         private APIRepository _dataRepo = new APIRepository();
         INavigation Navigation = null;
         private Ticket _ticket;
+        private CategoryPage _categoryPage = null;
 
         // wordt opgevuld met de geselecteerde MainCategory
         private MainCategory _selectedCategory;
@@ -140,8 +142,13 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowCategoryPage(List<Category> subCategoryList)
         {
-            if (_selectedCategory != null)
+            _categoryPage.FindByName<ListView>("listViewCategory").SelectedItem = null;
+
+            if (subCategoryList != null)
+            {
+                _selectedCategory = null;
                 await Navigation.PushAsync(new SubCategoryPage(subCategoryList, _ticket));
+            }
         }
     }
 }

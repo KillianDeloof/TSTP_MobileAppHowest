@@ -14,9 +14,10 @@ namespace MobileAppHowest.ViewModels
 {
     public class CampusVM : INotifyPropertyChanged
     {
-        public CampusVM(INavigation navigation, Ticket ticket)
+        public CampusVM(INavigation navigation, CampusPage campusPage, Ticket ticket)
         {
             this.Navigation = navigation;
+            this._campusPage = campusPage;
             this._ticket = ticket;
         }
 
@@ -24,6 +25,7 @@ namespace MobileAppHowest.ViewModels
         private APIRepository _apiRepo = new APIRepository();
         private INavigation Navigation = null;
         private Ticket _ticket = null;
+        private CampusPage _campusPage = null;
 
         // lijst van campussen die wordt opgevuld wanneer de UI wordt aangesproken
         private ObservableCollection<Campus> _campusList = null;
@@ -171,6 +173,7 @@ namespace MobileAppHowest.ViewModels
         /// <returns>Task</returns>
         private async Task ShowLocationSelectorPage()
         {
+            _campusPage.FindByName<ListView>("listViewCampus").SelectedItem = null;
             await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
     }

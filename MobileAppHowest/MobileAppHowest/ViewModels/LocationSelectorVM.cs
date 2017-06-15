@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CustomControls;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace MobileAppHowest.ViewModels
 {
@@ -88,37 +89,49 @@ namespace MobileAppHowest.ViewModels
 
         private void Start()
         {
-            CreateAccordion();
+            // ophalen van de gefilterde lijst
+            // hierna wordt de accordion meteen ingeladen
+            GetFilteredList();
         }
 
-        private async Task CreateAccordion()
+        private async Task GetFilteredList()
         {
             List<Floor> floorList = await GetFloorList();
             List<Room> roomList = await FillRoomList();
-            //List<Floor> filteredFloorList = floorList.ToList()
-            //    .Where(f => f.UDESC.Split('.')[0].ToLower() == _ticket.Building.UDESC.Split('.')[0].ToLower() &&
-            //           f.UDESC.Split('.')[1].ToLower() == _ticket.Building.UDESC.Split('.')[1].ToLower()
-            //    ).ToList<Floor>();
 
-            //foreach (Floor floor in filteredFloorList)
-            foreach (Floor floor in floorList)
+            List<Floor> filteredFloorList = new List<Floor>();
+
+            try
+            {
+                filteredFloorList = floorList.ToList()
+                    .Where(f => f.UCODE.Split('.')[0].ToLower() == _ticket.Building.UCODE.Split('.')[0].ToLower() &&
+                           f.UCODE.Split('.')[1].ToLower() == _ticket.Building.UCODE.Split('.')[1].ToLower())
+                    .ToList<Floor>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+            foreach (Floor floor in filteredFloorList)
             {
                 List<Room> filteredList = new List<Room>();
 
-                //try
-                //{
+                try
+                {
                     filteredList = roomList
-                        .Where(r => (r.UDESC.Split('.')[0] == floor.UDESC.Split('.')[0]) &&
-                            (r.UDESC.Split('.')[1] == floor.UDESC.Split('.')[1]) &&
-                            (r.UDESC.Replace(',', '.').Split('.')[3] == floor.UDESC.Replace(',', '.').Split('.')[3]))
+                        .Where(r => (r.UCODE.Split('.')[0] != null) &&
+                            (r.UCODE.Split('.')[0].ToLower() == floor.UCODE.Split('.')[0].ToLower()) &&
+                            (r.UCODE.Split('.')[1].ToLower() == floor.UCODE.Split('.')[1].ToLower()) &&
+                            (r.UCODE.Replace(',', '.').Split('.')[3].ToLower() == floor.UCODE.Replace(',', '.').Split('.')[3].ToLower()))
                         .ToList<Room>();
-                //}
-                //catch(Exception ex)
-                //{
-                //    Console.WriteLine(ex.Message);
-                //}
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
 
-                CreateAccordeonItemView(filteredList, floor.UDESC.Split('.')[3]);
+                CreateAccordeonItemView(filteredList, floor.UCODE.Replace(',', '.').Split('.')[3]);
             }
         }
 
@@ -169,9 +182,6 @@ namespace MobileAppHowest.ViewModels
                     BorderRadius = 0,
                     Margin = 0
                 };
-
-                //if (i == roomList.Count - 1)
-                //    button.Margin = new Xamarin.Forms.Thickness(0, 0, 0, 10);
 
                 button.Clicked += ShowNextPage;
                 stackLayout2.Children.Add(button);
