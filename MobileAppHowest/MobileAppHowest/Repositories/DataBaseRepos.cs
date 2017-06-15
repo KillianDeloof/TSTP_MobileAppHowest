@@ -1,8 +1,11 @@
 ﻿using MobileAppHowest.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 
 
@@ -10,13 +13,75 @@ namespace MobileAppHowest.Repositories
 {
     public class DataBaseRepos// : ISQLite
     {
+        readonly string DatabaseName;
 
 
+        private SQLiteConnection _connection;
+
+        public DataBaseRepos(string databaseName)
+        {
+            DatabaseName = databaseName;
+            //connection = SQLite.GetConnection(DatabaseName);
+            _connection = DependencyService.Get<ISQLite>().GetConnection(DatabaseName);//get a registered class that implements the ISQLite interface and call its GetConnection method.
+            _connection.CreateTable<UserInfo>();//create the table, if it doesn't already exist
+        }
+
+        public IEnumerable<UserInfo> GetUsers()
+        {
+            return (from t in _connection.Table<UserInfo>()
+                    select t).ToList();
+        }
+
+        public UserInfo GetUser(int id)
+        {
+            return _connection.Table<UserInfo>().FirstOrDefault(t => t.ID == id);
+        }
+
+        public void DeleteUser(int id)
+        {
+            _connection.Delete<UserInfo>(id);
+        }
+
+        public void AddUser(string thought)
+        {
+            var newThought = new UserInfo
+            {
+                FirstName = thought,
+                LastName = "lastName"
+            };
+
+            _connection.Insert(newThought);
+        }
 
 
         //---------------------------------------------------
 
-        
+
+        //private async Task<string> insertUpdateData(UserInfo data, string path)
+        //{
+        //    try
+        //    {
+        //        var db = new SQLiteAsyncConnection(path);
+        //        if (await db.InsertAsync(data) != 0)
+        //            await db.UpdateAsync(data);
+        //        return "Single data file inserted or updated";
+        //    }
+        //    catch (SQLiteException ex)
+        //    {
+        //        return ex.Message;
+        //    }
+        //}
+
+
+
+
+
+
+
+
+
+
+
 
         //-----------------------------------------data------------------------------------------
         public UserInfo GetUserInfo()
