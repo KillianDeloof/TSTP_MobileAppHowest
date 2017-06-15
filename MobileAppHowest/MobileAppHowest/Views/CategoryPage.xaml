@@ -11,9 +11,10 @@
 
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <SearchBar x:Name="searchbar" />
+            <SearchBar x:Name="searchbar" HorizontalOptions="Fill"                    BackgroundColor="#44c8f5"
+/>
         </Grid>
 
 
