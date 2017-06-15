@@ -33,6 +33,13 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.Text = "Loading...";
             UserInfo ui = await _loginRepo.Login();
 
+            //database test ------------------------------------------
+            //DataBaseRepos datarepo = new DataBaseRepos();
+            //datarepo.InsertUser(ui);
+
+
+            //--------------------------------------------------------
+
             // indien login ok is -> naar CategoryPage()
             if (ui != null)
             {

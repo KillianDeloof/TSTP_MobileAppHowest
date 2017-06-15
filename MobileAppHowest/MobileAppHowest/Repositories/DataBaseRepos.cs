@@ -2,19 +2,42 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-//using SQLite.Net;
+using SQLite;
+using XamarinForms.SQLite.SQLite;
+using Xamarin.Forms;
+
 
 
 namespace MobileAppHowest.Repositories
 {
-    class DataBaseRepos// : ISQLite
+    public class DataBaseRepos// : ISQLite
     {
-        //public SQLiteConnection GetConnection()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        private readonly SQLiteConnection _sqLiteConnection;
 
 
+        public DataBaseRepos()
+        {
+            _sqLiteConnection = DependencyService.Get<ISQLite>().GetConnection();
+
+            _sqLiteConnection.CreateTable<UserInfo>();
+            _sqLiteConnection.CreateTable<Ticket>();
+            _sqLiteConnection.CreateTable<Campus>();
+            _sqLiteConnection.CreateTable<Building>();
+            _sqLiteConnection.CreateTable<Floor>();
+            _sqLiteConnection.CreateTable<Room>();
+        }
+
+        public void InsertUser(UserInfo user)
+        {
+            // ADD
+            _sqLiteConnection.InsertOrReplace(user);
+        }
+
+        public UserInfo GetUser()
+        {
+            UserInfo user = _sqLiteConnection.Table<UserInfo>().FirstOrDefault();           
+            return user;
+        }
 
 
         //---------------------------------------------------
