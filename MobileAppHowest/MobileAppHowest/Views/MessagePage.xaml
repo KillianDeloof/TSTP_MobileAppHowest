@@ -23,7 +23,7 @@
                         x:Name="btnCategory"
                         BackgroundColor="#44c8f5"
                         TextColor="White"
-                        BorderRadius="10">
+                        BorderRadius="25">
 
 
             </Button>
@@ -32,7 +32,8 @@
                         Command="{ Binding LocationCommand }" 
                         x:Name="btnLocation"
                         BackgroundColor="#44c8f5"
-                        TextColor="White"/>
+                        TextColor="White"
+                        BorderRadius="25"/>
 
             <Label Text="Attachment(s):"/>
 
