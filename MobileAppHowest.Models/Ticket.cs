@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite;
 
 namespace MobileAppHowest.Models
 {
@@ -14,7 +13,6 @@ namespace MobileAppHowest.Models
     /// </summary>
     public class Ticket
     {
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
         public int UserID { get; set; }
