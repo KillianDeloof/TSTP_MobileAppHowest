@@ -8,6 +8,8 @@ namespace MobileAppHowest.Models
 {
     public partial class Building
     {
+        public int ID { get; set; }
+
         public int CampusID { get; set; }
         public string Address { get; set; }
         // bevat bv RSS.T

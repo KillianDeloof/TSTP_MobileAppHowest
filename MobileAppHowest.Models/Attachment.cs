@@ -11,6 +11,9 @@ namespace MobileAppHowest.Models
     /// </summary>
     public class Attachment
     {
+        public int ID { get; set; }
+
+
         /// <summary>
         /// The Filename of the Attachment
         /// </summary>

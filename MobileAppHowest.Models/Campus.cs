@@ -8,6 +8,8 @@ namespace MobileAppHowest.Models
 {
     public partial class Campus
     {
+        public int ID { get; set; }
+
         public int? CampusClusterID { get; set; }
         public string Address { get; set; }
 

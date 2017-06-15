@@ -93,9 +93,10 @@ namespace MobileAppHowest.Repositories
         /// </summary>
         /// <param name="rf">room filter</param>
         /// <returns>returns a list of room objects</returns>
-        public async Task<List<Room>> GetRoomList(RoomFilter rf)
+        public async Task<List<Room>> GetRoomList()
         {
             List<Room> result = new List<Room>();
+            RoomFilter rf = new RoomFilter();
             String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<RoomFilter, string>("/api/RoomSearch", rf, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
             List<Room> page = JsonConvert.DeserializeObject<List<Room>>(pagejson);
             result.AddRange(page);

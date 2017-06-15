@@ -2,17 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-//using SQLite.Net;
+using Xamarin.Forms;
+
 
 
 namespace MobileAppHowest.Repositories
 {
-    class DataBaseRepos// : ISQLite
+    public class DataBaseRepos// : ISQLite
     {
-        //public SQLiteConnection GetConnection()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
 
 

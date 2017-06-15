@@ -8,6 +8,8 @@ namespace MobileAppHowest.Models
 {
     public class UserInfo
     {
+
+        public int ID { get; set; }
         public String FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -21,6 +21,9 @@
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
 
+    <!--Change the colour highlight for an active or selected item-->
+    <item name="android:colorActivatedHighlight">@android:color/white</item>
+    
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
     
     <!--Change the colour highlight for an active or selected item-->

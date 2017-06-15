@@ -8,9 +8,8 @@ namespace MobileAppHowest.Models
 {
     public class Room
     {
-        /// <summary>
-        /// id of the room
-        /// </summary>
+
+
         public int ID { get; set; }
 
         public int FloorID { get; set; }

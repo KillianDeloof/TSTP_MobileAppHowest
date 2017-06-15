@@ -8,7 +8,9 @@ namespace MobileAppHowest.Models
 {
     public partial class Floor
     {
+        public int ID { get; set; }
         public int FloorID { get; set; }
+        public int BuildingID { get; set; }
         public int WingID { get; set; }
         public string UCODE { get; set; }
         public string UDESC { get; set; }

@@ -11,6 +11,7 @@ namespace MobileAppHowest.Models
     /// </summary>
     public class CampusCluster 
     {
+        public int ID { get; set; }
         public string UCODE { get; set; }
         public string UDESC { get; set; }
         public string CCODE { get; set; }
