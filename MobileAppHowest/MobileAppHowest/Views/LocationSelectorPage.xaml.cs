@@ -18,169 +18,179 @@ namespace MobileAppHowest.Views
 	{
 		public LocationSelectorPage(Ticket ticket)
 		{
-            this._ticket = ticket;
             InitializeComponent();
-            BindingContext = new LocationSelectorVM(Navigation, ticket);
-            Start();
+
+            //this._ticket = ticket;
+            BindingContext = new LocationSelectorVM(Navigation, ticket, this);
+            //Start();
         }
 
-        private APIRepository _apiRepo = new APIRepository();
-        private Ticket _ticket = null;
+        //private APIRepository _apiRepo = new APIRepository();
+        //private Ticket _ticket = null;
 
-        private async Task<List<Floor>> GetFloorList()
-        {
-            // TO DO:
-            // mag niet als constante!
-            //_ticket.Building.UDESC = "GKG.A";
+        //private async Task<List<Floor>> GetFloorList()
+        //{
+        //    List<Floor> floorList = await _apiRepo.GetFloorList();
+        //    List<Floor> filteredList = floorList.ToList().Where(f => f.UDESC.Split('.')[1] == _ticket.Building.UDESC.Split('.')[1]).ToList<Floor>();
 
-            List<Floor> floorList = await _apiRepo.GetFloorList();
-            List<Floor> filteredList = floorList.ToList().Where(f => f.UDESC.Split('.')[1] == _ticket.Building.UDESC.Split('.')[1]).ToList<Floor>();
-
-            return filteredList;
+        //    return filteredList;
             
-            //-- dummy data --//
+        //    //-- dummy data --//
             
-            //return new List<Floor>
-            //{
-            //    new Floor()
-            //    {
-            //        UDESC = "A"
-            //    },
-            //    new Floor()
-            //    {
-            //        UDESC = "B"
-            //    },
-            //    new Floor()
-            //    {
-            //        UDESC = "C"
-            //    }
-            //};
-        }
+        //    //return new List<Floor>
+        //    //{
+        //    //    new Floor()
+        //    //    {
+        //    //        UDESC = "A"
+        //    //    },
+        //    //    new Floor()
+        //    //    {
+        //    //        UDESC = "B"
+        //    //    },
+        //    //    new Floor()
+        //    //    {
+        //    //        UDESC = "C"
+        //    //    }
+        //    //};
+        //}
 
-        private async Task<List<Room>> GetRoomList()
-        {
-            List<Room> roomList = await _apiRepo.GetRoomList(new RoomFilter());
-            return roomList;
+        //public List<Room> _roomList { get; set; }
+
+        //private async Task<List<Room>> FillRoomList()
+        //{
+        //    _roomList = await _apiRepo.GetRoomList(new RoomFilter());
+        //    return _roomList;
 
 
-            //-- dummy data --//
+        //    //-- dummy data --//
 
-            //return new List<Room>
-            //{
-            //    new Room()
-            //    {
-            //        UDESC = "GKG.A.A.0.0.7"
-            //    },
+        //    //return new List<Room>
+        //    //{
+        //    //    new Room()
+        //    //    {
+        //    //        UDESC = "GKG.A.A.0.0.7"
+        //    //    },
 
-            //    new Room()
-            //    {
-            //        UDESC = "GKG.A.A.0.0.8"
-            //    },
+        //    //    new Room()
+        //    //    {
+        //    //        UDESC = "GKG.A.A.0.0.8"
+        //    //    },
 
-            //    new Room()
-            //    {
-            //        UDESC = "GKG.A.A.0.0.9"
-            //    }
-            //};
-        }
+        //    //    new Room()
+        //    //    {
+        //    //        UDESC = "GKG.A.A.0.0.9"
+        //    //    }
+        //    //};
+        //}
 
-        private void Start()
-        {
-            CreateAccordion();
-        }
+        //private void Start()
+        //{
+        //    CreateAccordion();
+        //}
 
-        private async Task CreateAccordion()
-        {
-            List<Floor> floorList = await GetFloorList();
-            List<Room> roomList = await GetRoomList();
+        //private async Task CreateAccordion()
+        //{
+        //    List<Floor> floorList = await GetFloorList();
+        //    List<Room> roomList = await FillRoomList();
 
-            foreach (Floor floor in floorList)
-            {
-                List<Room> filteredList = roomList
-                    .Where(r => (r.UDESC.Split('.')[0] == floor.UDESC.Split('.')[0]) &&
-                        (r.UDESC.Split('.')[1] == floor.UDESC.Split('.')[1]) &&
-                        (r.UDESC.Split('.')[3] == floor.UDESC.Split('.')[3]))
-                    .ToList<Room>();
+        //    foreach (Floor floor in floorList)
+        //    {
+        //        List<Room> filteredList = roomList
+        //            .Where(r => (r.UDESC.Split('.')[0] == floor.UDESC.Split('.')[0]) &&
+        //                (r.UDESC.Split('.')[1] == floor.UDESC.Split('.')[1]) &&
+        //                (r.UDESC.Split('.')[3] == floor.UDESC.Split('.')[3]))
+        //            .ToList<Room>();
                 
-                CreateAccordeonItemView(filteredList, floor.UDESC.Split('.')[3]);
-            }
-        }
+        //        CreateAccordeonItemView(filteredList, floor.UDESC.Split('.')[3]);
+        //    }
+        //}
 
-        private void CreateAccordeonItemView(List<Room> roomList, String floorNumber)
-        {
-            if (roomList.Count == 0)
-                return;
+        //private void CreateAccordeonItemView(List<Room> roomList, String floorNumber)
+        //{
+        //    if (roomList.Count == 0)
+        //        return;
 
-            var itemView = new Xamarin.CustomControls.AccordionItemView()
-            {
-                Text = "Floor " + floorNumber,
-                ActiveTextColor = Xamarin.Forms.Color.White,
-                TextColor = Xamarin.Forms.Color.White,
-                BackgroundColor = new Xamarin.Forms.Color(
-                    HexToRGB("45c8f5")[0],
-                    HexToRGB("45c8f5")[1],
-                    HexToRGB("45c8f5")[2], 1
-                ),
-                ButtonActiveBackgroundColor = new Xamarin.Forms.Color(HexToRGB("0067b7")[0], HexToRGB("0067b7")[1], HexToRGB("0067b7")[2], 1),
-                TextPosition = Xamarin.CustomControls.TextPosition.Left,
-                RightImage = "arrowRight",
-                RotateImages = true,
-            };
+        //    var itemView = new Xamarin.CustomControls.AccordionItemView()
+        //    {
+        //        Text = "Floor " + floorNumber,
+        //        ActiveTextColor = Xamarin.Forms.Color.White,
+        //        TextColor = Xamarin.Forms.Color.White,
+        //        BackgroundColor = new Xamarin.Forms.Color(
+        //            HexToRGB("45c8f5")[0],
+        //            HexToRGB("45c8f5")[1],
+        //            HexToRGB("45c8f5")[2], 1
+        //        ),
+        //        ButtonActiveBackgroundColor = new Xamarin.Forms.Color(HexToRGB("0067b7")[0], HexToRGB("0067b7")[1], HexToRGB("0067b7")[2], 1),
+        //        TextPosition = Xamarin.CustomControls.TextPosition.Left,
+        //        RightImage = "arrowRight",
+        //        RotateImages = true
+        //    };
+
+        //    var stackLayout = new StackLayout()
+        //    {
+        //        Padding = new Xamarin.Forms.Thickness(0.5, 0, 0.5, 0.5),
+        //        BackgroundColor = Xamarin.Forms.Color.Black
+        //    };
+
+        //    var stackLayout2 = new StackLayout()
+        //    {
+        //        Padding = new Xamarin.Forms.Thickness(5, 15),
+        //        BackgroundColor = Xamarin.Forms.Color.Silver,
+        //        Orientation = Xamarin.Forms.StackOrientation.Vertical
+        //    };
+
+        //    foreach (Room room in roomList)
+        //    {
+        //        var button = new Button()
+        //        {
+        //            Text = room.UDESC.ToString(),
+        //            HorizontalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand,
+        //            VerticalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand,
+        //            BorderWidth = 0
+        //        };
+
+        //        button.Clicked += ShowNextPage;
+
+        //        stackLayout2.Children.Add(button);
+        //    }
             
-            var stackLayout = new StackLayout()
-            {
-                Padding = new Xamarin.Forms.Thickness(0.5, 0, 0.5, 0.5),
-                BackgroundColor = Xamarin.Forms.Color.Black
-            };
+        //    stackLayout.Children.Add(stackLayout2);
+        //    itemView.ItemContent = stackLayout;
+        //    accordionView.Children.Add(itemView);
+        //}
 
-            var stackLayout2 = new StackLayout()
-            {
-                Padding = new Xamarin.Forms.Thickness(5, 15),
-                BackgroundColor = Xamarin.Forms.Color.Silver,
-                Orientation = Xamarin.Forms.StackOrientation.Vertical
-            };
+        //private void ShowNextPage(object sender, EventArgs e)
+        //{
+        //    //_ticket.Building = 
+        //    Console.WriteLine("sender text: " + ((Button)sender).Text);
+        //    _ticket.Location = _roomList.ToList<Room>().Where(r => r.UCODE.ToLower() == ((Button)sender).Text.ToLower()).FirstOrDefault();
+        //    ShowMessagePage();
+        //}
 
-            foreach (Room room in roomList)
-            {
-                var label = new Label()
-                {
-                    Text = room.UDESC.ToString(),
-                    HorizontalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand,
-                    VerticalOptions = Xamarin.Forms.LayoutOptions.CenterAndExpand
-                };
+        //private async Task ShowMessagePage()
+        //{
+        //    await Navigation.PushAsync(new MessagePage(_ticket));
+        //}
 
-                stackLayout2.Children.Add(label);
-            }
-            
-            stackLayout.Children.Add(stackLayout2);
-            itemView.ItemContent = stackLayout;
-            accordionView.Children.Add(itemView);
-        }
+        ///// <summary>
+        ///// Omzetten van hexadecimaal naar een rgb-array.
+        ///// Merk op dat enkel kleine letters kunnen gebruikt worden.
+        ///// </summary>
+        ///// <returns>double[]</returns>
+        //private double[] HexToRGB(String hex)
+        //{
+        //    String hex1 = hex.Substring(0, 2);
+        //    String hex2 = hex.Substring(2, 2);
+        //    String hex3 = hex.Substring(4, 2);
 
-        /// <summary>
-        /// Omzetten van hexadecimaal naar een rgb-array.
-        /// Merk op dat enkel kleine letters kunnen gebruikt worden.
-        /// </summary>
-        /// <returns>double[]</returns>
-        private double[] HexToRGB(String hex)
-        {
-            String hex1 = hex.Substring(0, 2);
-            String hex2 = hex.Substring(2, 2);
-            String hex3 = hex.Substring(4, 2);
+        //    List<double> doubleList = new List<double>
+        //    {
+        //        Convert.ToInt32(hex1, 16),
+        //        Convert.ToInt32(hex2, 16),
+        //        Convert.ToInt32(hex3, 16)
+        //    };
 
-            List<double> doubleList = new List<double>
-            {
-                Convert.ToInt32(hex1, 16),
-                Convert.ToInt32(hex2, 16),
-                Convert.ToInt32(hex3, 16)
-            };
-
-            return doubleList.ToArray<double>();
-        }
-
-        private void Handle_Clicked(object sender, EventArgs e)
-        {
-            Device.OpenUri(new Uri("https://www.nuget.org/packages/Xamarin.CustomControls.AccordionView"));
-        }
+        //    return doubleList.ToArray<double>();
+        //}
     }
 }
