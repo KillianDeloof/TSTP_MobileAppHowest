@@ -140,7 +140,7 @@ namespace MobileAppHowest.ViewModels
         private async Task ShowBuildingPopUp()
         {
             BuildingList = await _apiRepo.GetBuildingList();
-            List<Building> filteredList = _buildingList.Where(b => b.Campus.UCODE.Split('.')[0] == _selectedCampus.UCODE.Split('.')[0]).ToList<Building>();
+            List<Building> filteredList = _buildingList.Where(b => b.Campus.UCODE.Split('.')[0].ToLower() == _selectedCampus.UCODE.Split('.')[0].ToLower()).ToList<Building>();
             String[] buildingArray = new String[filteredList.Count];
 
             for (int i = 0; i < filteredList.Count; i++)

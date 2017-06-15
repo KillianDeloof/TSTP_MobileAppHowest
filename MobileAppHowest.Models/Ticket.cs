@@ -153,7 +153,7 @@ namespace MobileAppHowest.Models
 
         public string Source { get; set; }
 
-        public Room Location { get; private set; }
+        public Room Location { get; set; }
 
         /// <summary>
         /// A summary of the issue that the user is facing
