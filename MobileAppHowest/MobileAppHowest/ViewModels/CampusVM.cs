@@ -73,9 +73,11 @@ namespace MobileAppHowest.ViewModels
         private async Task GetCampusList()
         {
             List<Campus> campusList = await APIRepository.GetCampusList();
+            campusList.ForEach(c => c.Picture = "Campus_" + c.UCODE + ".jpg");
             CampusList = new ObservableCollection<Campus>(campusList);
 
             //-- dummy data --//
+
             //List<Campus> list = new List<Campus>
             //{
             //    new Campus()

@@ -156,11 +156,11 @@ namespace MobileAppHowest.ViewModels
                 Orientation = Xamarin.Forms.StackOrientation.Vertical
             };
 
-            foreach (Room room in roomList)
+            for (int i = 0; i < roomList.Count; i++)
             {
                 var button = new Button()
                 {
-                    Text = room.UDESC.ToString(),
+                    Text = roomList[i].UDESC.ToString(),
                     HorizontalOptions = Xamarin.Forms.LayoutOptions.Fill,
                     VerticalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand,
                     BorderWidth = 0,
@@ -170,9 +170,14 @@ namespace MobileAppHowest.ViewModels
                     Margin = 0
                 };
 
+                //if (i == roomList.Count - 1)
+                //    button.Margin = new Xamarin.Forms.Thickness(0, 0, 0, 10);
+
                 button.Clicked += ShowNextPage;
                 stackLayout2.Children.Add(button);
             }
+
+            
 
             stackLayout.Children.Add(stackLayout2);
             itemView.ItemContent = stackLayout;

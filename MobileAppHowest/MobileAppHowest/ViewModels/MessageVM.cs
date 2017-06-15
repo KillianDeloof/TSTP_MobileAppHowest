@@ -156,12 +156,12 @@ namespace MobileAppHowest.ViewModels
 
         private async Task ShowCampusPage()
         {
-            //await Navigation.PushAsync(new CampusPage(_ticket));
+            await Navigation.PushAsync(new CampusPage(_ticket));
         }
 
         private async Task ShowCategoryPage()
         {
-           // await Navigation.PushAsync(new CategoryPage(_ticket));
+            await Navigation.PushAsync(new CategoryPage(_ticket));
         }
 
         private async Task SendTicket()
