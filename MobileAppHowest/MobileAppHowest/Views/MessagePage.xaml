@@ -87,8 +87,17 @@
             <Editor Text="{ Binding Message }" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  HorizontalOptions="FillAndExpand" >
             </Editor>
 
-            <Button Grid.Row="0" Grid.Column="3" x:Name="btnPic" Command="{ Binding PictureCommand }" Image="ic_photo_camera_black_24dp.png" BackgroundColor="#00FFFFFF"/>
-            <Button Grid.Row="0" Grid.Column="4" x:Name="btnAttach" Command="{ Binding AttachCommand }" Image="ic_attach_file_black_24dp.png" BackgroundColor="#00FFFFFF"/>
+            <Image Grid.Row="0" Grid.Column="3" x:Name="btnPic" Source="ic_photo_camera_black_24dp.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PictureCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Row="0" Grid.Column="4" x:Name="btnAttach"  Source="ic_attach_file_black_24dp.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{ Binding AttachCommand }" />
+                </Image.GestureRecognizers>
+            </Image>
+            
             <Button Grid.Row="0" Grid.Column="5" x:Name="btnSend" Command="{ Binding SendCommand }" BackgroundColor="#45c8f5" Image="ic_send_white_24px.png" BorderRadius="5"/>
         </Grid>
     </Grid>
