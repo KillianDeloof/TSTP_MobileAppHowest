@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attachment.cs" />
+    <Compile Include="BaseItem.cs" />
     <Compile Include="Building.cs" />
     <Compile Include="Campus.cs" />
     <Compile Include="CampusCluster.cs" />
