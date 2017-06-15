@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace MobileAppHowest.Repositories
-{
-
-
-    public interface IFileHelper
-    {
-        string GetLocalFilePath(string filename);
-    }
+//namespace MobileAppHowest.Repositories
+//{
 
 
-}
+//    public interface IFileHelper
+//    {
+//        string GetLocalFilePath(string filename);
+//    }
+
+
+//}
