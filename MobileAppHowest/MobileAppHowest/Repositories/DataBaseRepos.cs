@@ -13,6 +13,8 @@ using System.Linq;
   var database = new Database("People"); // Creates (if does not exist) a database named People
   database.CreateTable<Person>(); // Creates (if does not exist) a table of type Person
   ...
+
+    pass this object to the next forms, don't create new instances!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
@@ -39,11 +41,13 @@ namespace MobileAppHowest.Repositories
 
 
 
-
+        /// <summary>
+        /// Makes a connection to the database
+        /// </summary>
+        /// <param name="databaseName">the name of the database</param>
         public DataBaseRepos(string databaseName)
         {
             DatabaseName = databaseName;
-            //connection = SQLite.GetConnection(DatabaseName);
             _connection = DependencyService.Get<ISQLite>().GetConnection(DatabaseName);//get a registered class that implements the ISQLite interface and call its GetConnection method.
         }
 
@@ -67,7 +71,12 @@ namespace MobileAppHowest.Repositories
         }
 
 
-
+        /// <summary>
+        /// Update an item to the database, or insert it if it wasn't in the databace yet
+        /// </summary>
+        /// <typeparam name="T">ObjectType of the item</typeparam>
+        /// <param name="item">The item to save to the databace</param>
+        /// <returns>The Autoincremented ID-key of the object</returns>
         public int SaveItem<T>(T item)
         {
             lock (locker)
@@ -85,6 +94,12 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+
+        /// <summary>
+        /// Executes a prepared querry that doesn't return results  (ex. INSERT, DELETE, UPDATE)
+        /// </summary>
+        /// <param name="query">the fully escaped SQL</param>
+        /// <param name="args">arguments to substitude the occurences of "?" in the querry</param>
         public void ExecuteQuery(string query, object[] args)
         {
             lock (locker)
@@ -93,6 +108,13 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+        /// <summary>
+        /// Executes a SQL querry and returns the results
+        /// </summary>
+        /// <typeparam name="T">Table to run the querry on</typeparam>
+        /// <param name="query">the fully escaped SQL</param>
+        /// <param name="args">arguments to substitude the occurences of "?" in the querry</param>
+        /// <returns></returns>
         public List<T> Query<T>(string query, object[] args) where T : new()
         {
             lock (locker)
@@ -101,6 +123,12 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+
+        /// <summary>
+        /// Gets The objects from a table
+        /// </summary>
+        /// <typeparam name="T">The ObjectType</typeparam>
+        /// <returns>returns a IEnumerable of the given ObjectType</returns>
         public IEnumerable<T> GetItems<T>() where T : new()
         {
             lock (locker)
@@ -109,6 +137,13 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+
+        /// <summary>
+        /// Deletes an item from the database
+        /// </summary>
+        /// <typeparam name="T">The OBjectType or Table</typeparam>
+        /// <param name="id">the ibject to delete</param>
+        /// <returns></returns>
         public int DeleteItem<T>(int id)
         {
             lock (locker)
@@ -117,6 +152,12 @@ namespace MobileAppHowest.Repositories
             }
         }
 
+
+        /// <summary>
+        /// Deletes all entrys From the given Table in the database
+        /// </summary>
+        /// <typeparam name="T">The ObjectType or Table</typeparam>
+        /// <returns></returns>
         public int DeleteAll<T>()
         {
             lock (locker)
@@ -140,7 +181,11 @@ namespace MobileAppHowest.Repositories
         //------------------------------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------------------------------------------------------------------------------
 
-
+        /// <summary>
+        /// Gets the defauld of first user !!!not tested!!!!
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The 1e or default User from the UserInfo Table</returns>
         public UserInfo GetUser(int id)
         {
             return _connection.Table<UserInfo>().FirstOrDefault(t => t.ID == id);
