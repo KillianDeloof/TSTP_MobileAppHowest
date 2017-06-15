@@ -4,40 +4,18 @@
              xmlns:vm="clr-namespace:MobileAppHowest.ViewModels"
              x:Class="MobileAppHowest.Views.CategoryPage" >
 
-    <!--<ListView x:Name="listView"
-                  ItemsSource="{ Binding CategoryList }"
-                  SelectedItem="{ Binding SelectedCategory, Mode=TwoWay }"
-                  HorizontalOptions="FillAndExpand"
-                  VerticalOptions="FillAndExpand"
-                  IsVisible="true">
-            
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout BackgroundColor="#eeeeee"
-                                    Orientation="Vertical"
-                                    VerticalOptions="FillAndExpand"
-                                    HorizontalOptions="FillAndExpand" >
-                        <StackLayout Orientation="Horizontal" Padding="20,0,0,0" MinimumHeightRequest="70"  VerticalOptions="FillAndExpand"
-                                    HorizontalOptions="FillAndExpand">
-                            <Image Source="{ Binding Picture }"
-                                    WidthRequest="50"
-                                    HeightRequest="50"
-                                    Margin="10,10,50,10" />
-                            <Label Text="{ Binding CategoryUDesc }"
-                                    TextColor="#212121" 
-                                    HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" />
-                        </StackLayout>
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>-->
+    <StackLayout x:Name="searchbarRegion">
+        <Grid BackgroundColor="#44a8f5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
 
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <SearchBar x:Name="searchbar" HorizontalOptions="Fill"/>
+        </Grid>
 
-
-    <StackLayout>
-        <!--<BoxView HeightRequest="20" HorizontalOptions="FillAndExpand"/>-->
 
 
         <ListView x:Name="listViewCategory" HasUnevenRows="true" SeparatorVisibility="Default"                        
@@ -70,7 +48,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </StackLayout>
 
 </ContentPage>
