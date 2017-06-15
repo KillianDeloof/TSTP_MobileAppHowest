@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SQLite;
 
 namespace MobileAppHowest.Models
 {
@@ -12,7 +11,6 @@ namespace MobileAppHowest.Models
     /// </summary>
     public class CampusCluster 
     {
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string UCODE { get; set; }
         public string UDESC { get; set; }
