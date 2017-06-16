@@ -78,61 +78,7 @@ namespace MobileAppHowest.ViewModels
             campusList.ForEach(c => c.Picture = "Campus_" + c.UCODE + ".jpg");
             CampusList = new ObservableCollection<Campus>(campusList);
 
-            //-- dummy data --//
-
-            //List<Campus> list = new List<Campus>
-            //{
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    },
-            //    new Campus()
-            //    {
-            //        Address = "Graaf Karel de Goedelaan 5 8580 Kortrijk",
-            //        UCODE = "Campus GKG",
-            //        Picture = "Campus_GKG.jpg"
-            //    }
-            //};
-
-            //CampusList = new ObservableCollection<Campus>(list);
+            
         }
 
         private void CampusSelected()
