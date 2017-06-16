@@ -74,9 +74,26 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task GetCampusList()
         {
-            List<Campus> campusList = await APIRepository.GetCampusList();
-            campusList.ForEach(c => c.Picture = "Campus_" + c.UCODE + ".jpg");
-            CampusList = new ObservableCollection<Campus>(campusList);
+            List<Campus> camplist;
+            DataBaseRepos db = new DataBaseRepos("tstp");
+            db.CreateTable<Campus>();
+
+            camplist = db.GetItems<Campus>().ToList();
+
+            if (camplist == null || camplist.Count < 5)
+            {
+                camplist = await APIRepository.GetCampusList();
+                foreach (Campus camp in camplist)
+                {
+                    db.SaveItem<Campus>(camp);
+                }
+            }
+
+            
+            camplist.ForEach(c => c.Picture = "Campus_" + c.UCODE + ".jpg");
+            CampusList = new ObservableCollection<Campus>(camplist);
+
+
 
             
         }
