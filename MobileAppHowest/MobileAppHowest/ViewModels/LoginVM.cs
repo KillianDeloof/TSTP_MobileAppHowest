@@ -34,6 +34,7 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.IsEnabled = false;
             _btnLogin.Text = "Loading...";
             UserInfo ui = await _loginRepo.Login();
+            ui.FirstRole = ui.Roles[0]; //added this prop to save it to database
 
             // indien login ok is -> naar CategoryPage()
             if (ui != null)

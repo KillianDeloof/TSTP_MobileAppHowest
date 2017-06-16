@@ -9,14 +9,20 @@ namespace MobileAppHowest.Models
 {
     public class UserInfo : BaseItem
     {
-       // public int ID { get; set; }
+
         public String FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
 
         [Ignore]
         public List<String> Roles { get; set; } = new List<string>();
+
+        public string FirstRole { get; set; }
+
+
+
         public String KernelTeamCCode { get; set; }
+
         [Ignore]
         public List<String> EducationCodes { get; set; } = new List<string>();
 
