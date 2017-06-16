@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace MobileAppHowest.Models
 {
-    public class Room
+    public class Room : BaseItem
     {
-
-
-        public int ID { get; set; }
-
         public int FloorID { get; set; }
         public string UCODE { get; set; }
         public string UDESC { get; set; }
@@ -19,10 +16,21 @@ namespace MobileAppHowest.Models
         public string CDESC { get; set; }      
         public string Number { get; set; }
         public String RoomInfo { get; set; }
+
+        [Ignore]
         public int? RoomCategoryID { get; set; }
+
+        [Ignore]
         public int? RoomFunctionID { get; set; }
+
+        [Ignore]
         public double? Surface { get; set; }
-        public int? UtilisationCapacity { get; set; }       //number of chairs for students
+
+        [Ignore]
+        public int? UtilisationCapacity { get; set; }
+
+        //number of chairs for students
+        [Ignore]
         public int? OccupationCapacity { get; set; }        //1 or 0: 1 can be rostered, 0 cannot
         public String ConstructionPlanCode { get; set; }    //the id on the constructionplan
         public String IMKey { get; set; }
@@ -38,6 +46,8 @@ namespace MobileAppHowest.Models
         public String Furniture { get; set; }
         public String Facilities { get; set; }
         public String FloorMaterial { get; set; }
+
+        [Ignore]
         public Floor Floor { get; set; }
 
         public override string ToString()

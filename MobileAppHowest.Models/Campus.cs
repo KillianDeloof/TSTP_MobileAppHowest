@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SQLite;
 
 namespace MobileAppHowest.Models
 {
-    public partial class Campus
+    public partial class Campus : BaseItem
     {
-        public int ID { get; set; }
-
+        [Ignore]
         public int? CampusClusterID { get; set; }
         public string Address { get; set; }
 
@@ -40,8 +40,10 @@ namespace MobileAppHowest.Models
         // lat en long van de campus
         //public double[] LatLong { get; set; }
 
+
         private double[] LatLong;
 
+        [Ignore]
         public double[] latLong
         {
             get
@@ -95,6 +97,7 @@ namespace MobileAppHowest.Models
 
         // afstand van huidig punt tot afstand
         // wordt opgevuld in gps-repository
+        [Ignore]
         public double Distance { get; set; }
 
         public override string ToString()

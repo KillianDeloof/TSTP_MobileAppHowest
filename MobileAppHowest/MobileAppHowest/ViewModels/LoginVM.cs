@@ -29,7 +29,7 @@ namespace MobileAppHowest.ViewModels
         public INavigation Navigation { get; set; }
         private Button _btnLogin = null;
         private Ticket _newTicket;
-        private DataBaseRepos _db = new DataBaseRepos("tstpdb");
+        private DataBaseRepos _db = new DataBaseRepos("tstp");
 
         public async void LoginClicked()
         {
