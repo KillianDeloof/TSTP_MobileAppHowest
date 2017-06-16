@@ -23,7 +23,7 @@ namespace MobileAppHowest.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
-            BindingContext = new LoginVM(Navigation, btnLogin);
+            BindingContext = new LoginVM(this);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using MobileAppHowest.Models;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using MobileAppHowest.Models;
 using MobileAppHowest.Repositories;
 using MobileAppHowest.Views;
 using Prism.Navigation;
@@ -14,10 +15,11 @@ namespace MobileAppHowest.ViewModels
     {
         //private INavigationService _navigationService { get; }
 
-        public LoginVM(INavigation navigation, Button btn)
+        public LoginVM(LoginPage loginPage)
         {
-            this.Navigation = navigation;
-            this._btnLogin = btn;
+            this.Navigation = loginPage.Navigation;
+            this._btnLogin = loginPage.FindByName<Button>("btnLogin");
+
             LoginCommand = new Command(LoginClicked);
         }
 
@@ -31,31 +33,105 @@ namespace MobileAppHowest.ViewModels
 
         public async void LoginClicked()
         {
-            _btnLogin.IsEnabled = false;
-            _btnLogin.Text = "Loading...";
-            UserInfo ui = await _loginRepo.Login();
+            ButtonModification();
+            await StartLoginProcedure();
+        }
 
-            // indien login ok is -> naar CategoryPage()
+        private async Task StartLoginProcedure()
+        {
+            // indien mogelijk user ophalen uit database
+            // indien geslaagd -> tonen volgende pagina
+            UserInfo ui = null;
+
+            try
+            {
+                if (IsUserAuthenticated())
+                {
+                    ui = _db.GetUser(1);
+                }
+                else
+                {
+                    ui = await _loginRepo.Login();
+                    //_db.CreateTable<UserInfo>();
+                    //_db.SaveItem<UserInfo>(ui);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             if (ui != null)
             {
                 _newTicket = new Ticket(ui);
-                _db.CreateTable<UserInfo>();
-                _db.SaveItem<UserInfo>(ui);
                 await ShowCategoryPage();
             }
             else
             {
-                // TO DO: opvangen wat er gebeurt als er login mislukte
-
+                await Navigation.PushAsync(new LoginPage());
             }
 
-            //_db.GetItems<UserInfo>()
-            //List<UserInfo> uiList = _db.Query<UserInfo>("select * from UserInfo", null);
-            //foreach(UserInfo usi in uiList)
+            //UserInfo ui = _db.GetUser(1);
+
+            //if (ui != null)
             //{
-            //    Console.WriteLine(usi.FirstName + " " + usi.LastName);
+            //    ui = _db.GetUser(1);
+            //    _newTicket = new Ticket(ui);
+            //    await ShowCategoryPage();
+            //    return;
             //}
-            UserInfo usi = _db.GetUser(1);
+
+            //ui = await _loginRepo.Login();
+
+            //// indien login ok is -> naar CategoryPage()
+            //if (ui != null)
+            //{
+            //    _newTicket = new Ticket(ui);
+
+            //    _db.CreateTable<UserInfo>();
+            //    _db.SaveItem<UserInfo>(ui);
+
+            //    await ShowCategoryPage();
+            //}
+            //else
+            //{
+            //    // TO DO: opvangen wat er gebeurt als er login mislukte
+
+            //}
+        }
+
+        private void ButtonModification()
+        {
+            // modify button when clicked
+            _btnLogin.IsEnabled = false;
+            _btnLogin.Text = "Loading ...";
+            _btnLogin.TextColor = Xamarin.Forms.Color.White;
+
+            // TO DO:
+            // spinner gebruiken en knop disabelen
+        }
+
+        private bool IsUserAuthenticated()
+        {
+            bool isAuth = false;
+
+            try
+            {
+                if (_db.GetAuthorization() == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    isAuth = false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -65,7 +141,5 @@ namespace MobileAppHowest.ViewModels
         {
             await Navigation.PushAsync(new CategoryPage(_newTicket));
         }
-
-
     }
 }

@@ -25,6 +25,9 @@ namespace MobileAppHowest.ViewModels
             this._ticket = newTicket;
             this._buttonSend = btnSend;
 
+            if (_ticket.Location.UCODE == null)
+                _ticket.Location.UCODE = "No Location selected";
+
             this._messagePage.FindByName<Button>("btnCategory").Text = _ticket.Category.ToString();
             this._messagePage.FindByName<Button>("btnLocation").Text = _ticket.Location.UCODE.ToString();
 
@@ -34,21 +37,6 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
-            //MessageClickedCommand = new Command(MessageClicked);
-        }
-
-        private void MessageClicked()
-        {
-            Message = "";
-        }
-
-        private void AttachmentClicked()
-        {
-            if (_selectedAttachment == null)
-                return;
-
-            // methode aanroepen die iets doet wanneer er op een item in de attachmentlist geklikt wordt
-            DeleteAtach();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -100,7 +88,8 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedAttachment; }
             set {
                 _selectedAttachment = value;
-                AttachmentClicked();
+                DeleteAttachment();
+                PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
             }
         }
 
@@ -114,26 +103,9 @@ namespace MobileAppHowest.ViewModels
             PickPhoto();
         }
 
-        private async Task PickPhoto()
+        private void MessageClicked()
         {
-            MediaFile photo = await MediaPicker.PickPhoto();
-            _ticket.AddAttachment(photo);
-
-            PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
-        }
-
-        private void PictureClicked(object obj)
-        {
-            TakePhoto();
-        }
-
-        private async void DeleteAtach()
-        {
-            string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Cancel", "Delete");
-            if (action == "Delete")
-            {
-                _ticket.Attachments.Remove(_selectedAttachment);
-            }
+            Message = "";
         }
 
         private void LocationClicked(object obj)
@@ -146,11 +118,43 @@ namespace MobileAppHowest.ViewModels
             ShowCategoryPage();
         }
 
-        //private void MessageClicked(object obj)
-        //{
-        //    Console.WriteLine(obj.ToString());
-        //}
+        private void PictureClicked(object obj)
+        {
+            TakePhoto();
+        }
 
+        /// <summary>
+        /// Oproepen van de camera om een foto te nemen.
+        /// </summary>
+        /// <returns></returns>
+        private async Task PickPhoto()
+        {
+            MediaFile photo = await MediaPicker.PickPhoto();
+            _ticket.AddAttachment(photo);
+
+            PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
+        }
+        
+        /// <summary>
+        /// Verwijderen van een Attachment.
+        /// </summary>
+        private async void DeleteAttachment()
+        {
+            if (_selectedAttachment == null)
+                return;
+
+            string action = await App.Current.MainPage.DisplayActionSheet("Photo Name", "Cancel", "Delete");
+
+            if (action == "Delete")
+            {
+                _ticket.Attachments.Remove(_selectedAttachment);
+            }
+        }
+
+        /// <summary>
+        /// Nemen van een foto.
+        /// </summary>
+        /// <returns>Task</returns>
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
@@ -159,16 +163,10 @@ namespace MobileAppHowest.ViewModels
             PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
         }
 
-        private async Task ShowCampusPage()
-        {
-            await Navigation.PushAsync(new CampusPage(_ticket));
-        }
-
-        private async Task ShowCategoryPage()
-        {
-            await Navigation.PushAsync(new CategoryPage(_ticket));
-        }
-
+        /// <summary>
+        /// Verzenden van een ticket en tonen van een bevestiging.
+        /// </summary>
+        /// <returns>Task</returns>
         private async Task SendTicket()
         {
             if (!String.IsNullOrEmpty(_subject) && !String.IsNullOrEmpty(_message))
@@ -217,14 +215,25 @@ namespace MobileAppHowest.ViewModels
                 }
             }
         }
-
-        //private void MessageClicked(object obj)
+        
+        //private void OnPropertyChanged()
         //{
-        //    Message = "";
+        //    if (PropertyChanged != null)
+        //        PropertyChanged(this, new PropertyChangedEventArgs("PictureNameList"));
         //}
 
-        private void GetAttachmentNameList()
+        private async Task ShowCampusPage()
         {
+            await Navigation.PushAsync(new CampusPage(_ticket));
+        }
+
+        private async Task ShowCategoryPage()
+        {
+            await Navigation.PushAsync(new CategoryPage(_ticket));
+        }
+
+        //private void GetAttachmentNameList()
+        //{
             //List<Attachment> attachmentNameList = new List<Attachment>();
             //_ticket.Attachments.ForEach(a => attachmentNameList.Add(a));
 
@@ -237,7 +246,7 @@ namespace MobileAppHowest.ViewModels
             //    "photo02.jpg",
             //    "photo03.jpg"
             //};
-        }
+        //}
 
         // opvragen van locatie
         //private async Task GetPosition()

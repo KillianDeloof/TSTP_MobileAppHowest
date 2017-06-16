@@ -31,6 +31,7 @@ namespace MobileAppHowest.ViewModels
             set
             {
                 _selectedSubCategory = value;
+                _ticket.CatObj = _selectedSubCategory;
                 _ticket.FormatTicket("", "", _selectedSubCategory);
                 ShowNextPage();
             }
@@ -83,18 +84,18 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowNextPage()
         {
-            _subCategoryPage.FindByName<ListView>("listViewSubCategory").SelectedItem = null;
-
             if (_selectedSubCategory != null)
             {
                 // indien een locatie meegegeven moet worden, moet men op de CampusPage terechtkomen
                 // anders naar de MessagePage
                 if (_selectedSubCategory.IsLocationRequired)
                 {
+                    _subCategoryPage.FindByName<ListView>("listViewSubCategory").SelectedItem = null;
                     await Navigation.PushAsync(new CampusPage(_ticket));
                 }
                 else
                 {
+                    _subCategoryPage.FindByName<ListView>("listViewSubCategory").SelectedItem = null;
                     await Navigation.PushAsync(new MessagePage(_ticket));
                 }
             }

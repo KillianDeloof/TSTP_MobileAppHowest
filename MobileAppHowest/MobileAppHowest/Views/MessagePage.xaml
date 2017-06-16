@@ -46,7 +46,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <Grid>
+                                <Label Text="{ Binding Name }"
+                                       FontSize="Small"
+                                       BackgroundColor="#00FFFFFF"
+                                       HorizontalOptions="FillAndExpand" />
+                                <!--<Grid>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
@@ -55,12 +59,13 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Button Grid.Row="0"
+                                            x:Name="BtnRemoveAttachment"
                                                 Grid.Column="0"
                                                 Text="{ Binding Name }"
                                                 FontSize="Small"
                                                 BackgroundColor="#00FFFFFF"
                                                 HorizontalOptions="FillAndExpand"/>
-                                </Grid>
+                                </Grid>-->
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>

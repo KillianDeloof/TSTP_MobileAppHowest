@@ -11,25 +11,43 @@ using Microsoft.WindowsAzure.MobileServices;
 using System.Threading.Tasks;
 using MobileAppHowest.Models.MobileSDK.AzureMobileClient;
 using Plugin.Media;
+using MobileAppHowest.Repositories;
+using MobileAppHowest.Models;
 
 namespace MobileAppHowest.Droid
 {
     [Activity(Label = "TSTPUI", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IAuthenticate
     {
+        private DataBaseRepos _db;
+
         #region microsoftazuremobileclientsdk1
         // Define a authenticated user.
         private MobileServiceUser user;
         public string LoginMessage { get; set; } = string.Empty;
         public async Task<bool> Authenticate()
         {
+            _db = new DataBaseRepos("tstpdb");
             Boolean success = false;
+
             try
             {
+                // ophalen van token
                 user = await AzureMobileClient.DefaultClient.LoginAsync(this, MobileServiceAuthenticationProvider.WindowsAzureActiveDirectory);
+
                 if (user != null)
                 {
                     LoginMessage = string.Format("you are now signed-in as {0}.", user.UserId);
+
+                   // wegschrijven van token naar db
+                   //AuthenticatedUser au = new AuthenticatedUser()
+                   //{
+                   //    Token = user.MobileServiceAuthenticationToken
+                   //};
+
+                   // _db.CreateTable<AuthenticatedUser>();
+                   // _db.SaveItem<AuthenticatedUser>(au);
+
                     success = true;
                 }
             }
@@ -37,6 +55,7 @@ namespace MobileAppHowest.Droid
             {
                 LoginMessage = ex.Message;
             }
+
             return success;
         }
         #endregion

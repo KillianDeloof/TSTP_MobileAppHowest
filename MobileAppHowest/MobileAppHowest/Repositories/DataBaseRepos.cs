@@ -182,17 +182,23 @@ namespace MobileAppHowest.Repositories
         //------------------------------------------------------------------------------------------------------------------------------------------
 
         /// <summary>
-        /// Gets the defauld of first user !!!not tested!!!!
+        /// Haalt het eerste (of een default) UserInfo-object op uit de database.
         /// </summary>
         /// <param name="id"></param>
-        /// <returns>The 1e or default User from the UserInfo Table</returns>
+        /// <returns>UserInfo</returns>
         public UserInfo GetUser(int id)
         {
             return _connection.Table<UserInfo>().FirstOrDefault(t => t.ID == id);
         }
 
-
-
-
+        /// <summary>
+        /// Haalt de laatste (of een default) AuthenticatedUser-object op uit de database.
+        /// Gebruik in context van ophalen tokens.
+        /// </summary>
+        /// <returns>AuthenticatedUser</returns>
+        public AuthenticatedUser GetAuthorization()
+        {
+            return _connection.Table<AuthenticatedUser>().Last();
+        }
     }
 }
