@@ -150,7 +150,9 @@ namespace MobileAppHowest.ViewModels
                     HexToRGB("45c8f5")[1],
                     HexToRGB("45c8f5")[2], 1
                 ),
-                ButtonActiveBackgroundColor = new Xamarin.Forms.Color(HexToRGB("0067b7")[0], HexToRGB("0067b7")[1], HexToRGB("0067b7")[2], 1),
+                FontFamily= "VAG_Rounded_Bold",
+                ButtonBackgroundColor = Color.FromRgb(69,200,245),
+                ButtonActiveBackgroundColor = new Xamarin.Forms.Color(HexToRGB("00bcd4")[0], HexToRGB("00bcd4")[1], HexToRGB("00bcd4")[2], 1),
                 TextPosition = Xamarin.CustomControls.TextPosition.Left,
                 RightImage = "arrowRight",
                 RotateImages = true
@@ -165,7 +167,7 @@ namespace MobileAppHowest.ViewModels
             var stackLayout2 = new StackLayout()
             {
                 //Padding = new Xamarin.Forms.Thickness(5, 15),
-                BackgroundColor = Xamarin.Forms.Color.Silver,
+                BackgroundColor = Color.FromRgb(224, 224, 224),
                 Orientation = Xamarin.Forms.StackOrientation.Vertical
             };
 
