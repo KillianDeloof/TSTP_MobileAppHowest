@@ -84,3 +84,14 @@ Add a MediaFile object attachment to the ticket
 Setter is only public because it needs to be for the send-api, do not use Attachment propperty!
 -ticketObj.Attachments.add()
 
+
+
+* Plugins
+
+- Microsoft.Azure.Mobile.Client
+- Newtonsoft.Json
+- sqlite-net-pcl (Frank A.Krueger)
+- Xam.Plugin.Geolocator
+- Xam.Plugin.media
+- Xamarin.CustomControls.StateButton
+- Xamarin.CustomControls.AccordionView

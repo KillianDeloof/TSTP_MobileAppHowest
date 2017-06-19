@@ -46,6 +46,13 @@
       <string>Icon-Small@2x.png</string>
       <string>Icon-Small@3x.png</string>
     </array>
+
+    <key>UIAppFonts</key>
+    <array>
+      <string>VAG_Rounded_Bold.ttf</string>
+    </array>
+    
+    
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen.storyboard</string>
   </dict>

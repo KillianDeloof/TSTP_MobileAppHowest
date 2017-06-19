@@ -99,7 +99,9 @@
     <Content Include="Assets\Campus_RSS.jpg" />
     <Content Include="Assets\Campus_SJS.jpg" />
     <Content Include="Assets\Campus_VES.jpeg" />
-    <Content Include="Assets\Fonts\VAG_Rounded_Bold.ttf" />
+    <Content Include="Assets\Fonts\VAG_Rounded_Bold.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

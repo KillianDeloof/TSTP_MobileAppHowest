@@ -14,7 +14,6 @@ using System.Linq;
   database.CreateTable<Person>(); // Creates (if does not exist) a table of type Person
   ...
 
-    pass this object to the next forms, don't create new instances!!!!!!!!!!!!!!!!!!!!!!
 }
 
 
