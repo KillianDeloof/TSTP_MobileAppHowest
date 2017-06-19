@@ -31,11 +31,24 @@ namespace MobileAppHowest.ViewModels
         private LocationSelectorPage _locationSelectorPage = null;
         private INavigation Navigation = null;
         private APIRepository _apiRepo = new APIRepository();
+        private DataBaseRepos _db = new DataBaseRepos("tstp");
         private Ticket _ticket = null;
 
         private async Task<List<Floor>> GetFloorList()
         {
-            List<Floor> floorList = await _apiRepo.GetFloorList();
+            List<Floor> floorList = new List<Floor>();
+
+            //try
+            //{
+            //    floorList = (List<Floor>)_db.GetItems<Floor>();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+                floorList = await _apiRepo.GetFloorList();
+            //    _db.CreateTable<Floor>();
+            //    floorList.ForEach(f => _db.SaveItem<Floor>(f));
+            //}
 
             return floorList;
 
@@ -62,7 +75,16 @@ namespace MobileAppHowest.ViewModels
 
         private async Task<List<Room>> FillRoomList()
         {
-            _roomList = await _apiRepo.GetRoomList();
+            //try
+            //{
+            //    _roomList = (List<Room>)_db.GetItems<Room>();
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+                _roomList = await _apiRepo.GetRoomList();
+            //}
+
             return _roomList;
 
 

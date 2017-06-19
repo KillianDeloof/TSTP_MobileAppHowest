@@ -27,7 +27,7 @@ namespace MobileAppHowest.Droid
         public string LoginMessage { get; set; } = string.Empty;
         public async Task<bool> Authenticate()
         {
-            _db = new DataBaseRepos("tstpdb");
+            _db = new DataBaseRepos("tstp");
             Boolean success = false;
 
             try
@@ -39,14 +39,14 @@ namespace MobileAppHowest.Droid
                 {
                     LoginMessage = string.Format("you are now signed-in as {0}.", user.UserId);
 
-                   // wegschrijven van token naar db
-                   //AuthenticatedUser au = new AuthenticatedUser()
-                   //{
-                   //    Token = user.MobileServiceAuthenticationToken
-                   //};
+                    // wegschrijven van token naar db
+                    AuthenticatedUser au = new AuthenticatedUser()
+                    {
+                        Token = user.MobileServiceAuthenticationToken
+                    };
 
-                   // _db.CreateTable<AuthenticatedUser>();
-                   // _db.SaveItem<AuthenticatedUser>(au);
+                    _db.CreateTable<AuthenticatedUser>();
+                    _db.SaveItem<AuthenticatedUser>(au);
 
                     success = true;
                 }
