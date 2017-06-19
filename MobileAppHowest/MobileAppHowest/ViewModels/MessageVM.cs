@@ -134,7 +134,7 @@ namespace MobileAppHowest.ViewModels
         {
             MediaFile photo = await MediaPicker.PickPhoto();
             bool ok = _ticket.AddAttachment(photo);
-            if (ok != false)
+            if (ok == false)
             {
                 await App.Current.MainPage.DisplayAlert("Failed!", "Size of atachments is to big!", "OK");
             }
@@ -167,7 +167,7 @@ namespace MobileAppHowest.ViewModels
         {
             MediaFile photo = await MediaPicker.TakePhoto();
             bool ok = _ticket.AddAttachment(photo);
-            if (ok != false)
+            if (ok == false)
             {
                 await App.Current.MainPage.DisplayAlert("Failed!", "Size of atachments is to big!", "OK");
             }
