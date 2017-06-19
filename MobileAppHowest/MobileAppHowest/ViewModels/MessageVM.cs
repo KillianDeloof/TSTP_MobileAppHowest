@@ -133,7 +133,11 @@ namespace MobileAppHowest.ViewModels
         private async Task PickPhoto()
         {
             MediaFile photo = await MediaPicker.PickPhoto();
-            _ticket.AddAttachment(photo);
+            bool ok = _ticket.AddAttachment(photo);
+            if (ok != false)
+            {
+                await App.Current.MainPage.DisplayAlert("Failed!", "Size of atachments is to big!", "OK");
+            }
 
             PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
         }
@@ -162,7 +166,11 @@ namespace MobileAppHowest.ViewModels
         private async Task TakePhoto()
         {
             MediaFile photo = await MediaPicker.TakePhoto();
-            _ticket.AddAttachment(photo);
+            bool ok = _ticket.AddAttachment(photo);
+            if (ok != false)
+            {
+                await App.Current.MainPage.DisplayAlert("Failed!", "Size of atachments is to big!", "OK");
+            }
 
             PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
         }
