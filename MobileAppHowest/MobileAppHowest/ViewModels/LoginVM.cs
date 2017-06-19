@@ -52,8 +52,8 @@ namespace MobileAppHowest.ViewModels
                 else
                 {
                     ui = await _loginRepo.Login();
-                    //_db.CreateTable<UserInfo>();
-                    //_db.SaveItem<UserInfo>(ui);
+                    _db.CreateTable<UserInfo>();
+                    _db.SaveItem<UserInfo>(ui);
                 }
             }
             catch (Exception ex)
