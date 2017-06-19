@@ -87,6 +87,7 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.Text = "Loading ...";
             _btnLogin.TextColor = Xamarin.Forms.Color.White;
 
+            //_btnLogin.IsVisible = false;
             // TO DO:
             // spinner gebruiken en knop disabelen
         }
