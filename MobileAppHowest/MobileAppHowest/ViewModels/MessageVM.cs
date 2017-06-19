@@ -25,6 +25,9 @@ namespace MobileAppHowest.ViewModels
             this._ticket = newTicket;
             this._buttonSend = btnSend;
 
+            if (_ticket.Location == null)
+                _ticket.Location = new Room();
+
             if (_ticket.Location.UCODE == null)
                 _ticket.Location.UCODE = "No Location selected";
 
@@ -89,7 +92,7 @@ namespace MobileAppHowest.ViewModels
             set {
                 _selectedAttachment = value;
                 DeleteAttachment();
-                PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
+                //PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
             }
         }
 
@@ -148,6 +151,7 @@ namespace MobileAppHowest.ViewModels
             if (action == "Delete")
             {
                 _ticket.Attachments.Remove(_selectedAttachment);
+                PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
             }
         }
 
