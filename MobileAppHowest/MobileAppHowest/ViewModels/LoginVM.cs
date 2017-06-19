@@ -50,7 +50,7 @@ namespace MobileAppHowest.ViewModels
                 {
                     ui = _db.GetUser(1);
 
-                    if (ui == null || !IsUserAuthenticated())
+                    if (ui == null)
                     {
                         ui = await _loginRepo.Login();
                         _db.CreateTable<UserInfo>();
@@ -58,6 +58,12 @@ namespace MobileAppHowest.ViewModels
                     }
 
                     _ticket.UserID = ui.ID;
+                }
+                else
+                {
+                    ui = await _loginRepo.Login();
+                    _db.CreateTable<UserInfo>();
+                    _db.SaveItem<UserInfo>(ui);
                 }
             }
             catch (Exception ex)
