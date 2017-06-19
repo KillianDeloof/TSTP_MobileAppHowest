@@ -22,6 +22,8 @@ namespace MobileAppHowest.ViewModels
 
             this.Navigation = navigation;
             this._ticket = ticket;
+            lsPage.Title = "GKG A (demo text)";
+
 
             Start();
         }
@@ -152,7 +154,7 @@ namespace MobileAppHowest.ViewModels
                 ),
                 FontFamily= "VAG_Rounded_Bold",
                 ButtonBackgroundColor = Color.FromRgb(69,200,245),
-                ButtonActiveBackgroundColor = new Xamarin.Forms.Color(HexToRGB("00bcd4")[0], HexToRGB("00bcd4")[1], HexToRGB("00bcd4")[2], 1),
+                ButtonActiveBackgroundColor = Color.FromRgb(52, 150, 184),
                 TextPosition = Xamarin.CustomControls.TextPosition.Left,
                 RightImage = "arrowRight",
                 RotateImages = true

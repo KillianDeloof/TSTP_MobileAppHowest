@@ -16,9 +16,11 @@ namespace MobileAppHowest.Views
     {
 		public CategoryPage(Ticket ticket)
 		{
+          
 			InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
             BindingContext = new CategoryVM(Navigation, this, ticket);
-        }
+
+       }
 	}
 }

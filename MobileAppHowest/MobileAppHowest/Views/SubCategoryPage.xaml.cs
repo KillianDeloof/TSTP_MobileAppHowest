@@ -19,6 +19,7 @@ namespace MobileAppHowest.Views
         {
             InitializeComponent();
             BindingContext = new SubCategoryVM(Navigation, this, subCategoryList, ticket);
+
         }
     }
 }
