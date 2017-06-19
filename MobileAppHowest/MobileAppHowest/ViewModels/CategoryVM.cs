@@ -59,16 +59,16 @@ namespace MobileAppHowest.ViewModels
         {
             CategoryList = new ObservableCollection<MainCategory>(_dataRepo.GetHardCodedCategoryList());
 
-            List<String> catStringList = new List<String>
-                {
-                    "Campus",
-                    "Faciliteiten & diensten",
-                    "Lesmateriaal",
-                    "Netwerk",
-                    "Software & hardware",
-                    "Organisatie",
-                    "Overige"
-                };
+            //List<String> catStringList = new List<String>
+            //    {
+            //        "Campus",
+            //        "Faciliteiten & diensten",
+            //        "Lesmateriaal",
+            //        "Netwerk",
+            //        "Software & hardware",
+            //        "Organisatie",
+            //        "Overige"
+            //    };
 
             List<String> categoryPictureList = new List<String>()
             {
