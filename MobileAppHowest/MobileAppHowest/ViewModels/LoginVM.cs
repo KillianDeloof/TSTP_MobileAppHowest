@@ -26,9 +26,10 @@ namespace MobileAppHowest.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public Command LoginCommand { get; }
         private LoginRepository _loginRepo = new LoginRepository();
+        private APIRepository _apiRepo = new APIRepository();
         public INavigation Navigation { get; set; }
         private Button _btnLogin = null;
-        private Ticket _newTicket;
+        private Ticket _ticket;
         private DataBaseRepos _db = new DataBaseRepos("tstp");
 
         public async void LoginClicked()
@@ -48,56 +49,35 @@ namespace MobileAppHowest.ViewModels
                 if (IsUserAuthenticated())
                 {
                     ui = _db.GetUser(1);
-                }
-                else
-                {
-                    ui = await _loginRepo.Login();
-                    _db.CreateTable<UserInfo>();
-                    _db.SaveItem<UserInfo>(ui);
+
+                    if (ui == null || !IsUserAuthenticated())
+                    {
+                        ui = await _loginRepo.Login();
+                        _db.CreateTable<UserInfo>();
+                        _db.SaveItem<UserInfo>(ui);
+                    }
+
+                    _ticket.UserID = ui.ID;
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+
+                ui = await _loginRepo.Login();
+                _db.CreateTable<UserInfo>();
+                _db.SaveItem<UserInfo>(ui);
             }
 
             if (ui != null)
             {
-                _newTicket = new Ticket(ui);
-                await ShowCategoryPage();
+                _ticket = new Ticket(ui);
+                AuthenticationDone();
             }
             else
             {
-                await Navigation.PushAsync(new LoginPage());
+                await ShowLoginPage();
             }
-
-            //UserInfo ui = _db.GetUser(1);
-
-            //if (ui != null)
-            //{
-            //    ui = _db.GetUser(1);
-            //    _newTicket = new Ticket(ui);
-            //    await ShowCategoryPage();
-            //    return;
-            //}
-
-            //ui = await _loginRepo.Login();
-
-            //// indien login ok is -> naar CategoryPage()
-            //if (ui != null)
-            //{
-            //    _newTicket = new Ticket(ui);
-
-            //    _db.CreateTable<UserInfo>();
-            //    _db.SaveItem<UserInfo>(ui);
-
-            //    await ShowCategoryPage();
-            //}
-            //else
-            //{
-            //    // TO DO: opvangen wat er gebeurt als er login mislukte
-
-            //}
         }
 
         private void ButtonModification()
@@ -111,27 +91,64 @@ namespace MobileAppHowest.ViewModels
             // spinner gebruiken en knop disabelen
         }
 
+        /// <summary>
+        /// Opvragen of er een token aanwezig is in de database.
+        /// </summary>
+        /// <returns>bool</returns>
         private bool IsUserAuthenticated()
         {
-            bool isAuth = false;
-
             try
             {
-                if (_db.GetAuthorization() == null)
-                {
+                var auth = _db.GetAuthorization();
+
+                if (auth == null)
+                    return false;
+
+                if (auth.Token != null)
                     return true;
-                }
                 else
-                {
-                    isAuth = false;
-                }
+                    return false;
             }
             catch
             {
                 return false;
             }
+        }
 
-            return false;
+        /// <summary>
+        /// 
+        /// </summary>
+        private async Task AuthenticationDone()
+        {
+            String token = _db.GetAuthorization().Token;
+            int userId = _ticket.UserID;
+
+            var mobileServiceClient = new MobileServiceClient("/api/userinfo");
+            mobileServiceClient.CurrentUser = new MobileServiceUser(_ticket.UserID.ToString());
+            mobileServiceClient.CurrentUser.MobileServiceAuthenticationToken = token;
+            
+            await LoadRooms();
+            List<Room> roomList = (List<Room>)_db.GetItems<Room>();
+            await ShowCategoryPage();
+        }
+
+        private async Task LoadRooms()
+        {
+            List<Room> roomList = await GetRoomList();
+            _db.CreateTable<Room>();
+            //roomList.ForEach(r => _db.SaveItem<Room>(r));
+            foreach(Room room in roomList)
+            {
+                _db.SaveItem<Room>(room);
+            }
+
+            //List<Room> list = (List<Room>)_db.
+        }
+
+        private async Task<List<Room>> GetRoomList()
+        {
+            List<Room> roomList = await _apiRepo.GetRoomList();
+            return roomList;
         }
 
         /// <summary>
@@ -139,7 +156,15 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowCategoryPage()
         {
-            await Navigation.PushAsync(new CategoryPage(_newTicket));
+            await Navigation.PushAsync(new CategoryPage(_ticket));
+        }
+
+        /// <summary>
+        /// De LoginPage opnieuw inladen.
+        /// </summary>
+        private async Task ShowLoginPage()
+        {
+            await Navigation.PushAsync(new LoginPage());
         }
     }
 }

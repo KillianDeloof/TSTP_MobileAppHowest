@@ -88,7 +88,15 @@ namespace MobileAppHowest.Repositories
                 }
                 else
                 {
-                    return _connection.Insert(item);
+                    try
+                    {
+                        return _connection.Insert(item);
+                    }
+                    catch(Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return -1;
+                    }
                 }
             }
         }
@@ -135,8 +143,6 @@ namespace MobileAppHowest.Repositories
                 return (from i in _connection.Table<T>() select i).ToList();
             }
         }
-
-
 
 
         /// <summary>

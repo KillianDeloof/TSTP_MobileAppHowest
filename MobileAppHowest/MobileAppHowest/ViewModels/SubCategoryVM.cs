@@ -96,6 +96,7 @@ namespace MobileAppHowest.ViewModels
                 }
                 else
                 {
+                    _ticket.Location = null;
                     _subCategoryPage.FindByName<ListView>("listViewSubCategory").SelectedItem = null;
                     await Navigation.PushAsync(new MessagePage(_ticket));
                 }
