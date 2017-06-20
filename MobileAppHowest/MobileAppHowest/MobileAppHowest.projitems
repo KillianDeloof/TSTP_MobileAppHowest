@@ -79,8 +79,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)annderaedt.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Fonts\VAG_Rounded_Bold.ttf" />
     <Content Include="$(MSBuildThisFileDirectory)BG_howest.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Campus_EXT.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_LPS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_BUD.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_GKG.jpg" />

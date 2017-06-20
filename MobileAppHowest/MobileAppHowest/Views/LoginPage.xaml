@@ -30,13 +30,13 @@
                 FontSize="Large"
                 VerticalOptions="CenterAndExpand" 
                 >
-            <Button.FontFamily>
+            <!--<Button.FontFamily>
                 <OnPlatform x:TypeArguments="x:String">
                     <OnPlatform.iOS>VAG_Rounded_Bold</OnPlatform.iOS>
                     <OnPlatform.Android>VAG_Rounded_Bold.ttf#VAG_Rounded_Bold</OnPlatform.Android>
                     <OnPlatform.WinPhone>Assets/Fonts/VAG_Rounded_Bold.ttf#VAG_Rounded_Bold</OnPlatform.WinPhone>
                 </OnPlatform>
-            </Button.FontFamily>
+            </Button.FontFamily>-->
 
 
         </Button>

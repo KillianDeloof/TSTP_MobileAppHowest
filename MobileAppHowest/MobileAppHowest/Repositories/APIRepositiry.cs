@@ -47,7 +47,7 @@ namespace MobileAppHowest.Repositories
         /// Ophalen van de lijst van campussen, aangeleverd door de API.
         /// </summary>
         /// <returns>Task<List<Campus>></returns>
-        public static async Task<List<Campus>> GetCampusList()
+        public async Task<List<Campus>> GetCampusList()
         {
             try {
                 List<Campus> result = new List<Campus>();

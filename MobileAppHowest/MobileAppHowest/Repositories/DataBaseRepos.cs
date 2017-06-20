@@ -136,12 +136,64 @@ namespace MobileAppHowest.Repositories
         /// </summary>
         /// <typeparam name="T">The ObjectType</typeparam>
         /// <returns>returns a IEnumerable of the given ObjectType</returns>
-        public IEnumerable<T> GetItems<T>() where T : new()
+        public List<T> GetItems<T>() where T : new()
         {
             lock (locker)
             {
-                return (from i in _connection.Table<T>() select i).ToList();
+                //var result = _connection.Query //.Table<T>().ToList<T>();
+                //var result = (from i in _connection.Table<T>() select i).ToList<T>();
+                //var result = _connection.Table<T>().ToList();
+                //String type = typeof(T).Name.ToString();//((T)(new object())).GetType().Name;
+                //var meh = (_connection.TableMappings).ToList().Where(tm => tm.TableName == type);
+                //var result = _connection.Table<T>().ToList<T>();
+
+                List<T> uiList = new List<T>();
+
+                for (int i = 1; i < 8000; i++) {
+                    try
+                    {
+                        T ui = _connection.Table<T>().Where(u => ((BaseItem)(object)u).ID == i).First();
+                        if (ui == null || ui.Equals(new T()))
+                        {
+                            return uiList;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        return uiList;
+                    }
+
+                }
+
+                return uiList;
             }
+        }
+
+        public List<Room> GetRooms()
+        {
+            //var result = _connection.Table<Room>().ToList<Room>();
+            List<Room> uiList = new List<Room>();
+
+            for (int i = 1; i < 8000; i++)
+            {
+                try
+                {
+                    Room ui = _connection.Table<Room>().Where(u => ((BaseItem)(object)u).ID == i).First();
+                    if (ui == null || ui.Equals(new Room()))
+                    {
+                        return uiList;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    return uiList;
+                }
+
+            }
+            
+            return uiList;
         }
 
 

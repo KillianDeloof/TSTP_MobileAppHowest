@@ -38,17 +38,7 @@ namespace MobileAppHowest.ViewModels
         {
             List<Floor> floorList = new List<Floor>();
 
-            //try
-            //{
-            //    floorList = (List<Floor>)_db.GetItems<Floor>();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-                floorList = await _apiRepo.GetFloorList();
-            //    _db.CreateTable<Floor>();
-            //    floorList.ForEach(f => _db.SaveItem<Floor>(f));
-            //}
+            floorList = await _apiRepo.GetFloorList();
 
             return floorList;
 
@@ -75,15 +65,7 @@ namespace MobileAppHowest.ViewModels
 
         private async Task<List<Room>> FillRoomList()
         {
-            //try
-            //{
-            //    _roomList = (List<Room>)_db.GetItems<Room>();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-                _roomList = await _apiRepo.GetRoomList();
-            //}
+            _roomList = await _apiRepo.GetRoomList();
 
             return _roomList;
 
@@ -220,7 +202,6 @@ namespace MobileAppHowest.ViewModels
 
         private void ShowNextPage(object sender, EventArgs e)
         {
-            //_ticket.Building = 
             Console.WriteLine("sender text: " + ((Button)sender).Text);
             _ticket.Location = _roomList.ToList<Room>().Where(r => r.UCODE.ToLower() == ((Button)sender).Text.ToLower()).FirstOrDefault();
             ShowMessagePage();
@@ -251,11 +232,5 @@ namespace MobileAppHowest.ViewModels
 
             return doubleList.ToArray<double>();
         }
-
-        /* TO DO:
-         * =======
-         * - opvragen lijst met floors adhv geselecteerde campus & building
-         * - gebruik van FloorFilter
-         */
     }
 }

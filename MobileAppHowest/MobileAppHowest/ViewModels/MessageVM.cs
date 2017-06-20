@@ -190,6 +190,7 @@ namespace MobileAppHowest.ViewModels
                     _ticket.FormatTicket(_subject, _message, _ticket.CatObj);
                     APIRepository apirepos = new APIRepository();
                     await apirepos.SendTicket(_ticket);
+
                     // displayAlert
                     await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
                     _buttonSend.IsEnabled = true;
@@ -197,7 +198,8 @@ namespace MobileAppHowest.ViewModels
                     // refresh ticket
                     _ticket = new Ticket(_ticket.UserInfo);
                     // return to catogoryselector with the new ticket
-                    await Navigation.PushAsync(new CategoryPage(_ticket));
+                    //await Navigation.PushAsync(new CategoryPage(_ticket));
+                    ShowCategoryPage();
                 }
             }
             else

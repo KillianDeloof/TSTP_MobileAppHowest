@@ -11,8 +11,8 @@
 
             <ListView x:Name="listViewCampus" HasUnevenRows="true" SeparatorVisibility="Default"                        
                       VerticalOptions="Fill" MinimumHeightRequest="65" HeightRequest="2500"
-                       ItemsSource="{ Binding CampusList }"
-              SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }">
+                      ItemsSource="{ Binding CampusList }"
+                      SelectedItem="{ Binding SelectedCampus, Mode=TwoWay }">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

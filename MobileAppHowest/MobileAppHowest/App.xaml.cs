@@ -20,6 +20,7 @@ namespace MobileAppHowest
         }
 
         public static IAuthenticate Authenticator { get; private set; }
+        public static object StackDataManager { get; internal set; }
 
         protected override void OnStart ()
 		{
