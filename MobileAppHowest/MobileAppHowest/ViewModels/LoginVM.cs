@@ -61,6 +61,12 @@ namespace MobileAppHowest.ViewModels
                     ui = await _loginRepo.Login();
                     SaveUserInfo(ui);
                 }
+                else
+                {
+                    ui = await _loginRepo.Login();
+                    _db.CreateTable<UserInfo>();
+                    _db.SaveItem<UserInfo>(ui);
+                }
             }
             catch (Exception ex)
             {
@@ -125,6 +131,7 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.Text = "Loading ...";
             _btnLogin.TextColor = Xamarin.Forms.Color.White;
 
+            //_btnLogin.IsVisible = false;
             // TO DO:
             // spinner gebruiken en knop disabelen
         }

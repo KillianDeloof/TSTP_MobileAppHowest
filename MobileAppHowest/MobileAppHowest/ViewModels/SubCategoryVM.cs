@@ -17,6 +17,7 @@ namespace MobileAppHowest.ViewModels
             this._subCategoryPage = scPage;
             this._subCategoryList = subCategoryList;
             this._ticket = ticket;
+            scPage.Title = "hier komt hoofd katégori";
         }
 
         private INavigation Navigation = null;
