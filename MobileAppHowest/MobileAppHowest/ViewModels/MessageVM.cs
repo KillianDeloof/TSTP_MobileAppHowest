@@ -34,12 +34,16 @@ namespace MobileAppHowest.ViewModels
             this._messagePage.FindByName<Button>("btnCategory").Text = _ticket.Category.ToString();
             this._messagePage.FindByName<Button>("btnLocation").Text = _ticket.Location.UCODE.ToString();
 
-            MessageClickedCommand = new Command(MessageClicked);
+            //MessageClickedCommand = new Command(MessageClicked);
             SendCommand = new Command(SendClicked);
             AttachCommand = new Command(AttachClicked);
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
+
+            this._messagePage.FindByName<Editor>("Message").GestureRecognizers.Add(new TapGestureRecognizer((view) => MessageClicked((Editor)view)));
+            this._messagePage.FindByName<Editor>("Subject").GestureRecognizers.Add(new TapGestureRecognizer((view) => SubjectClicked((Editor)view)));
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -48,6 +52,8 @@ namespace MobileAppHowest.ViewModels
         private Room _r = new Room();
         private Button _buttonSend;
         private MessagePage _messagePage = null;
+        private bool _isMessageClicked = false;
+        private bool _isSubjectClicked = false;
 
         public Command SendCommand { get; }
         public Command AttachCommand { get; }
@@ -92,7 +98,7 @@ namespace MobileAppHowest.ViewModels
             set {
                 _selectedAttachment = value;
                 DeleteAttachment();
-                //PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
+                PictureNameList = new ObservableCollection<Attachment>(_ticket.Attachments);
             }
         }
 
@@ -106,9 +112,18 @@ namespace MobileAppHowest.ViewModels
             PickPhoto();
         }
 
-        private void MessageClicked()
+        private void MessageClicked(Editor editor)
         {
-            Message = "";
+            if(!_isMessageClicked)
+                editor.Text = "";
+            _isMessageClicked = true;
+        }
+
+        private void SubjectClicked(Editor editor)
+        {
+            if (!_isSubjectClicked)
+                editor.Text = "";
+            _isSubjectClicked = true;
         }
 
         private void LocationClicked(object obj)

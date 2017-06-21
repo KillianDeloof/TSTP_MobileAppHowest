@@ -13,7 +13,7 @@
                Source="HOWEST_Logo.png"
                Margin="0,50,0,0"/>
 
-        <ActivityIndicator Color="#ec008c" IsRunning="true" Margin="0,40,0,0"  VerticalOptions="End"/>
+        <ActivityIndicator x:Name="spSpinner"  Color="#ec008c" IsRunning="false" Margin="0,40,0,0"  VerticalOptions="End"/>
 
 
         <Button Text="Login"

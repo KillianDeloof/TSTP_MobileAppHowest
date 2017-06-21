@@ -15,6 +15,7 @@ namespace MobileAppHowest.ViewModels
     {
         public LoginVM(LoginPage loginPage)
         {
+            this._loginPage = loginPage;
             this.Navigation = loginPage.Navigation;
             this._btnLogin = loginPage.FindByName<Button>("btnLogin");
 
@@ -29,6 +30,7 @@ namespace MobileAppHowest.ViewModels
         private Button _btnLogin = null;
         private Ticket _ticket;
         private DataBaseRepos _db = new DataBaseRepos("tstp");
+        private LoginPage _loginPage = null;
 
         public async void LoginClicked()
         {
@@ -128,10 +130,9 @@ namespace MobileAppHowest.ViewModels
             _btnLogin.IsEnabled = false;
             _btnLogin.Text = "Loading ...";
             _btnLogin.TextColor = Xamarin.Forms.Color.White;
-
-            //_btnLogin.IsVisible = false;
-            // TO DO:
-            // spinner gebruiken en knop disabelen
+            
+            // spinner actief maken
+            this._loginPage.FindByName<ActivityIndicator>("spSpinner").IsRunning = true;
         }
 
         /// <summary>
