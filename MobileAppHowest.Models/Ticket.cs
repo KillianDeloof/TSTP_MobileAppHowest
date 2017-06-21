@@ -46,6 +46,14 @@ namespace MobileAppHowest.Models
 
             Message = message;
 
+            if (this.Location != null)
+            {
+                if (this.Location.UDESC != "No Location selected")
+                {
+                    this.Message = message + "     / Location: " + this.Location.UDESC;
+                }
+            }
+
             string roles = "";
 
             foreach (string role in UserInfo.Roles)
@@ -60,29 +68,15 @@ namespace MobileAppHowest.Models
             {
                 Category = "No Category";
             }
+
+            this.Building = null;
+            //this.Location = null;
+
         }
 
         public void FormatTicket(string subject, string message, Category cat, Room location)
         {
-            Subject = subject;
-
-            Message = message + " Location: " + location.UDESC;
-
-
-            string roles = "";
-
-            foreach (string role in UserInfo.Roles)
-            {
-                roles = roles + role;
-            }
-
-            Forum = roles.ToString();
-            CatObj = cat;
-
-            if (String.IsNullOrEmpty(cat.SubCategoryUDesc))
-            {
-                Category = "No Category";
-            }
+            FormatTicket(subject, message, cat);
         }
 
         /// <summary>
@@ -152,7 +146,7 @@ namespace MobileAppHowest.Models
         public string Category
         {
             get { return CatObj.SubCategoryUDesc; }
-            private set { category = value; }
+            set { category = value; }
         }
 
         private Category catObj;
