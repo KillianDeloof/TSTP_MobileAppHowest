@@ -15,7 +15,8 @@ namespace MobileAppHowest
 		{
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.FromHex("#44c8f5"), BarTextColor = Color.FromHex("#ec008c") } ;
+            //MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.FromHex("#44c8f5"), BarTextColor = Color.FromHex("#ec008c") } ;
+            MainPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.FromHex("#44c8f5") };
 
         }
 

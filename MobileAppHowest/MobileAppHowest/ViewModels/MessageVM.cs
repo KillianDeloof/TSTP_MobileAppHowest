@@ -40,10 +40,6 @@ namespace MobileAppHowest.ViewModels
             PictureCommand = new Command(PictureClicked);
             CategoryCommand = new Command(CategoryClicked);
             LocationCommand = new Command(LocationClicked);
-
-            this._messagePage.FindByName<Editor>("Message").GestureRecognizers.Add(new TapGestureRecognizer((view) => MessageClicked((Editor)view)));
-            this._messagePage.FindByName<Editor>("Subject").GestureRecognizers.Add(new TapGestureRecognizer((view) => SubjectClicked((Editor)view)));
-            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -63,7 +59,7 @@ namespace MobileAppHowest.ViewModels
         public Command AttachmentListCommand { get; }
         public Command MessageClickedCommand { get; }
 
-        private String _message = "Type your message ...";
+        private String _message = "";
         public String Message
         {
             get
@@ -77,7 +73,7 @@ namespace MobileAppHowest.ViewModels
             }
         }
 
-        private String _subject = "Subject";
+        private String _subject = "";
         public String Subject
         {
             get
@@ -209,11 +205,9 @@ namespace MobileAppHowest.ViewModels
                     // displayAlert
                     await App.Current.MainPage.DisplayAlert("Ticket Send!", "The ticket has been send!", "OK");
                     _buttonSend.IsEnabled = true;
-
                     // refresh ticket
                     _ticket = new Ticket(_ticket.UserInfo);
                     // return to catogoryselector with the new ticket
-                    //await Navigation.PushAsync(new CategoryPage(_ticket));
                     ShowCategoryPage();
                 }
             }
@@ -244,12 +238,6 @@ namespace MobileAppHowest.ViewModels
                 }
             }
         }
-        
-        //private void OnPropertyChanged()
-        //{
-        //    if (PropertyChanged != null)
-        //        PropertyChanged(this, new PropertyChangedEventArgs("PictureNameList"));
-        //}
 
         private async Task ShowCampusPage()
         {
@@ -260,22 +248,6 @@ namespace MobileAppHowest.ViewModels
         {
             await Navigation.PushAsync(new CategoryPage(_ticket));
         }
-
-        //private void GetAttachmentNameList()
-        //{
-            //List<Attachment> attachmentNameList = new List<Attachment>();
-            //_ticket.Attachments.ForEach(a => attachmentNameList.Add(a));
-
-            //PictureNameList = attachmentNameList;
-
-
-            //PictureNameList = new List<String>
-            //{
-            //    "photo01.jpg",
-            //    "photo02.jpg",
-            //    "photo03.jpg"
-            //};
-        //}
 
         // opvragen van locatie
         //private async Task GetPosition()

@@ -42,9 +42,9 @@ namespace MobileAppHowest.ViewModels
         {
             // indien mogelijk user ophalen uit database
             // indien geslaagd -> tonen volgende pagina
-            UserInfo ui = null;
+            UserInfo ui = await _loginRepo.Login();
 
-            try
+            /*try
             {
                 if (IsKnownUser())
                 {
@@ -72,17 +72,17 @@ namespace MobileAppHowest.ViewModels
             {
                 Console.WriteLine(ex.Message);
                 ui = await _loginRepo.Login();
-            }
+            }*/
 
-            if (!(await IsAuthenticated()))
-            {
-                ui = await _loginRepo.Login();
-            }
+            //if (!(await IsAuthenticated()))
+            //{
+            //    ui = await _loginRepo.Login();
+            //}
 
             if (ui != null)
             {
-                _ticket = new Ticket(ui);
-                _ticket.UserID = ui.ID;
+                //_ticket = new Ticket(ui);
+                //_ticket.UserID = ui.ID;
 
                 AuthenticationDone();
             }
@@ -161,12 +161,12 @@ namespace MobileAppHowest.ViewModels
         
         private async Task AuthenticationDone()
         {
-            String token = _db.GetAuthorization().Token;
-            int userId = _ticket.UserID;
+            //String token = _db.GetAuthorization().Token;
+            //int userId = _ticket.UserID;
 
-            var mobileServiceClient = new MobileServiceClient("/api/userinfo");
-            mobileServiceClient.CurrentUser = new MobileServiceUser(_ticket.UserID.ToString());
-            mobileServiceClient.CurrentUser.MobileServiceAuthenticationToken = token;
+            //var mobileServiceClient = new MobileServiceClient("/api/userinfo");
+            //mobileServiceClient.CurrentUser = new MobileServiceUser(_ticket.UserID.ToString());
+            //mobileServiceClient.CurrentUser.MobileServiceAuthenticationToken = token;
             
             await ShowCategoryPage();
         }

@@ -202,21 +202,6 @@ namespace MobileAppHowest.ViewModels
             _locationSelectorPage.FindByName<AccordionView>("accordionView").Children.Add(itemView);
         }
 
-        /// <summary>
-        /// Uitlezen van json-bestand met rooms.
-        /// </summary>
-        //private void ReadRoomFile()
-        //{
-            // meer info: https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/files/
-
-            //Room roomList = Newtonsoft.Json.JsonConvert.DeserializeObject<Room>(System.IO.File.ReadAllText("rooms.txt"));
-
-            //string output = Newtonsoft.Json.JsonConvert.SerializeObject(roomList);
-            //Console.WriteLine(output);
-
-            //roomList = Newtonsoft.Json.JsonConvert.DeserializeObject<Room>(output);
-        //}
-
         private void ShowNextPage(object sender)
         {
             Console.WriteLine("sender text: " + ((Label)sender).Text);

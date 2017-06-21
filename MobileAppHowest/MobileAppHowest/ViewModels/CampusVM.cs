@@ -134,7 +134,10 @@ namespace MobileAppHowest.ViewModels
         /// <returns>Task</returns>
         private async Task ShowLocationSelectorPage()
         {
-            _campusPage.FindByName<ListView>("listViewCampus").SelectedItem = null;
+            if (_campusPage != null &&
+                _campusPage.FindByName<ListView>("listViewCampus") != null &&
+                _campusPage.FindByName<ListView>("listViewCampus").SelectedItem != null)
+                _campusPage.FindByName<ListView>("listViewCampus").SelectedItem = null;
             await Navigation.PushAsync(new LocationSelectorPage(_ticket));
         }
     }
