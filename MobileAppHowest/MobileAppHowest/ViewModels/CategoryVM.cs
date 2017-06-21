@@ -146,8 +146,9 @@ namespace MobileAppHowest.ViewModels
 
             if (subCategoryList != null)
             {
+                MainCategory category = _selectedCategory;
                 _selectedCategory = null;
-                await Navigation.PushAsync(new SubCategoryPage(subCategoryList, _ticket));
+                await Navigation.PushAsync(new SubCategoryPage(subCategoryList, _ticket, category.CategoryUDesc));
             }
         }
     }

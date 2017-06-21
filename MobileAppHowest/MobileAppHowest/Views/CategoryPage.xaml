@@ -5,7 +5,7 @@
              x:Class="MobileAppHowest.Views.CategoryPage" >
 
     <StackLayout x:Name="searchbarRegion">
-        <Grid BackgroundColor="#44a8f5">
+        <!--<Grid BackgroundColor="#44a8f5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
 
@@ -15,7 +15,7 @@
             </Grid.ColumnDefinitions>
             <SearchBar x:Name="searchbar" HorizontalOptions="Fill"                    BackgroundColor="#44c8f5"
 />
-        </Grid>
+        </Grid>-->
 
 
 

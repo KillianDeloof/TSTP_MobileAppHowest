@@ -11,13 +11,13 @@ namespace MobileAppHowest.ViewModels
 {
     public class SubCategoryVM : INotifyPropertyChanged
     {
-        public SubCategoryVM(INavigation navigation, SubCategoryPage scPage, List<Category> subCategoryList, Ticket ticket)
+        public SubCategoryVM(SubCategoryPage scPage, List<Category> subCategoryList, Ticket ticket, String mainCategory)
         {
-            this.Navigation = navigation;
+            this.Navigation = scPage.Navigation;
             this._subCategoryPage = scPage;
             this._subCategoryList = subCategoryList;
             this._ticket = ticket;
-            scPage.Title = "hier komt hoofd katégori";
+            scPage.Title = mainCategory;
         }
 
         private INavigation Navigation = null;

@@ -13,8 +13,6 @@ namespace MobileAppHowest.ViewModels
 {
     public partial class LoginVM : INotifyPropertyChanged
     {
-        //private INavigationService _navigationService { get; }
-
         public LoginVM(LoginPage loginPage)
         {
             this.Navigation = loginPage.Navigation;
@@ -61,12 +59,12 @@ namespace MobileAppHowest.ViewModels
                     ui = await _loginRepo.Login();
                     SaveUserInfo(ui);
                 }
-                else
-                {
-                    ui = await _loginRepo.Login();
-                    _db.CreateTable<UserInfo>();
-                    _db.SaveItem<UserInfo>(ui);
-                }
+                //else
+                //{
+                //    ui = await _loginRepo.Login();
+                //    _db.CreateTable<UserInfo>();
+                //    _db.SaveItem<UserInfo>(ui);
+                //}
             }
             catch (Exception ex)
             {

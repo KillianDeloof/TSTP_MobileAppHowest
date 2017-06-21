@@ -22,8 +22,7 @@ namespace MobileAppHowest.ViewModels
 
             this.Navigation = navigation;
             this._ticket = ticket;
-            lsPage.Title = "GKG A (demo text)";
-
+            lsPage.Title = _ticket.Building.UCODE.Replace(',', '.').ToUpper().ToString();
 
             Start();
         }
@@ -161,51 +160,51 @@ namespace MobileAppHowest.ViewModels
                 ButtonActiveBackgroundColor = Color.FromRgb(52, 150, 184),
                 TextPosition = Xamarin.CustomControls.TextPosition.Left,
                 RightImage = "arrowRight",
+                FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                 RotateImages = true
             };
 
             var stackLayout = new StackLayout()
             {
-                //Padding = new Xamarin.Forms.Thickness(0.5, 0, 0.5, 0.5),
                 BackgroundColor = Xamarin.Forms.Color.Black
             };
 
             var stackLayout2 = new StackLayout()
             {
-                //Padding = new Xamarin.Forms.Thickness(5, 15),
                 BackgroundColor = Color.FromRgb(224, 224, 224),
                 Orientation = Xamarin.Forms.StackOrientation.Vertical
             };
 
             for (int i = 0; i < roomList.Count; i++)
             {
-                var button = new Button()
+                var label = new Label()
                 {
                     Text = roomList[i].UDESC.ToString(),
                     HorizontalOptions = Xamarin.Forms.LayoutOptions.Fill,
                     VerticalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand,
-                    BorderWidth = 0,
-                    BorderColor = Xamarin.Forms.Color.Transparent,
                     BackgroundColor = Xamarin.Forms.Color.Transparent,
-                    BorderRadius = 0,
+                    HeightRequest = 30,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
                     Margin = 0
                 };
 
-                button.Clicked += ShowNextPage;
-                stackLayout2.Children.Add(button);
+                
+                
+                label.GestureRecognizers.Add(new TapGestureRecognizer((view) => ShowNextPage(view)));
+                stackLayout2.Children.Add(label);
             }
-
-            
 
             stackLayout.Children.Add(stackLayout2);
             itemView.ItemContent = stackLayout;
             _locationSelectorPage.FindByName<AccordionView>("accordionView").Children.Add(itemView);
         }
 
-        private void ShowNextPage(object sender, EventArgs e)
+        //private void ShowNextPage(object sender, EventArgs e)
+        private void ShowNextPage(object sender)
         {
-            Console.WriteLine("sender text: " + ((Button)sender).Text);
-            _ticket.Location = _roomList.ToList<Room>().Where(r => r.UCODE.ToLower() == ((Button)sender).Text.ToLower()).FirstOrDefault();
+            Console.WriteLine("sender text: " + ((Label)sender).Text);
+            _ticket.Location = _roomList.ToList<Room>().Where(r => r.UCODE.ToLower() == ((Label)sender).Text.ToLower()).FirstOrDefault();
             ShowMessagePage();
         }
 
