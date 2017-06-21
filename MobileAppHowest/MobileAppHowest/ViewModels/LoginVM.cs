@@ -210,6 +210,8 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowCategoryPage()
         {
+            _btnLogin.IsEnabled = true;
+            _btnLogin.Text = "Login";
             await Navigation.PushAsync(new CategoryPage(_ticket));
         }
 
