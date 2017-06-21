@@ -33,7 +33,25 @@ namespace MobileAppHowest.ViewModels
             get { return _selectedCategory; }
             set {
                 _selectedCategory = value;
-                ShowCategoryPage(_selectedCategory.SubCategoryList);
+                List<Category> subs = new List<Category>();
+                foreach (Category cat in _selectedCategory.SubCategoryList)
+                {
+                    if (_ticket.UserInfo.FirstRole != "Student")//staff
+                    {
+                        subs.Add(cat);
+                    }
+                    else//not staff
+                    {
+                        if (cat.IsStaffRequired == false)
+                        {
+                            subs.Add(cat);
+                        }
+                    }
+
+
+                    
+                }
+                ShowCategoryPage(subs);
             }
         }
 
@@ -45,7 +63,10 @@ namespace MobileAppHowest.ViewModels
             get
             {
                 if (_categoryList == null)
+                {
                     GetCategoryList();
+                }
+                    
 
                 return _categoryList;
             }

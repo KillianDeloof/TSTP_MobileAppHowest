@@ -17,9 +17,19 @@ namespace MobileAppHowest.Models
         [Ignore]
         public List<String> Roles { get; set; } = new List<string>();
 
-        public string FirstRole { get; set; }
+        //public string FirstRole { get; set; }
 
+        private string firstRole;
 
+        public string FirstRole
+        {
+            get
+            {
+                return this.Roles.First();
+            }
+            private set { firstRole = value; }
+        }
+        
 
         public String KernelTeamCCode { get; set; }
 
