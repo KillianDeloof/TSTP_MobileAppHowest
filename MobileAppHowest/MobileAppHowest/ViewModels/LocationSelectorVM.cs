@@ -2,10 +2,13 @@
 using MobileAppHowest.Models.Filters;
 using MobileAppHowest.Repositories;
 using MobileAppHowest.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.CustomControls;
@@ -25,6 +28,7 @@ namespace MobileAppHowest.ViewModels
             lsPage.Title = _ticket.Building.UCODE.Replace(',', '.').ToUpper().ToString();
 
             Start();
+            
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -183,13 +187,11 @@ namespace MobileAppHowest.ViewModels
                     HorizontalOptions = Xamarin.Forms.LayoutOptions.Fill,
                     VerticalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand,
                     BackgroundColor = Xamarin.Forms.Color.Transparent,
-                    HeightRequest = 30,
+                    HeightRequest = 25,
+                    Margin = new Thickness(0, 10, 0, 10),
                     HorizontalTextAlignment = TextAlignment.Center,
-                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    Margin = 0
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
                 };
-
-                
                 
                 label.GestureRecognizers.Add(new TapGestureRecognizer((view) => ShowNextPage(view)));
                 stackLayout2.Children.Add(label);
@@ -200,7 +202,21 @@ namespace MobileAppHowest.ViewModels
             _locationSelectorPage.FindByName<AccordionView>("accordionView").Children.Add(itemView);
         }
 
-        //private void ShowNextPage(object sender, EventArgs e)
+        /// <summary>
+        /// Uitlezen van json-bestand met rooms.
+        /// </summary>
+        //private void ReadRoomFile()
+        //{
+            // meer info: https://developer.xamarin.com/guides/xamarin-forms/application-fundamentals/files/
+
+            //Room roomList = Newtonsoft.Json.JsonConvert.DeserializeObject<Room>(System.IO.File.ReadAllText("rooms.txt"));
+
+            //string output = Newtonsoft.Json.JsonConvert.SerializeObject(roomList);
+            //Console.WriteLine(output);
+
+            //roomList = Newtonsoft.Json.JsonConvert.DeserializeObject<Room>(output);
+        //}
+
         private void ShowNextPage(object sender)
         {
             Console.WriteLine("sender text: " + ((Label)sender).Text);

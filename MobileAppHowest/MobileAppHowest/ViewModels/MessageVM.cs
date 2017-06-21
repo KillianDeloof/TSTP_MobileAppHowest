@@ -205,8 +205,8 @@ namespace MobileAppHowest.ViewModels
             else
             {
                 // wat te doen indien subject of message leeg is
-                await App.Current.MainPage.DisplayAlert("No Subject", "Please fill in subject and message", "Ok");
-                Console.WriteLine("Subject of message is leeg.");
+                await App.Current.MainPage.DisplayAlert("No subject", "Please fill in subject and message", "Ok");
+                Console.WriteLine("Subject of message is empty.");
             }
         }
 

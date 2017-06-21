@@ -92,6 +92,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Campus_RSS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_SJS.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Campus_VES.jpeg" />
+    <Content Include="$(MSBuildThisFileDirectory)floors.txt" />
     <Content Include="$(MSBuildThisFileDirectory)HOWEST_Logo.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_attach_file_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_book_black_24dp.png" />
@@ -104,6 +105,7 @@
     <Content Include="$(MSBuildThisFileDirectory)ic_send_black_24dp.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_send_white_24px.png" />
     <Content Include="$(MSBuildThisFileDirectory)ic_settings_input_hdmi_black_24dp.png" />
+    <Content Include="$(MSBuildThisFileDirectory)rooms.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SubCategoryPage.xaml">

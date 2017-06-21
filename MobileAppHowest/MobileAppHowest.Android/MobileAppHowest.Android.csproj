@@ -310,6 +310,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Campus_EXT.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\floors.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\rooms.txt" />
+  </ItemGroup>
   <Import Project="..\MobileAppHowest\MobileAppHowest.projitems" Label="Shared" Condition="Exists('..\MobileAppHowest\MobileAppHowest.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

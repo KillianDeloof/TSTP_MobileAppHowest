@@ -188,7 +188,7 @@ namespace MobileAppHowest.Repositories
             list.Add(faciliteiten);
 
             MainCategory lesmateriaal = new MainCategory();
-            lesmateriaal.CategoryUDesc = "Study Materials";
+            lesmateriaal.CategoryUDesc = "Study materials";
             lesmateriaal.Picture = "ic_book_black_24dp.png";
             list.Add(lesmateriaal);
 
@@ -231,7 +231,7 @@ namespace MobileAppHowest.Repositories
             List<Category> list = new List<Category>();
 
             Category bookSales = new Category();
-            bookSales.SubCategoryUDesc = "BookSales";
+            bookSales.SubCategoryUDesc = "Book sales";
 
             Category financial = new Category();
             financial.SubCategoryUDesc = "Financial";
@@ -240,7 +240,7 @@ namespace MobileAppHowest.Repositories
             {
                 case "Campus":
                     Category cateringAndVending = new Category();
-                    cateringAndVending.SubCategoryUDesc = "Catering And Vending Machines";
+                    cateringAndVending.SubCategoryUDesc = "Catering and vending machines";
                     cateringAndVending.IsLocationRequired = true;
                     list.Add(cateringAndVending);
 
@@ -250,7 +250,7 @@ namespace MobileAppHowest.Repositories
                     list.Add(furniture);
 
                     Category wasteManegment = new Category();
-                    wasteManegment.SubCategoryUDesc = "Waste Manegment";
+                    wasteManegment.SubCategoryUDesc = "Waste management";
                     wasteManegment.IsLocationRequired = true;
                     list.Add(wasteManegment);
 
@@ -260,7 +260,7 @@ namespace MobileAppHowest.Repositories
                     list.Add(sanitary);
 
                     Category classRooms = new Category();
-                    classRooms.SubCategoryUDesc = "ClassRooms and Maintenance";
+                    classRooms.SubCategoryUDesc = "Classrooms and maintenance";
                     classRooms.IsLocationRequired = true;
                     list.Add(classRooms);
 
@@ -268,13 +268,13 @@ namespace MobileAppHowest.Repositories
 
                 case "Facilities":
                     Category mobility = new Category();
-                    mobility.SubCategoryUDesc = "Mobility";
+                    mobility.SubCategoryUDesc = "mobility";
                     list.Add(mobility);
 
                     list.Add(bookSales);
 
                     Category sportOffers = new Category();
-                    sportOffers.SubCategoryUDesc = "Sport Offers";
+                    sportOffers.SubCategoryUDesc = "Sport offers";
                     list.Add(sportOffers);
 
                     Category printing = new Category();
@@ -282,22 +282,22 @@ namespace MobileAppHowest.Repositories
                     list.Add(printing);
 
                     Category studdySupport = new Category();
-                    studdySupport.SubCategoryUDesc = "Study Support";
+                    studdySupport.SubCategoryUDesc = "Study support";
                     list.Add(studdySupport);
 
                     list.Add(financial);
 
                     break;
 
-                case "Study Materials":
+                case "Study materials":
                     Category studyMaterials = new Category();
-                    studyMaterials.SubCategoryUDesc = "Study Materials";
+                    studyMaterials.SubCategoryUDesc = "Study materials";
                     list.Add(studyMaterials);
 
                     list.Add(bookSales);
 
                     Category studyPlatform = new Category();
-                    studyPlatform.SubCategoryUDesc = "Study Platform";
+                    studyPlatform.SubCategoryUDesc = "Study platform";
                     list.Add(studyPlatform);
 
                     list.Add(financial);
@@ -306,41 +306,41 @@ namespace MobileAppHowest.Repositories
 
                 case "Network":
                     Category wifi = new Category();
-                    wifi.SubCategoryUDesc = "WiFi";
+                    wifi.SubCategoryUDesc = "Wifi";
                     wifi.IsLocationRequired = true;
                     list.Add(wifi);
 
                     Category networkAcces = new Category();
-                    networkAcces.SubCategoryUDesc = "Network Access";
+                    networkAcces.SubCategoryUDesc = "Network access";
                     list.Add(networkAcces);
 
                     Category netWorkMaintenance = new Category();
-                    netWorkMaintenance.SubCategoryUDesc = "Network Maintenance";
+                    netWorkMaintenance.SubCategoryUDesc = "Network maintenance";
                     netWorkMaintenance.IsLocationRequired = true;
                     list.Add(netWorkMaintenance);
 
                     Category generalNetwork = new Category();
-                    generalNetwork.SubCategoryUDesc = "General Network";
+                    generalNetwork.SubCategoryUDesc = "General network";
                     list.Add(generalNetwork);
 
                     break;
 
                 case "Software & hardware":
                     Category softWare = new Category();
-                    softWare.SubCategoryUDesc = "SoftWare";
+                    softWare.SubCategoryUDesc = "Software";
                     list.Add(softWare);
 
                     Category sharepointDocenten = new Category();
-                    sharepointDocenten.SubCategoryUDesc = "Sharepoint Docenten";
+                    sharepointDocenten.SubCategoryUDesc = "Sharepoint teachers";
                     sharepointDocenten.IsStaffRequired = true;
                     list.Add(sharepointDocenten);
 
                     Category helpdesk = new Category();
-                    helpdesk.SubCategoryUDesc = "HelpDesk AND Remote Helpdesk";
+                    helpdesk.SubCategoryUDesc = "Helpdesk and remote helpdesk";
                     list.Add(helpdesk);
 
                     Category macSupport = new Category();
-                    macSupport.SubCategoryUDesc = "Mac Support";
+                    macSupport.SubCategoryUDesc = "Mac support";
                     list.Add(macSupport);
 
                     Category signPost = new Category();
@@ -366,7 +366,7 @@ namespace MobileAppHowest.Repositories
 
                 case "Other":
                     Category energyManegment = new Category();
-                    energyManegment.SubCategoryUDesc = "Energy Manegment";
+                    energyManegment.SubCategoryUDesc = "Energy managment";
                     list.Add(energyManegment);
 
                     Category other = new Category();
