@@ -81,7 +81,7 @@ namespace MobileAppHowest.ViewModels
 
             if (ui != null)
             {
-                //_ticket = new Ticket(ui);
+                _ticket = new Ticket(ui);
                 //_ticket.UserID = ui.ID;
 
                 AuthenticationDone();

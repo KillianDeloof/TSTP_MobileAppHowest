@@ -36,20 +36,17 @@ namespace MobileAppHowest.ViewModels
                 List<Category> subs = new List<Category>();
                 foreach (Category cat in _selectedCategory.SubCategoryList)
                 {
-                    if (_ticket.UserInfo.FirstRole != "Student")//staff
+                    if (_ticket.UserInfo.FirstRole != "Student") //staff
                     {
                         subs.Add(cat);
                     }
-                    else//not staff
+                    else //not staff
                     {
                         if (cat.IsStaffRequired == false)
                         {
                             subs.Add(cat);
                         }
                     }
-
-
-                    
                 }
                 ShowCategoryPage(subs);
             }
@@ -163,6 +160,9 @@ namespace MobileAppHowest.ViewModels
         /// </summary>
         private async Task ShowCategoryPage(List<Category> subCategoryList)
         {
+            if (_categoryPage != null &&
+                _categoryPage.FindByName<ListView>("listViewCategory") != null &&
+                _categoryPage.FindByName<ListView>("listViewCategory").SelectedItem != null)
             _categoryPage.FindByName<ListView>("listViewCategory").SelectedItem = null;
 
             if (subCategoryList != null)
