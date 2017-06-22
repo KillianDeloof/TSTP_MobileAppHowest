@@ -93,7 +93,15 @@ namespace MobileAppHowest.Repositories
         public async Task<List<Floor>> GetFloorList()
         {
             try {
+                // hard coded json string opvragen en omzetten
                 List<Floor> result = new List<Floor>();
+                String pagejson = GetHardcodedFloors();
+                List<Floor> page = JsonConvert.DeserializeObject<List<Floor>>(pagejson);
+                result.AddRange(page);
+
+                // opvragen van de lijst via de API
+
+                //List<Floor> result = new List<Floor>();
                 //FloorFilter ff = new FloorFilter();
                 //String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<FloorFilter, string>("/api/FloorSearch", ff, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
                 ////String pagejson = GetHardcodedFloors();
@@ -108,13 +116,7 @@ namespace MobileAppHowest.Repositories
                 //    page = JsonConvert.DeserializeObject<List<Floor>>(pagejson);
                 //    result.AddRange(page);
                 //}
-
-                //--------------hardcoded-------------------
-                String pagejson = GetHardcodedRooms();
-                List<Floor> page = JsonConvert.DeserializeObject<List<Floor>>(pagejson);
-                result.AddRange(page);
-                //------------------------------------------
-
+                
                 return result;
             }
             catch (Exception ex)
@@ -133,7 +135,15 @@ namespace MobileAppHowest.Repositories
         {
             try
             {
+                // opvragen van een hardgecodeerde lijst van Rooms in json-formaat
                 List<Room> result = new List<Room>();
+                String pagejson = GetHardcodedRooms();
+                List<Room> page = JsonConvert.DeserializeObject<List<Room>>(pagejson);
+                result.AddRange(page);
+
+                // opvragen van de lijst van Rooms via de API
+
+                //List<Room> result = new List<Room>();
                 //RoomFilter rf = new RoomFilter();
                 //String pagejson = await AzureMobileClient.DefaultClient.InvokeApiAsync<RoomFilter, string>("/api/RoomSearch", rf, System.Net.Http.HttpMethod.Post, null, System.Threading.CancellationToken.None);
                 //List<Room> page = JsonConvert.DeserializeObject<List<Room>>(pagejson);
@@ -145,12 +155,6 @@ namespace MobileAppHowest.Repositories
                 //    page = JsonConvert.DeserializeObject<List<Room>>(pagejson);
                 //    result.AddRange(page);
                 //}
-
-                //-------------hardcoded------
-                String pagejson = GetHardcodedRooms();
-                List<Room> page = JsonConvert.DeserializeObject<List<Room>>(pagejson);
-                result.AddRange(page);
-                //---------------------------
 
                 return result;
             }

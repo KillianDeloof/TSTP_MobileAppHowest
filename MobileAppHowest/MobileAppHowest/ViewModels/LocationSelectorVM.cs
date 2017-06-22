@@ -124,11 +124,11 @@ namespace MobileAppHowest.ViewModels
             
             foreach (Floor floor in filteredFloorList)
             {
-                List<Room> filteredList = new List<Room>();
+                List<Room> filteredRoomList = new List<Room>();
 
                 try
                 {
-                    filteredList = roomList
+                    filteredRoomList = roomList
                         .Where(r => (r.UCODE.Split('.')[0] != null) &&
                             (r.UCODE.Split('.')[0].ToLower() == floor.UCODE.Split('.')[0].ToLower()) &&
                             (r.UCODE.Split('.')[1].ToLower() == floor.UCODE.Split('.')[1].ToLower()) &&
@@ -140,7 +140,7 @@ namespace MobileAppHowest.ViewModels
                     Console.WriteLine(ex.Message);
                 }
 
-                CreateAccordeonItemView(filteredList, floor.UCODE.Replace(',', '.').Split('.')[3]);
+                CreateAccordeonItemView(filteredRoomList, floor.UCODE.Replace(',', '.').Split('.')[3]);
             }
         }
 
