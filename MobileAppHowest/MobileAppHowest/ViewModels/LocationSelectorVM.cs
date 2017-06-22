@@ -159,13 +159,15 @@ namespace MobileAppHowest.ViewModels
                     HexToRGB("45c8f5")[1],
                     HexToRGB("45c8f5")[2], 1
                 ),
-                FontFamily= "VAG_Rounded_Bold",
-                ButtonBackgroundColor = Color.FromRgb(69,200,245),
+                FontFamily = "VAG_Rounded_Bold",
+                ButtonBackgroundColor = Color.FromRgb(69, 200, 245),
                 ButtonActiveBackgroundColor = Color.FromRgb(52, 150, 184),
                 TextPosition = Xamarin.CustomControls.TextPosition.Left,
                 RightImage = "arrowRight",
                 FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                RotateImages = true
+                RotateImages = true,
+                BorderColor = Color.Transparent,
+                FontAttributes = FontAttributes.Bold,
             };
 
             var stackLayout = new StackLayout()
@@ -183,7 +185,7 @@ namespace MobileAppHowest.ViewModels
             {
                 var label = new Label()
                 {
-                    Text = roomList[i].UDESC.ToString(),
+                    Text = roomList[i].UDESC.ToUpper().ToString(),
                     HorizontalOptions = Xamarin.Forms.LayoutOptions.Fill,
                     VerticalOptions = Xamarin.Forms.LayoutOptions.FillAndExpand,
                     BackgroundColor = Xamarin.Forms.Color.Transparent,
